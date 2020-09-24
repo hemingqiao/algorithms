@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var fns = [],
+        obj = {a: 32, b: 1024, c: "mbp"};
+
+        for(var key in obj) {
+            fns.push((function(key) {
+                return function() {
+                    console.log(key);
+                }
+            })(key));
+        }
+    </script>
+</body>
+</html>
