@@ -1,29 +1,3 @@
-# title
-
-## test title
-* fc barcelona
-* fc liverpool
-
-[G](www.google.com) 打不开的链接
-![greece](C:\Users\32337\Desktop)
-**加粗**
-
-+ foo
-+ bar
-+ baz
-+ qux
-
-1. hello
-2. world
-
-* shape
-    * rectangle
-        * length
-        * area
-            * PI
-    * circle
-    * triangle
-
 > we
 > are
 > such
@@ -34,7 +8,10 @@
 > made
 > on
 
-向世界问好：`print("hello world")`
+向世界问好：
+```python
+print("hello world")
+```
 
 ```js
 function foo() {
@@ -49,4 +26,3 @@ class TT {
     }
 }
 ```
-`System.out.println("Hello")`
