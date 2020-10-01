@@ -1,45 +1,45 @@
 function deepClone(obj) {
-	const map = new Map(); // 解决循环引用问题
+  const map = new Map(); // 解决循环引用问题
 
-	function auxiliary(obj) {
-		if (obj === null) {
-			return null;
-		}
+  function auxiliary(obj) {
+    if (obj === null) {
+      return null;
+    }
 
-		if (typeof obj === "object") {
-			// 未考虑兼容Date、Number、String等类型实例对象，这些对象会被替换为空对象{}
-			let newObj = Array.isArray(obj) ? [] : {};
+    if (typeof obj === "object") {
+      // 未考虑兼容Date、Number、String等类型实例对象，这些对象会被替换为空对象{}
+      let newObj = Array.isArray(obj) ? [] : {};
 
-			if (map.has(obj)) {
-				return map.get(obj);
-			}
-			map.set(obj, newObj);
+      if (map.has(obj)) {
+        return map.get(obj);
+      }
+      map.set(obj, newObj);
 
-			// 不可枚举属性，Symbol类型属性均会被复制
-			Reflect.ownKeys(obj).forEach(key => {
-				newObj[key] = auxiliary(obj[key]);
-			});
+      // 不可枚举属性，Symbol类型属性均会被复制
+      Reflect.ownKeys(obj).forEach(key => {
+        newObj[key] = auxiliary(obj[key]);
+      });
 
-			return newObj;
-		} else {
-			return obj;
-		}
-	}
+      return newObj;
+    } else {
+      return obj;
+    }
+  }
 
-	return auxiliary(obj);
+  return auxiliary(obj);
 }
 
 
 // test
 let A = {
-    a: 1,
-    b: [1, 2, 3],
-    c: {
-        "0": 0
-    },
-    d: undefined,
-    e: null,
-    f: new Date()
+  a: 1,
+  b: [1, 2, 3],
+  c: {
+    "0": 0
+  },
+  d: undefined,
+  e: null,
+  f: new Date()
 };
 A.A = A;
 A.B = A;
