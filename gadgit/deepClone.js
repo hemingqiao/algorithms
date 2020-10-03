@@ -2,7 +2,7 @@
 
 
 /**
- * 使用map来解决循环应用的问题
+ * 使用map来解决循环引用的问题
  *
  * @param obj
  * @returns {null|[]|{}}
