@@ -1,23 +1,32 @@
-function deepClone(obj) {
-  const map = new Map(); // 解决循环引用问题
+/** 深拷贝的两种不完全实现 **/
 
-  function auxiliary(obj) {
+
+/**
+ * 使用map来解决循环应用的问题
+ *
+ * @param obj
+ * @returns {null|[]|{}}
+ */
+function deepCopy(obj) {
+  const map = new Map(); // 用以解决循环引用的问题
+
+  function _deepCopy(obj) {
     if (obj === null) {
       return null;
     }
 
     if (typeof obj === "object") {
-      // 未考虑兼容Date、Number、String等类型实例对象，这些对象会被替换为空对象{}
-      let newObj = Array.isArray(obj) ? [] : {};
-
       if (map.has(obj)) {
         return map.get(obj);
       }
+
+      // 未考虑兼容Date类型等，这些对象会被统一转为空对象{}
+      let newObj = Array.isArray(obj) ? [] : {};
       map.set(obj, newObj);
 
-      // 不可枚举属性，Symbol类型属性均会被复制
+      // 会拷贝对象自身的所有属性，包括不可枚举属性和Symbol属性
       Reflect.ownKeys(obj).forEach(key => {
-        newObj[key] = auxiliary(obj[key]);
+        newObj[key] = _deepCopy(obj[key]);
       });
 
       return newObj;
@@ -26,35 +35,95 @@ function deepClone(obj) {
     }
   }
 
-  return auxiliary(obj);
+  return _deepCopy(obj);
 }
 
 
-// test
-let A = {
-  a: 1,
-  b: [1, 2, 3],
-  c: {
-    "0": 0
-  },
-  d: undefined,
-  e: null,
-  f: new Date()
-};
-A.A = A;
-A.B = A;
-A.c.C = A;
+/**
+ * 使用数组来解决循环引用的问题
+ *
+ * @param obj
+ * @returns {null|[]|{}}
+ */
+function deepClone(obj) {
+  const copied_objs = []; // 解决循环引用的问题
 
+  function _deepClone(obj) {
+    if (obj === null) {
+      return null;
+    }
+
+    if (typeof obj === "object") {
+      for (let i = 0; i < copied_objs.length; i++) {
+        if (copied_objs[i].source === obj) {
+          return copied_objs[i].target;
+        }
+      }
+
+      let newObj = Array.isArray(obj) ? [] : {};
+      copied_objs.push({source: obj, target: newObj});
+
+      Reflect.ownKeys(obj).forEach(key => {
+        newObj[key] = _deepClone(obj[key]);
+      });
+
+      return newObj;
+    } else {
+      return obj;
+    }
+  }
+
+  return _deepClone(obj);
+}
+
+
+let A = {
+  a: {
+    name: "qihui",
+    age: 24,
+    hobbies: ["basketball", "lol", "oil", {home: "连城", work: "quanzhou"}]
+  },
+  b: null,
+  c: undefined,
+  d: String("hello"),
+  e: "hello",
+  [Symbol("f")]() {
+    console.log("in symbol");
+  },
+  g: new Date()
+}
+
+A.A = A;
+console.log(deepCopy(A));
 console.log(deepClone(A));
 
-// result:
+
+// result
 // <ref *1> {
-//   a: 1,
-//   b: [ 1, 2, 3 ],
-//   c: { '0': 0, C: [Circular *1] },
-//   d: undefined,
-//   e: null,
-//   f: {},
+//   a: {
+//     name: 'qihui',
+//     age: 24,
+//     hobbies: [ 'basketball', 'lol', 'oil', [Object] ]
+//   },
+//   b: null,
+//   c: undefined,
+//   d: 'hello',
+//   e: 'hello',
+//   g: {},
 //   A: [Circular *1],
-//   B: [Circular *1]
+//   [Symbol(f)]: [Function: [f]]
+// }
+// <ref *1> {
+//   a: {
+//     name: 'qihui',
+//     age: 24,
+//     hobbies: [ 'basketball', 'lol', 'oil', [Object] ]
+//   },
+//   b: null,
+//   c: undefined,
+//   d: 'hello',
+//   e: 'hello',
+//   g: {},
+//   A: [Circular *1],
+//   [Symbol(f)]: [Function: [f]]
 // }
