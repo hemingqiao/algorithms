@@ -69,6 +69,7 @@ public class Solution {
         // 取每一位，在非数字处截止
         while (index < s.length() && Character.isDigit(s.charAt(index))) {
             int digit = s.charAt(index++) - '0';
+            // 判断是否溢出
             // res * 10 - digit < limit
             if (res < ((limit + digit) / 10)) {
                 return positive ? MAX : MIN; // 返回对应的边界值
