@@ -48,6 +48,7 @@ public class AnotherSolution {
         }
 
         // 处理如果最后一位相加后，还有进位的情况
+        // 如果上面的while语句判断条件为l1 != null || l2 != null || carry != 0 这里的判断语句就可以省略
         if (carry == 1) {
             cur.next = new ListNode(carry);
         }
