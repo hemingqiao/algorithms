@@ -23,7 +23,7 @@ package blogandquestion.algorithms.adddigits258;
  * see: https://leetcode-cn.com/problems/add-digits/solution/java-o1jie-fa-de-ge-ren-li-jie-by-liveforexperienc
  *
  * x100 + y10 + z = x99 + y9 + x + y + z
- * x99 + y9一定能被9整除，x + y + z最大为27(9 * 3)，当小于27时，对9取余就可以获得最终的结果，而如果恰好为27也就是原数可以被9整除，
+ * x99 + y9一定能被9整除，x + y + z最大为27(9 * 3)，当不是9的倍数时，对9取余就可以获得最终的结果，而如果恰好为27/18/9也就是原数可以被9整除，
  * 此时就会得到错误结果0，所以可以作如下处理：
  * (x99 + y9 + x + y + z - 1) % 9 + 1
  */
