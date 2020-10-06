@@ -62,6 +62,7 @@ public class Solution {
         int limit = positive ? (-MAX) : MIN;
 
         // 过滤0
+        // 不过滤也可以
         while (index < s.length() && s.charAt(index) == '0') {
             index++;
         }
