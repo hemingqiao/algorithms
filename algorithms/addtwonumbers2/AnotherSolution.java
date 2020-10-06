@@ -54,6 +54,4 @@ public class AnotherSolution {
 
         return pre.next;
     }
-
-
 }
