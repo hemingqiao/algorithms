@@ -5,7 +5,6 @@
 debounce（防抖）：事件持续触发，但只有在事件停止触发n秒后才会执行回调。
  */
 
-
 /**
  * 借助于定时器实现防抖，但是这个版本在首次触发事件后并不会执行回调
  *
@@ -33,7 +32,7 @@ function debounce(callback, delay) {
 
 /**
  * 与上面的相比，添加了一个immediate参数来标记在首次触发事件后是否立即执行一次回调。
- * immediate为true，则会在首次触发时间后立即执行一次回调。
+ * immediate为true，则会在首次触发事件后立即执行一次回调。
  *
  * @param callback
  * @param delay
