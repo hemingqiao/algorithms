@@ -41,6 +41,11 @@ foo.call("foo"); // String {"foo"}
 foo.myCall("foo"); // String {"foo"}
 
 function bar(sex, age) {
+  this.sex = sex;
+  this.age = age;
+  this.info = function () {
+    console.log(this.sex, this.age);
+  }
   console.log(sex);
   console.log(age);
   console.log(this.x);
