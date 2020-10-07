@@ -4,7 +4,7 @@ package blogandquestion.algorithms.dp.uniquepathsII63;
  * @author Heming
  * created by IntelliJ IDEA
  * founded at 2020/10/06 19:03:54
- * description: 和不同路径I类似，只不过要注意障碍物位置的dp值
+ * description: 和不同路径I类似，只不过要注意障碍物位置的dp值。因为障碍物的存在，到达障碍物所在的格子的路径为0。
  *
  * 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
  *
