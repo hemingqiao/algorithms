@@ -180,7 +180,7 @@ Promise.myResolve = function (value) {
 
 
 /**
- * 每什么好说的，Promise.reject会返回一个以实参作为理由的rejected状态的Promise实例。
+ * 没什么好说的，Promise.reject会返回一个以实参作为理由的rejected状态的Promise实例。
  *
  * @param reason
  * @returns {Promise<unknown>}
@@ -196,7 +196,7 @@ Promise.myReject = function (reason) {
  * 对于Promise实例的finally方法，一般而言，会执行callback，并产生值的穿透。
  * 但是有两个例外：
  *    一是callback返回一个一直pending的Promise实例，会导致finally方法返回的Promise实例也一直处于pending状态；
- *    二十callback返回一个rejected状态的Promise实例，这会导致finally方法返回的Promise实例reject。
+ *    二是callback返回一个rejected状态的Promise实例，这会导致finally方法返回的Promise实例reject。
  *
  * @param callback
  * @returns {Promise<unknown>}
