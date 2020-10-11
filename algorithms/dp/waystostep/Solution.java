@@ -29,6 +29,9 @@ package blogandquestion.algorithms.dp.waystostep;
  * 又因为一次可以上1阶、2阶、3阶，所以有dp[i] = dp[i - 3] + dp[i - 2] + dp[i - 1]
  * 这里需要注意的是，在i-3阶时，可以上3阶到达i阶，也可以向上走1阶或者走2阶，但是走1阶到达i - 2阶这个方式已经包含在了dp[i - 2]中，
  * 而走2阶到达i - 1阶这个方式已经包含在了dp[i - 1]中，所以无需考虑在i - 3 阶走1阶或2阶的方式。同理对i - 2阶也是如此。
+ *
+ * 或者换个方向思考，自底而上的思考，第一次可以向上走1阶，可以走2阶，也可以走3阶。所以，要想走到i阶，分别剩下i-1阶、i-2阶、i-3阶
+ * 要走，所以，走到i阶的方法有dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]
  */
 public class Solution {
     public int waysToStep(int n) {
