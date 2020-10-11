@@ -34,6 +34,7 @@ package blogandquestion.algorithms.dp.minCostClimbingStairs746;
  * 令dp[i]为踏上i阶所需花费。因为一次可以爬一个阶梯或者爬两个阶梯。所以踏上第i阶可以从i - 2阶爬两个阶梯，也可以从i - 1阶爬一个阶梯。
  * 所以踏上i阶的最小花费是 dp[i] = min(dp[i - 2], dp[i - 1]) + cost[i];
  * 上式即为状态转移方程。
+ * 而踏上i阶顶部可以从第i阶向上走1阶，也可以从i - 1阶向上走2阶，所以求出走到i - 1阶和i阶之间消耗的最小值即可。
  * see: https://leetcode-cn.com/problems/min-cost-climbing-stairs/solution/yi-bu-yi-bu-tui-dao-dong-tai-gui-hua-de-duo-chong-/
  */
 public class Solution {
