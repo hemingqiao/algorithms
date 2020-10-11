@@ -6,7 +6,7 @@ import blogandquestion.algorithms.doublepointer.ListNode;
  * @author Heming
  * created by IntelliJ IDEA
  * founded at 2020/10/11 10:24:41
- * description: 使用快慢指针
+ * description: 使用快慢指针判断单向链表是否有环。
  *
  * 给定一个链表，判断链表中是否有环。
  *

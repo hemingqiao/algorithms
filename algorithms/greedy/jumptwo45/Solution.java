@@ -25,6 +25,8 @@ package blogandquestion.algorithms.greedy.jumptwo45;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/jump-game-ii
  *
+ * 解题思路：
+ * 每次都跳到一个使得下次跳跃最远的位置，遍历下一次能够调到的范围，确定跳到范围内的何处使得下一次跳跃最远。
  * see: https://leetcode-cn.com/problems/jump-game-ii/solution/tiao-yue-you-xi-ii-by-leetcode-solution/
  * see: https://leetcode-cn.com/problems/jump-game-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-10/
  */
