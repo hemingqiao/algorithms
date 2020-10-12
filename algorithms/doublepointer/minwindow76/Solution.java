@@ -50,9 +50,9 @@ public class Solution {
             if (count == 0) {//窗口中已经包含所有字符
                 while (l < r && need[s.charAt(l)] < 0) {
                     need[s.charAt(l)]++; // 释放左边移动出窗口的字符
-                    l++;// 指针右移
+                    l++;// 左指针右移
                 }
-                if (r - l + 1 < size) { // 不能右移时候挑战最小窗口大小，更新最小窗口开始的start
+                if (r - l + 1 < size) { // 左指针不能右移时候调整最小窗口大小，更新最小窗口开始的start
                     size = r - l + 1;
                     start = l; // 记录下最小值时候的开始位置，最后返回覆盖串时候会用到
                 }
@@ -64,5 +64,13 @@ public class Solution {
             r++;
         }
         return size == Integer.MAX_VALUE ? "" : s.substring(start, start + size);
+    }
+
+    public static void main(String[] args) {
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
+        Solution sl = new Solution();
+        String result = sl.minWindow(s, t);
+        System.out.println(result);
     }
 }
