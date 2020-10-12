@@ -48,8 +48,9 @@ public class Solution {
             }
             need[c]--; // 把右边的字符加入窗口
             if (count == 0) {//窗口中已经包含所有字符
+            	// 缩减窗口
                 while (l < r && need[s.charAt(l)] < 0) {
-                    need[s.charAt(l)]++; // 释放左边移动出窗口的字符
+                    need[s.charAt(l)]++;
                     l++;// 左指针右移
                 }
                 if (r - l + 1 < size) { // 左指针不能右移时候调整最小窗口大小，更新最小窗口开始的start
