@@ -48,15 +48,16 @@ public class Solution {
             }
             need[c]--; // 把右边的字符加入窗口
             if (count == 0) {//窗口中已经包含所有字符
+            	// 缩减窗口
                 while (l < r && need[s.charAt(l)] < 0) {
-                    need[s.charAt(l)]++; // 释放左边移动出窗口的字符
+                    need[s.charAt(l)]++;
                     l++;// 左指针右移
                 }
                 if (r - l + 1 < size) { // 左指针不能右移时候调整最小窗口大小，更新最小窗口开始的start
                     size = r - l + 1;
                     start = l; // 记录下最小值时候的开始位置，最后返回覆盖串时候会用到
                 }
-                // l向右移动后窗口肯定不能满足条件了，右指针右移，重新开始循环
+                // 左边界右移，此时窗口不在满足条件，需要右移窗口，开始下一轮求解
                 need[s.charAt(l)]++;
                 l++;
                 count++;
