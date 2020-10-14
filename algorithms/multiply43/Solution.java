@@ -60,7 +60,7 @@ class Solution {
 
     /**
      * 计算形式
-     * num1
+     *   num1
      * x num2
      * ------
      * result
@@ -113,6 +113,25 @@ class Solution {
         }
         return builder.reverse().toString();
     }
+
+    /*
+    在上面for循环的判断语句中，都加入了carry != 0这个条件，这是应对最高位出现进位的情况。
+    如：
+    5 0 1
+  *     2
+  -------
+  1 0 0 2
+    当i = -1时，carry = 1，需要处理这种情况；
+
+    或者是：
+    5 2 0
+  + 5 2 0
+  -------
+  1 0 4 0
+  也会出现i = -1, j = -1而carry = 1的进位情形。
+
+  至于补零，参见图片1
+     */
 
 
     public static void main(String[] args) {
