@@ -15,18 +15,22 @@ package blogandquestion.algorithms.linkedlist.reverselist206;
  *
  * 解题思路：
  * see: https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/
+ * see:
  */
 public class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode cur = null;
-        ListNode pre = head;
-        while (pre != null) {
-            ListNode temp = pre.next;
-            pre.next = cur;
-            cur = pre;
-            pre = temp;
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            // 记录当前节点的下一个节点
+            ListNode temp = cur.next;
+            // 然后将当前节点指向pre
+            cur.next = pre;
+            // pre和cur节点都前进一步
+            pre = cur;
+            cur = temp;
         }
-        return cur;
+        return pre;
     }
 }
 
