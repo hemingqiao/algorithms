@@ -6,11 +6,11 @@
 > dreams
 > are
 > made
-> on
+> on.
 
 向世界问好：
 ```python
-print("hello world")
+print("hello world");
 ```
 
 ```js
