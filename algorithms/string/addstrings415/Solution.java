@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.addstrings415;
+package blogandquestion.algorithms.string.addstrings415;
 
 /**
  * @author Heming

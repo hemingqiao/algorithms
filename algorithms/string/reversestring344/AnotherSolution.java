@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.reversestring344;
+package blogandquestion.algorithms.string.reversestring344;
 
 /**
  * @author Heming

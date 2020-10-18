@@ -17,7 +17,6 @@ left -> right -> root
 ## BFS(宽度优先遍历)
 
 宽度优先遍历的示意图如下：
-
 ![BFS](https://pic.leetcode-cn.com/1601255715-zYNzNP-image.png)
 
 代码实现如下：

@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.convert6;
+package blogandquestion.algorithms.string.convert6;
 
 import java.util.ArrayList;
 import java.util.List;

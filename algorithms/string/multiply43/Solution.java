@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.multiply43;
+package blogandquestion.algorithms.string.multiply43;
 
 /**
  * @author Heming

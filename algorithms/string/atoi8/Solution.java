@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.atoi8;
+package blogandquestion.algorithms.string.atoi8;
 
 /**
  * @author Heming

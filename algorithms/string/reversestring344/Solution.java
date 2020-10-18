@@ -1,6 +1,4 @@
-package blogandquestion.algorithms.reversestring344;
-
-import java.util.Arrays;
+package blogandquestion.algorithms.string.reversestring344;
 
 /**
  * @author Heming

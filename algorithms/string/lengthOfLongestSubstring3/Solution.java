@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.lengthOfLongestSubstring3;
+package blogandquestion.algorithms.string.lengthOfLongestSubstring3;
 
 import java.util.HashMap;
 
