@@ -43,8 +43,8 @@ public class Solution {
     public void flatten(TreeNode root) {
         if (root == null) return; // base case
         // 将左右子树转化为单链表
-        flatten(root.left);
         flatten(root.right);
+        flatten(root.left);
         root.right = pre;
         root.left = null;
         pre = root;
