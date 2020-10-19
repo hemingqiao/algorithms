@@ -40,3 +40,30 @@ left -> right -> root
         }
     }    
 ```
+
+## DFS(深度优先遍历)
+
+深度优先遍历的示意图如下：
+
+![DFS](https://s5.51cto.com/oss/202004/16/92f602a1eaa301784085b8a3c4b948c0.png)
+
+代码实现如下：
+```java
+    class DFS {
+        public void dfs(TreeNode tree) {
+            Stack<Node> stack = new Stack<Node>();
+            List<Node> result = new ArrayList<Node>();
+            stack.push(root);
+            while (!stack.isEmpty()) {
+            	Node top = stack.pop();
+            	result.add(top);
+            	List<Node> children = top.getChildren();
+            	if (children != null && children.size() > 0) {
+            		for (int i = children.size() - 1; i >= 0; i--) {
+            			stack.push(children.get(i));
+            		}
+            	}
+            }
+        }
+    }   
+```
