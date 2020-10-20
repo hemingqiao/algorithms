@@ -38,6 +38,8 @@ public class Solution {
         if (root.left == null && root.right == null) return 0;
         int leftSize = root.left == null ? 0 : dfs(root.left) + 1;
         int rightSize = root.right == null ? 0 : dfs(root.right) + 1;
+        // 对于当前节点root而言，最大深度可能是root+left、root+right、root或者left + root + right
+        // dfs不会返回第四种，那种路径不会成立，但是需要比较第四种的路径长度和max的大小
         max = Math.max(max, leftSize + rightSize);
         return Math.max(leftSize, rightSize);
     }
