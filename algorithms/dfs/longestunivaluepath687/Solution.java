@@ -52,9 +52,10 @@ public class Solution {
 
     // 递归函数功能：搜寻以node为起点的最长同值路径:要么是以node为起点的左子树，要么是以node为起点的右子树
     // 同时在搜索过程中更新辅助变量max的值
+    // 返回以node为根节点的具有相同值的最长路径值
     public int longestPath(TreeNode node) {
         if (node == null) return 0;
-        int maxLorRres = 0;
+        int maxLength = 0;
         int left = longestPath(node.left); // node左子树的最长同值路径
         int right = longestPath(node.right);// node右子树的最长同值路径
         // 这种情况对于寻找最长同值路径长有帮助，对于搜索以root为路径起始点的最长路径没有帮助
@@ -64,14 +65,14 @@ public class Solution {
         }
         // 从左右子树中选择最长的同值路径
         if (node.left != null && node.left.val == node.val) {
-            maxLorRres = left + 1;
+            maxLength = left + 1;
         }
         if (node.right != null && node.right.val == node.val) {
-            maxLorRres = Math.max(maxLorRres, right + 1);
+            maxLength = Math.max(maxLength, right + 1);
         }
         // 从ans与maxLorRres中更新最大值
-        ans = Math.max(ans, maxLorRres);
-        return maxLorRres; // 返回以node为起点的最长同值路径
+        ans = Math.max(ans, maxLength);
+        return maxLength; // 返回以node为起点的最长同值路径
     }
 }
 
