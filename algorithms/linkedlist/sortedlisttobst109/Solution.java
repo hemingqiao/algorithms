@@ -28,6 +28,7 @@ package blogandquestion.algorithms.linkedlist.sortedlisttobst109;
  *
  * 解题思路
  * see: https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/kuai-man-zhi-zhen-jie-jue-ji-bai-liao-100de-yong-h/
+ * see: https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/jian-dan-di-gui-bi-xu-miao-dong-by-sweetiee-3/
  */
 public class Solution {
     public TreeNode sortedListToBST(ListNode head) {
