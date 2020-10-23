@@ -9,6 +9,9 @@ import java.util.List;
  * founded at 2020/10/23 19:39:56
  * description: 利用DFS后序遍历，需要维护两个数组，一个记录每一层的节点值总和，另一个记录每一层的节点数。
  * 这个执行的比较快，击败98.7，但是内存消耗比较大。
+ *
+ * 接替思路
+ * see: https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/solution/er-cha-shu-de-ceng-ping-jun-zhi-by-leetcode-soluti/
  */
 public class SolutionDFS {
     private List<Double> res = new ArrayList<>();
