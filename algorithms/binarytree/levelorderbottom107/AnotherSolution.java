@@ -1,6 +1,7 @@
 package blogandquestion.algorithms.binarytree.levelorderbottom107;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class AnotherSolution {
         if (root == null) return new ArrayList<>();
         List<List<Integer>> lists = new ArrayList<>();
         dfs(root, lists, 1);
+        Collections.reverse(lists); // 将list反转
         return lists;
     }
 
