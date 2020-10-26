@@ -260,3 +260,30 @@ mergeSort(a);
 console.timeEnd("time elapsed: ");
 console.log(`sorted: `);
 console.log(a);
+
+
+
+// 8 counting sort
+// 计数排序适合于对某个范围内的数据排序，且这个范围不能太大，通过牺牲空间换取时间效率
+// 关于计数排序，参见：https://www.cnblogs.com/kyoner/p/10604781.html
+function countingSort(arr) {
+  let frequency = [];
+  let res = [];
+  for (let e of arr) {
+    if (!frequency[e]) {
+      frequency[e] = 1;
+    } else {
+      frequency[e]++;
+    }
+  }
+
+  for (let i = 0; i < frequency.length; i++) {
+    if (frequency[i]) {
+      for (let j = 0; j < frequency[i]; j++) {
+        res.push(i);
+      }
+    }
+  }
+
+  return res;
+}
