@@ -73,3 +73,12 @@ left -> right -> root
         }
     }   
 ```
+
+
+补充：
+
+迭代法实现树的前序、中序、后序遍历。
+
+参见：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/er-cha-shu-qian-xu-zhong-xu-hou-xu-ceng-xu-bian-2/
+
+参见：https://mp.weixin.qq.com/s/-ZJn3jJVdF683ap90yIj4Q
