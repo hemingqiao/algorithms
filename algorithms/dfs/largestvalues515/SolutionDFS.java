@@ -27,7 +27,7 @@ public class SolutionDFS {
             res.set(level, Math.max(res.get(level), root.val));
         }
         level++; // 进入下一层
-        dfs(root.left, res, level); // level值传递，这里隐含有回溯
+        dfs(root.left, res, level); // level是值传递，这里隐含有回溯
         dfs(root.right, res, level);
     }
 }

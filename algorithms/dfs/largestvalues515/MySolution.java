@@ -10,6 +10,24 @@ import java.util.Queue;
  * created by IntelliJ IDEA
  * founded at 2020/10/30 19:05:37
  * description: 借助于队列，使用BFS层序遍历。
+ *
+ * 您需要在二叉树的每一行中找到最大的值。
+ *
+ * 示例：
+ *
+ * 输入:
+ *
+ *           1
+ *          / \
+ *         3   2
+ *        / \   \
+ *       5   3   9
+ *
+ * 输出: [1, 3, 9]
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row
+ *
  */
 public class MySolution {
     public List<Integer> largestValues(TreeNode root) {
