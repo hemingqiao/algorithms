@@ -4,7 +4,7 @@ package blogandquestion.algorithms.linkedlist.reverselist206;
  * @author Heming
  * created by IntelliJ IDEA
  * founded at 2020/10/14 22:06:18
- * description:
+ * description: 使用双指针。
  *
  * 反转一个单链表。
  *
