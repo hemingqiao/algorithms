@@ -262,8 +262,35 @@ console.log(`sorted: `);
 console.log(a);
 
 
+// 8 quick sort
+// 随机选取序列中的一个元素作为基准，与方法7的不同之处在于将基准元素换到序列的头部再进行排序
+function quickSort(arr, low = 0, high = arr.length - 1) {
+  if (low >= high) return;
+  let pivotIndex = Math.floor(Math.random() * (high - low + 1)) + low;
+  let pivot = arr[pivotIndex];
 
-// 8 counting sort
+  swap(arr, low, pivotIndex); // 将基准元素交换到序列头部
+  let left = low, right = high;
+  while (left < right) {
+    while (left < right && arr[right] >= pivot) {
+      right--;
+    }
+
+    while (left < right && arr[left] <= pivot) {
+      left++;
+    }
+    swap(arr, left, right); // 在这里其实无需判断left是否小于right，因为边界情况是left == right，此时将会退出while循环
+  }
+  // 将基准元素换回到序列中的合适位置
+  arr[low] = arr[left];
+  arr[left] = pivot;
+
+  quickSort(arr, low, left - 1);
+  quickSort(arr, left + 1, high);
+}
+
+
+// 9 counting sort
 // 计数排序适合于对某个范围内的数据排序，且这个范围不能太大，通过牺牲空间换取时间效率
 // 关于计数排序，参见：https://www.cnblogs.com/kyoner/p/10604781.html
 function countingSort(arr) {
