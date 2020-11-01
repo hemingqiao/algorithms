@@ -81,3 +81,25 @@ function flatten(array) {
 
   return result;
 }
+
+/**
+ * 另一种形式的递归调用
+ *
+ * @param array
+ * @returns {[]}
+ */
+function flatten(array) {
+  let result = [];
+  _flatten(array);
+  return result;
+
+  function _flatten(arr) {
+    arr.forEach(value => {
+      if (Array.isArray(value)) {
+        _flatten(value);
+      } else {
+        result.push(value);
+      }
+    });
+  }
+}
