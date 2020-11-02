@@ -13,5 +13,5 @@ const candy = function (ratings) {
             nums[j - 1] = Math.max(nums[j - 1], nums[j] + 1);
         }
     }
-    return nums.reduce((prev, next) => prev + next, 0);
+    return nums.reduce((prev, next) => prev + next, 0); // 不使用reduce时间效率可能会好一些
 }
