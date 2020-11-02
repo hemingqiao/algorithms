@@ -37,7 +37,10 @@ public class QuickSort {
             while (left < right && arr[left] <= pivot) {
                 left++;
             }
-            swap(arr, left, right);
+            // 如果left小于right，进行互换
+            if (left < right) {
+                swap(arr, left, right);
+            }
         }
         arr[low] = arr[left];
         arr[left] = pivot;
