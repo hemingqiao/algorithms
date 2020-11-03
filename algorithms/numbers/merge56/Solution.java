@@ -57,6 +57,6 @@ public class Solution {
             res.add(new int[]{left, right});
             i++;
         }
-        return res.toArray(new int[0][]);
+        return res.toArray(new int[][]{});
     }
 }
