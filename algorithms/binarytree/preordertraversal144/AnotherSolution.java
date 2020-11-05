@@ -22,6 +22,7 @@ public class AnotherSolution {
             TreeNode temp = stack.pop();
             if (temp != null) res.add(temp.val);
             else continue;
+            // 如果栈顶节点不为null，将栈的右节点和左节点推入栈中
             stack.push(temp.right); // 先将右节点压栈，在将左节点压栈，出栈顺序就是左节点，右节点
             stack.push(temp.left);
         }

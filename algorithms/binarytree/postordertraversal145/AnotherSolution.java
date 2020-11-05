@@ -23,6 +23,7 @@ public class AnotherSolution {
             TreeNode node = stack.pop();
             if (node != null) res.add(node.val);
             else continue;
+            // 如果栈顶节点不为null，将栈的左右子结点推入栈中
             stack.push(node.left); // 先序遍历是中左右，这里改变顺序为中右左，然后反转list就变为左右中的后序遍历了
             stack.push(node.right); // 这种解法取巧了
         }
