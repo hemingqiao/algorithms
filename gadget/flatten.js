@@ -103,3 +103,28 @@ function flatten(array) {
     });
   }
 }
+
+
+/**
+ * 利用栈的性质（也可以利用shift方法从头部取出元素，不过操作尾部元素的效率高些）
+ *
+ * @param array
+ * @returns {*[]}
+ */
+function flatten(array) {
+  const stack = [...array];
+  const res = [];
+  while (stack.length) {
+    // 取出栈顶元素
+    const top = stack.pop();
+    if (Array.isArray(top)) {
+      stack.push(...top);
+    } else {
+      res.push(top);
+    }
+  }
+  // 反转数组并返回
+  return res.reverse();
+}
+
+// see: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
