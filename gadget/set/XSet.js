@@ -66,7 +66,7 @@ class XSet extends Set {
     return intersectionSet;
   }
 
-  // 返回两个集合的差集（a - b）
+  // 返回两个集合的差集(a - b)。
   // 一般地，记A和B是两个集合，则所有属于A且不属于B的元素构成的集合,叫做集合A和集合B的差集。
   static difference(a, b) {
     const differenceSet = new XSet(a);
@@ -80,13 +80,13 @@ class XSet extends Set {
 
   // 返回两个集合的对称差集。
   // 一般地，记A和B是两个集合，集合A与集合B的对称差集定义为集合A与集合B中所有不属于A∩B的元素的集合，记为A Δ B，
-  // 也就是说A Δ B = {x|x∈A∪B,x∉A∩B}，即A Δ B=(A∪B)-(A∩B).也就是A Δ B=(A-B)∪(B-A)
+  // 也就是说A Δ B = {x|x∈A∪B,x∉A∩B}，即A Δ B=(A∪B)-(A∩B)。也就是A Δ B=(A-B)∪(B-A)
   static symmetricDifference(a, b) {
     // 根据定义，对称差集可以表达为(A∪B)-(A∩B)
     return a.union(b).difference(a.intersection(b));
   }
 
-  // 返回两个集合（数组对形式）的笛卡尔积
+  // 返回两个集合（数组对形式）的笛卡尔积。
   // 必须返回数组集合，因为笛卡尔积可能包含相同值的对
   static cartesianProduct(a, b) {
     const cartesianSet = new XSet();
