@@ -35,6 +35,7 @@ public class Solution {
             if (nums[mid] == target) {
                 // 初始化结果数组
                 int[] res = new int[]{mid, mid};
+                // 因为存在重复的值，所以以mid为基准，向左右两边扩散查找重复的值
                 for (int i = mid + 1; i < nums.length; i++) {
                     if (nums[i] != target) {
                         // 找到第一个不等于target的索引
