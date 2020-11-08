@@ -3,7 +3,7 @@
 const ge = n => Array.from(Array(n), (v, k) => k + 1);
 
 /**
- * 不适用循环语句，就使用递归
+ * 不使用循环语句，就使用递归
  *
  * @param n
  * @returns {[]}
@@ -29,6 +29,31 @@ console.log(gene(10));
 //   1, 2, 3, 4,  5,
 //   6, 7, 8, 9, 10
 // ]
+// [
+//   1, 2, 3, 4,  5,
+//   6, 7, 8, 9, 10
+// ]
+
+
+/**
+ * 使用generator进行递归
+ * @param n
+ * @returns {any}
+ */
+function ascending(n) {
+  return [...generate(n)];
+
+  function* generate(n) {
+    if (n > 0) {
+      yield* generate(n - 1);
+      yield n;
+    }
+  }
+}
+
+console.log(ascending(10));
+
+// log
 // [
 //   1, 2, 3, 4,  5,
 //   6, 7, 8, 9, 10
