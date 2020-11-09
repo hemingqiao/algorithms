@@ -15,6 +15,7 @@ public class Solution {
         List<Integer> res = new ArrayList<>();
         inorder(root, res);
         int left = 0, right = res.size() - 1;
+        // 这里不需要写等于，因为等于时相当于是同一个数加了两次
         while (left < right) {
             if (res.get(left) + res.get(right) == k) {
                 return true;
