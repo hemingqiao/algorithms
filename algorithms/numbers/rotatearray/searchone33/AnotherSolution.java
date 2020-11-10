@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.searchone33;
+package blogandquestion.algorithms.numbers.rotatearray.searchone33;
 
 /**
  * @author Heming

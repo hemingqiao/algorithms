@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.searchtwo81;
+package blogandquestion.algorithms.numbers.rotatearray.searchtwo81;
 
 /**
  * @author Heming
