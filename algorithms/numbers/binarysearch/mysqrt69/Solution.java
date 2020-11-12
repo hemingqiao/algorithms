@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.mysqrt69;
+package blogandquestion.algorithms.numbers.binarysearch.mysqrt69;
 
 /**
  * @author Heming
