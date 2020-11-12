@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.addtwonumbers2;
+package blogandquestion.algorithms.numbers.addtwonumbers2;
 
 /**
  * @author Heming
