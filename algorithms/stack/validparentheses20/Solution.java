@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.validparentheses20;
+package blogandquestion.algorithms.stack.validparentheses20;
 
 import java.util.Stack;
 
