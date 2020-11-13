@@ -59,13 +59,37 @@ function reverseNumberOpt(number) {
   let result = 0;
   while (number !== 0) {
     let y = number % 10;
-    number = Math.floor(number / 10);
-    // 判断是否溢出，js中是不是可选的？
-    if (result * 10 / 10 !== result) return 0;
+    if (number < 0) {
+      // 负数向上取整
+      number = Math.ceil(number / 10);
+    } else {
+      // 正数向下取整
+      number = Math.floor(number / 10);
+    }
     result = result * 10 + y;
   }
-  return result;
+  // result | 0 超过32位的整数转换结果不等于自身，可用作溢出判断
+  return (result | 0) === result ? result : 0;
 }
 
-console.log(reverseNumberOpt(Number.MAX_SAFE_INTEGER ** 2)); // 这个数值会溢出
+console.log(reverseNumberOpt(Number.MAX_SAFE_INTEGER)); // 这个数值会溢出
 console.log(Number.MAX_SAFE_INTEGER);
+console.log(reverseNumberOpt(-123));
+
+
+/**
+ * 参考：https://leetcode-cn.com/problems/reverse-integer/solution/wei-yun-suan-ji-jian-jie-fa-by-ijzqardmbd/
+ * @param {number} x
+ * @return {number}
+ */
+const reverseMath = function (x) {
+  let result = 0;
+  while (x !== 0) {
+    let y = x % 10;
+    // 通过 | 0 取整，无论正负，只移除小数点部分（正数向下取整，负数向上取整）。
+    x = x / 10 | 0;
+    result = result * 10 + y;
+  }
+  // result | 0 超过32位的整数转换结果不等于自身，可用作溢出判断
+  return (result | 0) === result ? result : 0;
+}
