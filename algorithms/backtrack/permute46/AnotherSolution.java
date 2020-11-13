@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.dfs.permute46;
+package blogandquestion.algorithms.backtrack.permute46;
 
 import java.util.ArrayList;
 import java.util.List;
