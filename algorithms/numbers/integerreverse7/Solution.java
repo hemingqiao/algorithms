@@ -43,4 +43,17 @@ public class Solution {
 
         return res;
     }
+
+    public int reverse1(int num) {
+        int res = 0;
+        // 因为num可能是负数，所以判断条件是不等于0而不是大于0
+        while (num != 0) {
+            int y = num % 10;
+            num /= 10;
+            // 判断整型是否溢出
+            if (res * 10 / 10 != res) return 0;
+            res = res * 10 + y;
+        }
+        return res;
+    }
 }
