@@ -13,6 +13,8 @@ function MyNew(Parent) {
   var args = [].slice.call(arguments, 1);
 
   var result = Parent.apply(obj, args);
+  // 需要排除掉result为null的可能，因为typeof null返回object
+  // 还可以显示的使用result !== null作为判断条件
   if (result && (typeof result === "function" || typeof result === "object")) {
     return result;
   }
