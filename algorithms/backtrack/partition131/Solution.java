@@ -89,7 +89,7 @@ class SolutionOpt {
             if (isPalindrome(s, startIndex, i)) {
                 String str = s.substring(startIndex, i + 1);
                 path.add(str);
-                // 可以把后续回溯写道if里面，因为只有当前字串是会问才会继续进行下去
+                // 可以把后续回溯写在if里面，因为只有当前字串是回文才会继续进行下去
                 backtracking(s, i + 1); // 回溯
                 path.remove(path.size() - 1); // 撤销之前的选择
             } else {
@@ -99,9 +99,7 @@ class SolutionOpt {
     }
 
     private boolean isPalindrome(String s, int start, int end) {
-        //char[] chars = s.toCharArray(); // 转成char数组会很耗费时间
         for (int i = start, j = end; i < j; i++, j--) {
-            //if (chars[i] != chars[j]) return false;
             if (s.charAt(i) != s.charAt(j)) return false;
         }
         return true;
