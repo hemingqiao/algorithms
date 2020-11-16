@@ -17,6 +17,8 @@ public class AnotherSolution {
     }
 
     private void backtracking(int[] nums, int level, List<List<Integer>> list) {
+        // 当遍历的深度到达数组的最后一个索引（也就是到达了树的叶子节点处）
+        // 将结果添加进结果列表
         if (level == nums.length - 1) {
             List<Integer> l = new ArrayList<>();
             for (int i : nums) {

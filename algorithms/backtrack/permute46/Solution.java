@@ -59,14 +59,14 @@ public class Solution {
                 path.addLast(nums[i]);
                 used[i] = true;
 
-                System.out.println("  递归之前 => " + path);
+                //System.out.println("  递归之前 => " + path);
                 dfs(nums, len, depth + 1, path, used, res);
 
                 // 回溯
                 // 注意：下面这两行代码发生 「回溯」，回溯发生在从 深层结点 回到 浅层结点 的过程，代码在形式上和递归之前是对称的
                 used[i] = false;
                 path.removeLast();
-                System.out.println("递归之后 => " + path);
+                //System.out.println("递归之后 => " + path);
             }
         }
     }
