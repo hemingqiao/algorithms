@@ -7,8 +7,12 @@
  */
 function sqrt(n) {
   let x0 = n;
+  let temp = -1;
   while (Math.abs(x0 * x0 - n) > Number.EPSILON) {
-    x0 = (x0 + n / x0) / 2;
+    temp = (x0 + n / x0) / 2;
+    // 如果在某次循环过后，两次循环中得到的解（x）的值相同，便可以认为得到了精确的解，break掉循环
+    if (x0 === temp) break;
+    x0 = temp;
   }
   return x0;
 }
@@ -18,6 +22,11 @@ console.log(sqrt(0)); // 0
 console.log(sqrt(1)); // 1
 console.log(sqrt(64)); // 8
 console.log(sqrt(99980001)); // 9999
+console.log(`sqrt(0.5): ${sqrt(0.5)}`);                      // sqrt(0.5): 0.7071067811865475
+console.log(`Math.sqrt(0.5): ${Math.sqrt(0.5)}`);       // Math.sqrt(0.5): 0.7071067811865476
+console.log(`sqrt(633.5): ${sqrt(633.5)}`);                // sqrt(633.5): 25.16942589730644
+console.log(`Math.sqrt(633.5): ${Math.sqrt(633.5)}`); // Math.sqrt(633.5): 25.16942589730644
+
 
 /*
 理论基础：牛顿迭代法
