@@ -47,4 +47,68 @@ public class Solution {
         }
         return right;
     }
+
+    /**
+     * 推荐使用这个方法
+     * <p>
+     * 参考：https://leetcode-cn.com/problems/sqrtx/solution/x-de-ping-fang-gen-by-leetcode-solution/
+     * @param x
+     * @return
+     */
+    public int mySqrtOpt(int x) {
+        // 由于x平方根的整数部分是ans是满足k^2 <= x的k的最大值
+        // 可以对k进行二分查找
+        int left = 0, right = x, answer = -1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if ((long)mid * mid <= x) {
+                // 由于是寻找使得k^2 <= x的最大k值，一旦满足mid * mid小于等于x，就更新answer的值
+                answer = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        int res = s.mySqrtOpt(5);
+        System.out.println(res);
+    }
+}
+
+class AnotherSolution {
+    public int mySqrt(int x) {
+        double x0 = x / 2.0;
+        while (Math.abs(x0 * x0 - x) > 0.0001) {
+            x0 = (x0 + x / x0) / 2;
+        }
+        double res = Math.ceil(x0);
+        if (res - x0 < 0.001) {
+            return (int)(res);
+        }
+        return (int)res - 1;
+    }
+
+    /**
+     * 使用牛顿迭代法
+     * @param x
+     * @return
+     */
+    public int mySqrtOpt(int x) {
+        double x0 = x / 2.0;
+        while (Math.abs(x0 * x0 - x) > 1e-5) {
+            x0 = (x0 + x / x0) / 2;
+        }
+        // double类型转为int时会进行截断
+        return (int)x0;
+    }
+
+    public static void main(String[] args) {
+        AnotherSolution s = new AnotherSolution();
+        int res = s.mySqrtOpt(1);
+        System.out.println(res);
+    }
 }
