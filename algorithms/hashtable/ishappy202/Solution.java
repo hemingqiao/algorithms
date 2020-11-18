@@ -100,6 +100,7 @@ class AnotherSolution {
 
 /**
  * 不适用哈希表来存储每次的值来判断是否进入循环，而使用快慢指针来判断是否进入循环。
+ * 参考：https://leetcode-cn.com/problems/happy-number/solution/shi-yong-kuai-man-zhi-zhen-si-xiang-zhao-chu-xun-h/
  */
 class ThirdSolution {
     // 使用快慢指针判断是否进入循环
