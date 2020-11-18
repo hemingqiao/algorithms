@@ -36,7 +36,8 @@ n > 0 && ((n & (n - 1)) == 0 )
 
 所以n是2的幂或0
 
-2. 求某一个数的二进制表示中1的个数
+
+2、求某一个数的二进制表示中1的个数
 ```java
 class Solution {
     public int countDigits(int n) {
@@ -51,7 +52,7 @@ class Solution {
 
 ```
 
-3. 计算N!的质因数2的个数。
+3、计算N!的质因数2的个数。
 容易得出N!质因数2的个数 = [N / 2] + [N / 4] + [N / 8] + ....
 下面通过一个简单的例子来推导一下过程：N = 10101(二进制表示）
 现在我们跟踪最高位的1，不考虑其他位假定为0，
@@ -63,6 +64,22 @@ class Solution {
 则所有相加等于01111 = 10000 - 1
 由此推及其他位可得：(10101)!的质因数2的个数为10000 - 1 + 00100 - 1 + 00001 - 1 = 10101 - 3(二进制表示中1的个数)
 
-推及一般N!的质因数2的个数为N - (N二进制表示中1的个数)
 
 参考：https://blog.csdn.net/zheng0518/article/details/8882394
+
+## n & 1 == 1的作用
+
+简而言之，n & 1 == 1 表明n为奇数，否则n为偶数。
+
+参考：https://stackoverflow.com/questions/14391250/explanation-of-binary-and-operator
+
+One number AND another is the bits of one number masked by the bits of another number. 
+If a number AND 1 is 0 (not n & 1 would be True), that means it's divisible by two, 
+since all multiples of 2 have a 0 as the rightmost binary digit.
+```
+  11 = 00001011 (Not divisible by 2)      28 = 00011100 (Divisible by 2)
+&  1 = 00000001                         &  1 = 00000001
+---------------                         ---------------
+       00000001                                00000000
+```
+
