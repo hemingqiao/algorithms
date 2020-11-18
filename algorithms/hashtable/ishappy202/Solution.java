@@ -66,3 +66,66 @@ public class Solution {
         return sum;
     }
 }
+
+class AnotherSolution {
+    // 题目说明可能无限循环，表明之前出现过的数字可能会重复出现，可以借助于set来判断一个数是否重复出现，如果重复出现，直接返回false
+    // 否则，继续循环下去
+    public boolean isHappy(int n) {
+        Set<Integer> set = new HashSet<>();
+        while (true) {
+            int sum = getSum(n);
+            if (sum == 1) return true;
+            if (set.contains(sum)) return false;
+            else set.add(sum);
+            n = sum;
+        }
+    }
+
+    public int getSum(int n) {
+        int sum = 0;
+        // 这里的判断条件是n != 0，负数也可以处理？
+        // 这个解法与上面解法唯一的差异便在于此，导致慢了1ms（50%）
+        while (n != 0) {
+            sum += (n % 10) * (n % 10);
+            n = n / 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        AnotherSolution as = new AnotherSolution();
+        System.out.println(as.isHappy(-1));
+    }
+}
+
+/**
+ * 不适用哈希表来存储每次的值来判断是否进入循环，而使用快慢指针来判断是否进入循环。
+ */
+class ThirdSolution {
+    // 使用快慢指针判断是否进入循环
+    public boolean isHappy(int n) {
+        int slow = n, fast = n; // 初始时slow和fast相同
+        do {
+            // 快指针每次走两步，慢指针每次走一步，两者再次相同时退出循环
+            // 退出循环时需要判断是到达1而导致的循环还是没有找到结果而导致的循环
+            slow = getSum(slow);
+            fast = getSum(getSum(fast));
+        } while (slow != fast);
+        // 判断是找到结果导致退出循环还是没有找到结果而退出的循环
+        return slow == 1;
+    }
+
+    /**
+     * 获取一个数各个位上的平方之和
+     * @param n
+     * @return
+     */
+    private int getSum(int n) {
+        int sum = 0;
+        while (n > 0) {
+            sum += (n % 10) * (n % 10);
+            n /= 10;
+        }
+        return sum;
+    }
+}
