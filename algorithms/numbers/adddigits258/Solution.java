@@ -41,11 +41,27 @@ public class Solution {
         return addDigits(result);
     }
 
-    /*
 
-    public int addDigits(int num) {
+    /**
+     * 借助于数学分析，利用位运算
+     * @param num
+     * @return
+     */
+    public int addDigitsOpt(int num) {
         return (num - 1) % 9 + 1;
     }
 
-    */
+    /**
+     * 对上面解法的补充
+     * @param num
+     * @return
+     */
+    public int addDigitOpt1(int num) {
+        int mod = num % 9;
+        return num == 0 ? 0 : mod == 0 ? 9 : mod;
+        /*
+        下面的解法虽然简洁，但是相对于上面的代码，多了一次相同的求模运算，导致执行时间慢了大概一倍
+        return num == 0 ? 0 : num % 9 == 0 ? 9 : num % 9;
+         */
+    }
 }
