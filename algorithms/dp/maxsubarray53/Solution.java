@@ -23,7 +23,7 @@ package blogandquestion.algorithms.dp.maxsubarray53;
  *   b c d
  *     c d
  *       d
- * 而观察可以发现，前三个可以表示为以a[2]结尾的最大子序列的和，问题就转化为比较dp[i - 1] + nums[i] 和 nums[i]之间的大小
+ * 而观察可以发现，前三个可以表示为以a[2]结尾的最大子序列之和与a[i]的和，问题就转化为比较dp[i - 1] + nums[i] 和 nums[i]之间的大小
  * 由此可以得到状态转移方程 dp[i] = max(dp[i - 1] + nums[i], nums[i])
  *
  * see: https://leetcode-cn.com/problems/maximum-subarray/solution/xiang-xi-jie-du-dong-tai-gui-hua-de-shi-xian-yi-li/
@@ -55,7 +55,9 @@ public class Solution {
 通常我们遍历子串或者子序列有三种遍历方式
 
 1、以某个节点为开头的所有子序列: 如 [a]，[a, b]，[ a, b, c] ... 再从以 b 为开头的子序列开始遍历 [b] [b, c]。
+
 2、根据子序列的长度为标杆，如先遍历出子序列长度为 1 的子序列，在遍历出长度为 2 的 等等。
+
 3、以子序列的结束节点为基准，先遍历出以某个节点为结束的所有子序列，因为每个节点都可能会是子序列的结束节点，因此要遍历下整个序列，
 如: 以 b 为结束点的所有子序列: [a , b] [b] 以 c 为结束点的所有子序列: [a, b, c] [b, c] [ c ]。
 第一种遍历方式通常用于暴力解法, 第二种遍历方式 leetcode (5. 最长回文子串 ) 中的解法就用到了。
