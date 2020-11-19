@@ -56,4 +56,16 @@ public class Solution {
         }
         return count % 2 == 0 && Math.pow(2, count) == n;
     }
+
+    /**
+     * 利用位运算求解
+     * @param n
+     * @return
+     */
+    public boolean isPowerOfFourBit(int n) {
+        if (n == 0) return false;
+        // 4的n次幂必定满足(n & (n - 1)) == 0，因为4的n次幂就是2的2n次幂
+        // 同时，2的2n次幂使得结果二进制表示中1后面必定有偶数个0
+        return ((n & (n - 1)) == 0 && (n & 0b10101010101010101010101010101010) == 0);
+    }
 }
