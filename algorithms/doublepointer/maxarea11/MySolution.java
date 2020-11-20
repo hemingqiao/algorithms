@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.maxarea11;
+package blogandquestion.algorithms.doublepointer.maxarea11;
 
 /**
  * @author Heming
