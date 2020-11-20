@@ -11,7 +11,8 @@ import java.util.List;
  * 参考：https://mp.weixin.qq.com/s/SCOjeMX1t41wcvJq49GhMw
  */
 public class MySolution {
-    public List<List<Integer>> permuteUnique(int[] nums) {
+    // 这个的执行时间比下面（algorithm essential中的快上1ms，22%）
+    public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
@@ -31,6 +32,30 @@ public class MySolution {
                 used[i] = true;
                 backtracking(res, path, nums, used);
                 used[i] = false;
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+}
+
+class AlgorithmEssential {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        backtracking(res, path, nums);
+        return res;
+    }
+
+    private void backtracking(List<List<Integer>> res, List<Integer> path, int[] nums) {
+        if (path.size() == nums.length) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+
+        for (int i : nums) {
+            if (!path.contains(i)) {
+                path.add(i);
+                backtracking(res, path, nums);
                 path.remove(path.size() - 1);
             }
         }
