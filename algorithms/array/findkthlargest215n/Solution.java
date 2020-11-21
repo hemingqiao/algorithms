@@ -47,6 +47,7 @@ class AnotherSolution {
 
     private int findIndex(int[] arr, int low, int high) {
         int left = low, right = high;
+        // 为了应对极端情况（如数组已经有序），避免快速排序退化
         // 在序列中随机选取一个元素作为快排的基准元素
         swap(arr, left, (int) (Math.random() * (high - low + 1)) + low);
         int pivot = arr[left];
