@@ -34,7 +34,7 @@ public class Solution {
     public boolean isAnagram(String s, String t) {
         int[] record = new int[26];
         for (char c : s.toCharArray()) {
-            record[c - 'a'] ++;
+            record[c - 'a']++;
         }
         for (char c : t.toCharArray()) {
             record[c - 'a']--;
@@ -59,6 +59,23 @@ class AnotherSolution {
         }
         for (int i : map.values()) {
             if (i != 0) return false;
+        }
+        return true;
+    }
+}
+
+class ThirdSolution {
+    public boolean isAnagram(String s, String t) {
+        // 输入字符串包含 unicode 字符的话，就需要使用哈希表（如map），因为Unicode字符数量过多
+        char[] record1 = new char[26];
+        for (char c : s.toCharArray()) {
+            record1[c - 'a']++;
+        }
+        for (char d : t.toCharArray()) {
+            record1[d - 'a']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (record1[i] != 0) return false;
         }
         return true;
     }
