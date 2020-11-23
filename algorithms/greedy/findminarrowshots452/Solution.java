@@ -44,6 +44,7 @@ public class Solution {
         });
         int count = 1, end = points[0][1]; // count从1开始计数，因为最开始就代表一个区间
         for (int i = 1; i < points.length; i++) {
+            // 如果第i个气球的起始位置小于end，表明第一支箭可以射到这个气球
             if (points[i][0] <= end) {
                 continue;
             }
