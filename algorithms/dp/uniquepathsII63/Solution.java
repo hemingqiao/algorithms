@@ -47,12 +47,16 @@ public class Solution {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (obstacleGrid[i][j] == 1) {
+                    // 有障碍物存在的话，则到达这个坐标的路径为0
                     dp[i][j] = 0;
                 } else if (i == 0 && j == 0) {
+                    // 初始化起点
                     dp[i][j] = 1;
                 } else if (i == 0) {
+                    // 初始化首行
                     dp[i][j] = dp[0][j - 1];
                 } else if (j == 0) {
+                    // 初始化首列
                     dp[i][j] = dp[i - 1][0];
                 } else {
                     dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
