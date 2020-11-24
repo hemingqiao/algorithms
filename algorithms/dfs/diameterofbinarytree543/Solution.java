@@ -45,6 +45,27 @@ public class Solution {
     }
 }
 
+/**
+ * 参考：https://leetcode-cn.com/problems/diameter-of-binary-tree/solution/dfs-by-mike-meng-21/
+ */
+class AnotherSolution {
+    int max = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) return 0;
+        dfs(root);
+        return max;
+    }
+
+    // dfs方法返回以root为根节点的最大深度
+    private int dfs(TreeNode root) {
+        if (root == null) return 0;
+        int leftDepth = dfs(root.left);
+        int rightDepth = dfs(root.right);
+        max = Math.max(max, leftDepth + rightDepth);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+}
+
 class TreeNode {
     int val;
     TreeNode left;
