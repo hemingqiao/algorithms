@@ -1,5 +1,8 @@
 package blogandquestion.algorithms.dfs.countnodes222;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Heming
  * created by IntelliJ IDEA
@@ -43,5 +46,32 @@ class TreeNode {
 
     TreeNode(int x) {
         val = x;
+    }
+}
+
+class AnotherSolution {
+    public int countNodes(TreeNode root) {
+        List<List<TreeNode>> list = new ArrayList<>();
+        dfs(list, root, 0);
+        int res = 0;
+        for (List<TreeNode> l : list) {
+            res += l.size();
+        }
+        return res;
+    }
+
+    private void dfs(List<List<TreeNode>> list, TreeNode root, int depth) {
+        if (root == null) return;
+
+        if (depth == list.size()) {
+            List<TreeNode> path = new ArrayList<>();
+            path.add(root);
+            list.add(new ArrayList<>(path));
+        } else {
+            list.get(depth).add(root);
+        }
+
+        dfs(list, root.left, depth + 1);
+        dfs(list, root.right, depth + 1);
     }
 }
