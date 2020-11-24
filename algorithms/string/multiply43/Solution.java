@@ -29,8 +29,6 @@ package blogandquestion.algorithms.string.multiply43;
  * see: https://leetcode-cn.com/problems/multiply-strings/solution/you-hua-ban-shu-shi-da-bai-994-by-breezean/
  */
 class Solution {
-    /*
-
     // solution 1
     public String multiply(String num1, String num2) {
         if (num1.equals("0") || num2.equals("0")) {
@@ -49,14 +47,15 @@ class Solution {
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < res.length; i++) {
+            // 去掉先导的0
             if (i == 0 && res[i] == 0) continue;
             result.append(res[i]);
         }
         return result.toString();
     }
+}
 
-    */
-
+class AnotherSolution {
 
     /**
      * 计算形式
@@ -117,25 +116,25 @@ class Solution {
     /*
     在上面for循环的判断语句中，都加入了carry != 0这个条件，这是应对最高位出现进位的情况。
     如：
-    5 0 1
-  *     2
-  -------
-  1 0 0 2
+        5 0 1
+      *     2
+      -------
+      1 0 0 2
     当i = -1时，carry = 1，需要处理这种情况；
 
-    或者是：
-    5 2 0
-  + 5 2 0
-  -------
-  1 0 4 0
-  也会出现i = -1, j = -1而carry = 1的进位情形。
+        或者是：
+        5 2 0
+      + 5 2 0
+      -------
+      1 0 4 0
+    也会出现i = -1, j = -1而carry = 1的进位情形。
 
-  至于补零，参见图片1
+    至于补零，参见图片1
      */
 
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        AnotherSolution s = new AnotherSolution();
         String res = s.multiply("123", "45");
         System.out.println(res);
     }
