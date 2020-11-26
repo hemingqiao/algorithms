@@ -44,13 +44,13 @@ public class Solution {
     }
 
     public boolean isIsomorphicOpt(String s, String t) {
-        // 对应每一位的字符具有相同个数
+        // 对应每一位的字符具有相同个数，就代表这两个字符串是同构的
         int[] a1 = new int[256];
         int[] a2 = new int[256];
         for (int i = 0; i < s.length(); i++) {
             if (a1[s.charAt(i)] != a2[t.charAt(i)]) return false;
-            a1[s.charAt(i)] = i;
-            a2[t.charAt(i)] = i;
+            a1[s.charAt(i)] = i + 1;
+            a2[t.charAt(i)] = i + 1;
         }
         return true;
     }
@@ -59,6 +59,50 @@ public class Solution {
         String s = "egg";
         String t = "add";
         boolean res = new Solution().isIsomorphicOpt(s, t);
+        System.out.println(res);
+    }
+}
+
+class AnotherSolution {
+    public boolean isIsomorphicOpt(String s, String t) {
+        if (s.length() != t.length()) return false;
+        // 对应每一位的字符具有相同个数，就代表这两个字符串是同构的
+        int[] a1 = new int[128];
+        int[] a2 = new int[128];
+        char[] charS = s.toCharArray();
+        char[] charT = t.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            if (a1[charS[i]] != a2[charT[i]]) return false;
+            a1[charS[i]] = i + 1;
+            a2[charT[i]] = i + 1;
+        }
+        return true;
+    }
+
+    public boolean isIsomorphicOpt1(String s, String t) {
+        if (s.length() != t.length()) return false;
+        // 对应每一位的字符具有相同个数，就代表这两个字符串是同构的
+        int[] a1 = new int[128];
+        int[] a2 = new int[128];
+        char[] charS = s.toCharArray();
+        char[] charT = t.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            // 先判断索引对应的值是否为0，在判断两个索引对应的值是否相等
+            if (a1[charS[i]] == 0) {
+                a1[charS[i]] = i + 1;
+            }
+            if (a2[charT[i]] == 0) {
+                a2[charT[i]] = i + 1;
+            }
+            if (a1[charS[i]] != a2[charT[i]]) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        AnotherSolution as = new AnotherSolution();
+        String s = "egg", t = "add";
+        boolean res = as.isIsomorphicOpt(s, t);
         System.out.println(res);
     }
 }
