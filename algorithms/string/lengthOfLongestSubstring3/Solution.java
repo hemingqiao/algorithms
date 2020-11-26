@@ -41,7 +41,11 @@ public class Solution {
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
                 // 当发现重复元素时，窗口左指针右移
-                left = Math.max(left, map.get(s.charAt(i)) + 1);
+                //left = Math.max(left, map.get(s.charAt(i)) + 1);
+                int temp = map.get(s.charAt(i)) + 1;
+                if (temp > left) {
+                    left = temp;
+                }
             }
 
             map.put(s.charAt(i), i);
@@ -49,5 +53,61 @@ public class Solution {
         }
 
         return maxLen;
+    }
+}
+
+class AnotherSolution {
+    public int lengthOfLongestSubstring(String s) {
+        if (s.length() == 0) return 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        int len = chars.length;
+        int maxLen = 0; // 用于记录最大不重复字串的长度
+        int left = 0; // 滑动窗口左指针
+        for (int i = 0; i < len; i++) {
+            if (map.containsKey(chars[i])) {
+                // 当发现重复元素时，窗口左指针右移
+                int temp = map.get(chars[i]) + 1;
+                if (temp > left) {
+                    left = temp;
+                }
+            }
+
+            map.put(chars[i], i); // 更新map
+            maxLen = Math.max(maxLen, i - left + 1); // 更新最大长度
+        }
+        return maxLen;
+    }
+
+    public static void main(String[] args) {
+        AnotherSolution as = new AnotherSolution();
+        String s = "abba";
+        int len = as.lengthOfLongestSubstring(s);
+        System.out.println(len);
+    }
+}
+
+class ASolution {
+    public int lengthOfLongestSubstring(String s) {
+        char[] sc = s.toCharArray();
+        int left = 0;
+        int maxLen = 0;
+        for (int j = 0; j < sc.length; j++) {
+            for (int min = left; min < j; min++) {
+                if (sc[min] == sc[j]) {
+                    maxLen = Math.max(maxLen, j - left);
+                    left = min + 1;
+                    break;
+                }
+            }
+        }
+        return Math.max(sc.length - left, maxLen);
+    }
+
+    public static void main(String[] args) {
+        ASolution as = new ASolution();
+        String s = "abcabcbb";
+        int len = as.lengthOfLongestSubstring(s);
+        System.out.println(len);
     }
 }
