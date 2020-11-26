@@ -102,7 +102,6 @@ class AnotherSolution {
         List<String> res = new ArrayList<>();
         int l = 0; // 左指针初始化为0
         while (l < len) {
-            StringBuilder sb = new StringBuilder();
             int r = l;
             // 当值是连续的时候，持续移动右指针
             while (r + 1 < len && nums[r + 1] == nums[r] + 1) {
@@ -110,10 +109,10 @@ class AnotherSolution {
             }
             if (l == r) {
                 // l == r 可能代表到达边界
-                res.add(sb.append(nums[l]).toString());
+                res.add("" + nums[l]);
             } else {
                 // 否则，将这段连续区间起始位置拼起来
-                res.add(sb.append(nums[l]).append("->").append(nums[r]).toString());
+                res.add("" + nums[l] + "->" + nums[r]);
             }
             l = r + 1;
         }
