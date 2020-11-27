@@ -41,11 +41,11 @@ public class Solution {
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
                 // 当发现重复元素时，窗口左指针右移
-                //left = Math.max(left, map.get(s.charAt(i)) + 1);
-                int temp = map.get(s.charAt(i)) + 1;
-                if (temp > left) {
-                    left = temp;
-                }
+                // 如何实现窗口左指针右移呢？从哈希表中取出和当前字符相同的字符的索引（+1是为了跳过这个相同的字符），如果这个索引
+                // 大于当前窗口位置（left），将left更新为取出的索引，如果从哈希表中取出的索引加上1小于当前窗口位置，那么这个字符不会
+                // 影响当前窗口内，left不变
+                // 所以上述两个行为就是将left设置为left和从哈希表中取出的索引加1的较大值
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
             }
 
             map.put(s.charAt(i), i);
@@ -67,13 +67,11 @@ class AnotherSolution {
         for (int i = 0; i < len; i++) {
             if (map.containsKey(chars[i])) {
                 // 当发现重复元素时，窗口左指针右移
-                int temp = map.get(chars[i]) + 1;
-                if (temp > left) {
-                    left = temp;
-                }
+                left = Math.max(left, map.get(chars[i]));
             }
 
-            map.put(chars[i], i); // 更新map
+            // 由于从哈希表中取出索引后还需要再加上1跳过当前索引，不如我在添加进哈希表中就把值设置为索引加1
+            map.put(chars[i], i + 1);
             maxLen = Math.max(maxLen, i - left + 1); // 更新最大长度
         }
         return maxLen;
@@ -87,27 +85,20 @@ class AnotherSolution {
     }
 }
 
-class ASolution {
-    public int lengthOfLongestSubstring(String s) {
-        char[] sc = s.toCharArray();
-        int left = 0;
-        int maxLen = 0;
-        for (int j = 0; j < sc.length; j++) {
-            for (int min = left; min < j; min++) {
-                if (sc[min] == sc[j]) {
-                    maxLen = Math.max(maxLen, j - left);
-                    left = min + 1;
-                    break;
-                }
-            }
-        }
-        return Math.max(sc.length - left, maxLen);
-    }
 
-    public static void main(String[] args) {
-        ASolution as = new ASolution();
-        String s = "abcabcbb";
-        int len = as.lengthOfLongestSubstring(s);
-        System.out.println(len);
+class NewSolution {
+    public int lengthOfLongestSubstring(String s) {
+        int[] record = new int[128];
+        int len = s.length();
+
+        int res = 0;
+        int start = 0; // 窗口开始位置
+        for (int i = 0; i < len; i++) {
+            char idx = s.charAt(i);
+            start = Math.max(start, record[idx]);
+            res = Math.max(res, i - start + 1);
+            record[idx] = i + 1;
+        }
+        return res;
     }
 }
