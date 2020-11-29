@@ -34,6 +34,8 @@ public class Solution {
         while (i < j) {
             char l =s.charAt(i);
             char r = s.charAt(j);
+            // 判断字符是否是字母和数字(0 <= l - '0' <= 9, 数字)(49 <= l - '0' <= 74, 小写字母)
+            // 如果不是字母和数字，直接跳过
             if (l - '0' < 0 || l - '0' > 9 && l - '0' < 49 || l - '0' > 74) {
                 i++;
                 continue;
