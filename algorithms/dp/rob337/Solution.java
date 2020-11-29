@@ -112,3 +112,7 @@ class TreeNode {
         val = x;
     }
 }
+
+/*
+参考：https://leetcode-cn.com/problems/house-robber-iii/solution/shu-xing-dp-ru-men-wen-ti-by-liweiwei1419/
+ */
