@@ -97,13 +97,13 @@ public class MyLinkedList {
         } else if (index == size) {
             addAtTail(val);
             return; // 注意不要忘了这里的return
-        } else {
-            Node succ = getNode(index);
-            Node pred = succ.prev;
-            Node newNode = new Node(pred, val, succ);
-            succ.prev = newNode;
-            pred.next = newNode;
         }
+
+        Node succ = getNode(index);
+        Node pred = succ.prev;
+        Node newNode = new Node(pred, val, succ);
+        succ.prev = newNode;
+        pred.next = newNode;
         size++;
     }
 
