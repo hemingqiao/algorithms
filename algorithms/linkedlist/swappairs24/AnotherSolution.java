@@ -8,9 +8,9 @@ package blogandquestion.algorithms.linkedlist.swappairs24;
  */
 public class AnotherSolution {
     public ListNode swapPairs(ListNode head) {
-        ListNode newHead = new ListNode(-1);
-        newHead.next = head;
-        ListNode pre = newHead;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
         ListNode cur = head;
         while (cur != null && cur.next != null) {
             ListNode first = cur;
@@ -23,6 +23,6 @@ public class AnotherSolution {
             pre = first;
             cur = first.next;
         }
-        return newHead.next;
+        return dummy.next;
     }
 }
