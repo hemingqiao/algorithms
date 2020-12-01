@@ -21,3 +21,15 @@ public class ThirdSolution {
         return head;
     }
 }
+
+class RecurSolution {
+    // 递归解法
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode tail = head.next;
+        head.next = null; // 将head.next置空
+        ListNode reversedNode = reverseList(tail); // 认为reverseList这个方法会成功的返回反转后的链表
+        tail.next = head; // 因为要将tail的next指针指向head，所以tail不能为null，要在base case里进行判断
+        return reversedNode;
+    }
+}
