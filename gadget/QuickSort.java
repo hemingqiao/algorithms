@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.array.findkthlargest215n;
+package blogandquestion.algorithms.topk.findkthlargest215n;
 
 import java.util.Arrays;
 
@@ -55,10 +55,12 @@ public class QuickSort {
 
     public static void main(String[] args) {
         QuickSort q = new QuickSort();
-        int[] test = q.generateArray(15, 100);
-        System.out.println(Arrays.toString(test));
+        int[] test = q.generateArray(1500000, 10000000);
+        //System.out.println(Arrays.toString(test));
+        double now = System.currentTimeMillis();
         q.quickSort(test);
-        System.out.println(Arrays.toString(test));
+        System.out.println(System.currentTimeMillis() - now + "ms elapsed"); // 245.0ms elapsed
+        //System.out.println(Arrays.toString(test));
     }
 }
 
@@ -109,9 +111,54 @@ class AnotherQuickSort {
 
     public static void main(String[] args) {
         AnotherQuickSort q = new AnotherQuickSort();
-        int[] test = q.generateArray(15, 100);
-        System.out.println(Arrays.toString(test));
+        int[] test = q.generateArray(1500000, 10000000);
+        //System.out.println(Arrays.toString(test));
+        double now = System.currentTimeMillis();
         q.quickSort(test);
-        System.out.println(Arrays.toString(test));
+        System.out.println(System.currentTimeMillis() - now + "ms elapsed"); // 209.0ms elapsed
+        //System.out.println(Arrays.toString(test));
+    }
+}
+
+class ThirdQuickSort {
+    public void quickSort(int[] A) {
+        quickSort(A, 0, A.length - 1);
+    }
+
+    public void quickSort(int[] A, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int left = start;
+        int right = end;
+        int pivot = A[(start + end) / 2]; // 这种快排取序列中点作为基准，所以退出while循环后不需要再执行交换操作
+        while (left <= right) {
+            while (left <= right && A[left] < pivot) {
+                left++;
+            }
+            while (left <= right && A[right] > pivot) {
+                right--;
+            }
+            if (left <= right) {
+                int temp = A[left];
+                A[left] = A[right];
+                A[right] = temp;
+                left++;
+                right--;
+            }
+        }
+        quickSort(A, left, end);
+        quickSort(A, start, right);
+    }
+
+    public static void main(String[] args) {
+        AnotherQuickSort q = new AnotherQuickSort();
+        int[] test = q.generateArray(1500000, 10000000);
+        //System.out.println(Arrays.toString(test));
+        ThirdQuickSort ts = new ThirdQuickSort();
+        double now = System.currentTimeMillis();
+        ts.quickSort(test);
+        System.out.println(System.currentTimeMillis() - now + "ms elapsed"); // 236.0ms elapsed
+        //System.out.println(Arrays.toString(test));
     }
 }
