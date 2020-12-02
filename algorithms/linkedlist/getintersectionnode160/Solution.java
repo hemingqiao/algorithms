@@ -45,13 +45,15 @@ class ListNode {
 class AnotherSolution {
     // 双指针解法，有点不好想
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
         ListNode tempA = headA;
         ListNode tempB = headB;
         while (tempA != tempB) {
             // 如果tempA指针走到了链表A的末尾，将这个指针移到链表B的开头
-            tempA = tempA.next == null ? tempB : tempA.next;
+            // 注意判断条件是tempA == null而不是tempA.next == null
+            tempA = tempA == null ? headB : tempA.next;
             // 如果tempB指针走到了链表B的末尾，将这个指针移到链表A的开头
-            tempB = tempB.next == null ? tempA : tempB.next;
+            tempB = tempB == null ? headA : tempB.next;
         }
         // tempA要么是null，要么是两个链表的交点
         return tempA;
