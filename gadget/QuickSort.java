@@ -1,6 +1,7 @@
 package blogandquestion.algorithms.topk.findkthlargest215n;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * @author Heming
@@ -16,7 +17,7 @@ public class QuickSort {
     public void quickSort(int[] arr, int low, int high) {
         // 区间长度小于等于1时，就不需要进行递归排序了
         if (low >= high) return;
-        swap(arr, low, (int)(Math.random() * (high - low + 1)) + low);
+        swap(arr, low, (int) (Math.random() * (high - low + 1)) + low);
         int pivot = arr[low];
         int left = low, right = high;
         while (left < right) {
@@ -76,7 +77,7 @@ class AnotherQuickSort {
     public void quickSort(int[] arr, int low, int high) {
         // 区间长度小于等于1时，就不需要进行递归排序了
         if (low >= high) return;
-        swap(arr, low, (int)(Math.random() * (high - low + 1)) + low);
+        swap(arr, low, (int) (Math.random() * (high - low + 1)) + low);
         int pivot = arr[low];
         int j = low;
         for (int i = low + 1; i <= high; i++) {
@@ -162,3 +163,113 @@ class ThirdQuickSort {
         //System.out.println(Arrays.toString(test));
     }
 }
+
+
+/**
+ * 三指针的快速排序，把等于切分元素的所有元素挤到了数组的中间，在有很多元素和切分元素相等的情况下，递归区间大大减少。
+ * 参考：https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/
+ */
+class ThreePointerSolution {
+
+    // 快速排序 3：三指针快速排序
+
+    /**
+     * 列表大小等于或小于该大小，将优先于 quickSort 使用插入排序
+     */
+    private static final int INSERTION_SORT_THRESHOLD = 7;
+
+    private static final Random RANDOM = new Random();
+
+    public int[] sortArray(int[] nums) {
+        int len = nums.length;
+        quickSort(nums, 0, len - 1);
+        return nums;
+    }
+
+    private void quickSort(int[] nums, int left, int right) {
+        // 小区间使用插入排序
+        if (right - left <= INSERTION_SORT_THRESHOLD) {
+            insertionSort(nums, left, right);
+            return;
+        }
+
+        int randomIndex = left + RANDOM.nextInt(right - left + 1);
+        swap(nums, randomIndex, left); // 将基准元素换到序列头部
+
+        // 循环不变量：
+        // all in [left + 1, lt] < pivot
+        // all in [lt + 1, i) = pivot
+        // all in [gt, right] > pivot
+        int pivot = nums[left]; // 基准元素
+        int lt = left; // lt指针为小于基准元素的值放置位置的索引
+        int gt = right + 1; // gt指针为大于基准元素的值放置位置的索引
+
+        int i = left + 1; // i指针用来遍历序列
+        while (i < gt) {
+            if (nums[i] < pivot) {
+                // 当某个元素的值小于基准元素时，lt指针自增，将这个元素交换到lt指针处
+                lt++;
+                swap(nums, i, lt);
+                i++;
+            } else if (nums[i] == pivot) {
+                i++;
+            } else {
+                // 当某个元素的值大于基准时，gt指针减1，将这个值换到gt指针处
+                // 注意此处i指针没有发生变化，因为互换之后，i处元素值仍可能大于pivot，这是因为i指针尚未遍历到后面
+                // i指针可以保证小于i的索引处的元素值都是小于等于pivot的，但对于大于i的索引不能保证，所以一直到互换之后i处值小于pivot后
+                // i指针才会重新自增
+                gt--;
+                swap(nums, i, gt);
+            }
+        }
+        swap(nums, left, lt);
+        // 注意这里，大大减少了两侧分治的区间
+        quickSort(nums, left, lt - 1);
+        quickSort(nums, gt, right);
+    }
+
+    /**
+     * 对数组 nums 的子区间 [left, right] 使用插入排序
+     *
+     * @param nums  给定数组
+     * @param left  左边界，能取到
+     * @param right 右边界，能取到
+     */
+    private void insertionSort(int[] nums, int left, int right) {
+        for (int i = left + 1; i <= right; i++) {
+            int temp = nums[i];
+            int j = i;
+            while (j > left && nums[j - 1] > temp) {
+                nums[j] = nums[j - 1];
+                j--;
+            }
+            nums[j] = temp;
+        }
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
+    }
+
+    public int[] generateArray(int size, int boundary) {
+        int[] res = new int[size];
+        for (int i = 0; i < size; i++) {
+            int random = (int) (Math.random() * boundary);
+            res[i] = random;
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        ThreePointerSolution tps = new ThreePointerSolution();
+        //int[] test = tps.generateArray(1000000, 100);
+        int[] test = {0, 1, 1, 1, 1, 1, 1, 1, 1, 2};
+        System.out.println(Arrays.toString(test));
+        tps.quickSort(test, 0, test.length - 1);
+        System.out.println("\n\n\n\n\n");
+        System.out.println(Arrays.toString(test));
+    }
+}
+
