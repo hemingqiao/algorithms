@@ -5,6 +5,119 @@ created by WebStorm
 description: 深度对比两个对象内容是否相等
 ***************************************************************************** */
 
+// update
+/**
+ * 返回两个对象深度比较的结果
+ * @param {any} obj1
+ * @param {any} obj2
+ */
+function deepEqual(obj1, obj2) {
+  if (obj1 === null) {
+    return obj2 === null;
+  } else if (typeof obj1 === "object") {
+    // 确保传递给_deepEqual()的两个参数均是非null的对象
+    return typeof obj2 === "object" && _deepEqual(obj1, obj2);
+  } else {
+    if (obj1 === obj2) {
+      // 判断+0和-0
+      return obj1 !== 0 || 1 / obj1 === 1 / obj2;
+    } else {
+      // 判断NaN和NaN
+      return obj1 !== obj1 && obj2 !== obj2;
+    }
+  }
+
+  /**
+   * 假定传入的两个参数o1和o2都是非null的对象
+   * @param {any} o1
+   * @param {any} o2
+   * @return {boolean}
+   */
+  function _deepEqual(o1, o2) {
+    // 获取对象自身的所有属性（包括不可枚举属性和Symbol属性）
+    const keysA = Reflect.ownKeys(o1);
+    const keysB = Reflect.ownKeys(o2);
+
+    // 如果两者的属性个数不同，直接返回false
+    if (keysA.length !== keysB.length) {
+      return false;
+    }
+
+    // 如果一个对象拥有另一个对象所没有的属性，直接返回false
+    for (let key of keysA) {
+      if (!keysB.includes(key)) {
+        return false;
+      }
+    }
+
+    // 逐一判断对应的属性是否相同（内容）
+    for (let key of keysA) {
+      // 特判null
+      if (o1[key] === null) {
+        if (o2[key] !== null) {
+          return false;
+        }
+        break; // o1[key]和o2[key]均为null时本轮比较为true，进行下一轮比较
+      }
+
+      if (typeof o1[key] === "object") {
+        if (typeof o2[key] !== "object") {
+          return false;
+        }
+
+        // 如果两者都是对象，递归调用进行深度比较
+        // 要确保传递给_deepEqual方法的参数是非null的对象，否则Reflect.ownKeys会抛出错误
+        if (!_deepEqual(o1[key], o2[key])) {
+          return false;
+        }
+      } else {
+        if (o1[key] !== o2[key]) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+}
+
+// for test
+let obj = {here: {is: "an"}, object: 2};
+let objCopy = Object.assign({}, obj);
+console.log("deep equal obj and objCopy", deepEqual(obj, objCopy));
+// → deep equal obj and objCopy true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
+
+let oo = {
+  a: 1,
+  b: {
+    c: [32, 1024],
+    d: {
+      foo: "bar"
+    }
+  },
+  e: undefined, f: null
+};
+
+let bb = {
+  a: 1,
+  b: {
+    c: [32, 1024],
+    d: {
+      foo: "bar"
+    }
+  },
+  e: undefined, f: null
+};
+
+let r = deepEqual(oo, bb)
+console.log("deep equal:", r); // deep equal: true
+
+
+// old version
 /**
  * 深度比较（未考虑循环引用）
  * @param {any} a
