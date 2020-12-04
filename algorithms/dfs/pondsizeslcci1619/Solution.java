@@ -46,7 +46,13 @@ public class Solution {
             }
         }
 
-        int[] res = list.stream().mapToInt(Integer::valueOf).toArray();
+//        int[] res = list.stream().mapToInt(Integer::valueOf).toArray();
+        // 上面使用流的方法固然简洁优雅，但是是以执行时间为代价的😂
+        int size = list.size();
+        int[] res = new int[size];
+        for (int i = 0; i < size; i++) {
+            res[i] = list.get(i);
+        }
         Arrays.sort(res);
         return res;
     }
