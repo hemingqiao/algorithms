@@ -57,7 +57,7 @@ class AnotherSolution {
             if (num == 3) return true;
             num = (i & 1) == 1 ? num + 1 : 0;
         }
-        return false;
+        return num == 3;
     }
 
     public static void main(String[] args) {
