@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.topk.findkthlargest215n;
+package blogandquestion.algorithms;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Heming
  * created by IntelliJ IDEA
  * founded at 2020/11/21 17:24:21
- * description:
+ * description: 几种快速排序算法
  */
 public class QuickSort {
     public void quickSort(int[] arr) {
@@ -32,8 +32,9 @@ public class QuickSort {
         // 执行完上面的循环后，left == right，并且[low + 1, left]区间内的元素都小于等于pivot，(left, high]区间内的元素都大于pivot
         // 所以下面执行交换，将pivot元素换到left处
         // 执行完交换之后，[low, left - 1]区间内的元素都小于等于pivot，left处元素值等于pivot，(left, high]区间内的元素值大于pivot
-        arr[low] = arr[left];
-        arr[left] = pivot;
+//        arr[low] = arr[left];
+//        arr[left] = pivot;
+        swap(arr, low, left); // 上面注释掉的写法也是可以的，并且可以减少一次函数调用
 
         quickSort(arr, low, left - 1);
         quickSort(arr, left + 1, high);
@@ -54,19 +55,91 @@ public class QuickSort {
         return res;
     }
 
+    public boolean isSortedArray(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         QuickSort q = new QuickSort();
         int[] test = q.generateArray(1500000, 10000000);
-        //System.out.println(Arrays.toString(test));
+//        int[] test = q.generateArray(100, 1000);
+//        System.out.println(Arrays.toString(test));
         double now = System.currentTimeMillis();
         q.quickSort(test);
         System.out.println(System.currentTimeMillis() - now + "ms elapsed"); // 245.0ms elapsed
-        //System.out.println(Arrays.toString(test));
+//        System.out.println(Arrays.toString(test));
+        System.out.println(q.isSortedArray(test));
     }
 }
 
 /**
- * 另一种形式的快排
+ * 这种形式的双指针快排比上面的略快一些？
+ * 并没有，这种形式的虽然在退出while循环后不需要在执行交换，但是在while循环内执行了两次交换，付出的代价还是有点大的
+ */
+class DoublePointerQuickSort {
+    public void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    public void quickSort(int[] arr, int low, int high) {
+        if (low >= high) return; // 当区间长度小于等于1时，就不需要进行递归排序了
+        swap(arr, low, (int) (Math.random() * (high - low + 1) + low));
+        int pivot = arr[low];
+        int left = low, right = high;
+        while (left < right) {
+            while (left < right && arr[right] >= pivot) {
+                right--;
+            }
+//            if (left < right) {
+//                swap(arr, left, right);
+//            }
+            swap(arr, left, right); // 执行交换时可以不用判断left < right，因为有上面while循环的存在，边界情况就是left == right
+            while (left < right && arr[left] <= pivot) {
+                left++;
+            }
+//            if (left < right) {
+//                swap(arr, left, right);
+//            }
+            swap(arr, left, right);
+        }
+
+        quickSort(arr, low, left - 1);
+        quickSort(arr, left + 1, high);
+    }
+
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public int[] generateArray(int nums, int boundary) {
+        int[] res = new int[nums];
+        for (int i = 0; i < nums; i++) {
+            int random = (int) (Math.random() * boundary);
+            res[i] = random;
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        DoublePointerQuickSort dp = new DoublePointerQuickSort();
+        int[] test = dp.generateArray(1500000, 10000000); // 266.0 ms elapsed
+//        System.out.println(Arrays.toString(test));
+        double now = System.currentTimeMillis();
+        dp.quickSort(test);
+//        System.out.println(Arrays.toString(test));
+        System.out.println(System.currentTimeMillis() - now + "ms elapsed");
+    }
+}
+
+/**
+ * 另一种形式的快排，这种快排的时间效率较好
  * 参考：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/partitionfen-er-zhi-zhi-you-xian-dui-lie-java-dai-/
  */
 class AnotherQuickSort {
