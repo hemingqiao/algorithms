@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.binarytree.buildtree105;
+package blogandquestion.algorithms.binarytree.constructbinarytree.buildtree105;
 
 /**
  * @author Heming

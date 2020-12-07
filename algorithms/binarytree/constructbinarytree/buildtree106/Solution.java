@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.binarytree.buildtree106;
+package blogandquestion.algorithms.binarytree.constructbinarytree.buildtree106;
 
 import java.util.HashMap;
 
