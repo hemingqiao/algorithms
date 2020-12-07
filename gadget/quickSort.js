@@ -61,6 +61,7 @@ function quickSortVer2(arr, low = 0, high = arr.length - 1) {
   }
   arr[low] = arr[left];
   arr[left] = pivot;
+  // swap(arr, low, left); // 上面两句代码可以替换为函数调用，不过写成上面两句可以减少一次函数调用😂，减少函数调用的次数力扣中可能会执行的更快些
 
   quickSortVer2(arr, low, left - 1);
   quickSortVer2(arr, left + 1, high);
@@ -110,6 +111,7 @@ function quickSortVer3(arr, low = 0, high = arr.length - 1) {
   quickSortVer3(arr, gt, high);
 }
 
+/** ------------------------ 下面为辅助函数 ------------------------ **/
 
 /**
  * 交换给定数组中的两个元素
@@ -137,9 +139,24 @@ function generateRandomArray(size, boundary) {
   return arr;
 }
 
+/**
+ * 判断一个数组是否是升序排列的
+ * @param arr
+ * @return {boolean}
+ */
+function isSortedArray(arr) {
+  const len = arr.length;
+  for (let i = 0; i < len - 1; i++) {
+    if (arr[i] > arr[i + 1]) return false;
+  }
+  return true;
+}
+
 
 // for test
 let a = generateRandomArray(1500000, 100);
+// let a = generateRandomArray(1500000, 10000000);
 console.log(a);
 quickSortVer3(a);
 console.log(a);
+console.log(isSortedArray(a));
