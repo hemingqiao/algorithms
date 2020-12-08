@@ -44,6 +44,27 @@ Array.prototype.fakeReduce = function (callbackfn, initValue) {
   return res;
 }
 
+/**
+ * 再重构
+ * @param callbackfn
+ * @param initValue
+ * @return {*}
+ */
+Array.prototype.fakeReduce1 = function (callbackfn, initValue) {
+  let len = this.length;
+  let start = 0;
+
+  let res = this[0];
+  if (arguments.length === 2) {
+    res = initValue;
+    start = 1;
+  }
+  for (let i = start; i < len; i++) {
+    res = callbackfn(res, this[i], i, this);
+  }
+  return res;
+}
+
 
 // for test
 
