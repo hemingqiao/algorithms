@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.binarytree.inordertraversal94;
+package blogandquestion.algorithms.binarytree.traversal;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
