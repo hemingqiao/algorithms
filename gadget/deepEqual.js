@@ -34,6 +34,11 @@ function deepEqual(obj1, obj2) {
    * @return {boolean}
    */
   function _deepEqual(o1, o2) {
+    const {toString} = Object.prototype;
+    if (toString.call(o1) !== toString.call(o2)) {
+      // 如果不做此步判断，会对[1, 2]和{0: 1, 1: 2, length: 2}这两个对象返回true，产生误判
+      return false;
+    }
     // 获取对象自身的所有属性（包括不可枚举属性和Symbol属性）
     const keysA = Reflect.ownKeys(o1);
     const keysB = Reflect.ownKeys(o2);
