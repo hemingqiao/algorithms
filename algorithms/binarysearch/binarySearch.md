@@ -27,8 +27,11 @@ right变为mid，注意这里，right不是变为 mid - 1，这正是因为右�
 3、int mid = (low + high) >>> 1; 首先肯定是正确的写法，其实也是一个装 ❌ 的写法，理由上面已经叙述过了。
 
 作者：liweiwei1419
+
 链接：https://leetcode-cn.com/problems/guess-number-higher-or-lower/solution/shi-fen-hao-yong-de-er-fen-cha-zhao-fa-mo-ban-pyth/
 
+
+## 二分查找的js实现：
 
 ```js
 // 在有序数组中寻找最小的插入位置
