@@ -67,4 +67,140 @@ function sortedIndexOf(array, value) {
     }
     return low;
 }
+
+
+/**
+ * Uses a binary search to determine the lowest index at which value should be inserted into array in order to maintain its sort order.
+ * @param array
+ * @param value
+ * @return {number}
+ */
+function sortedIndex(array, value) {
+  let low = 0, high = array.length; // 插入位置可能是数组的末尾，因此将high初始化为length
+  while (low < high) {
+    let mid = (low + high) >>> 1;
+    // 小于value的位置一定不是寻找的解
+    if (array[mid] < value) {
+      // 新的搜索区间为[mid + 1, high]
+      low = mid + 1;
+    } else {
+      // array[mid]大于等于value时还需要继续向左进行查找
+      // 因为数组中可能存在重复元素，而要求是寻找可能的最小的插入位置
+      // 新的搜索区间为[low, high]
+      high = mid;
+    }
+  }
+  return high; // 退出循环时low == high，返回high和low均可
+}
+
+// /**
+//  * 采取暴力破解
+//  * 将 value 值插入到有序数组中 尽可能小的索引位置，以保证array的排序。
+//  * @param array
+//  * @param value
+//  * @return {number|*}
+//  */
+// function sortedIndex(array, value) {
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i] >= value) {
+//       return i;
+//     }
+//   }
+//   return array.length;
+// }
+
+
+/**
+ * This method is like _.sortedIndex except that it accepts iteratee which is invoked for value and each element of
+ * array to compute their sort ranking. The iteratee is invoked with one argument: (value).
+ * @param array
+ * @param value
+ * @param iteratee
+ * @return {number}
+ */
+function sortedIndexBy(array, value, iteratee) {
+  iteratee = transform(iteratee);
+  const arrayCopy = array.map(val => iteratee(val));
+  const valueCopy = iteratee(value);
+  return sortedIndex(arrayCopy, valueCopy);
+}
+
+
+/**
+ * This method is like _.indexOf except that it performs a binary search on a sorted array(有序数组).
+ * @param array
+ * @param value
+ * @return {number}
+ */
+function sortedIndexOf(array, value) {
+  let low = 0, high = array.length - 1;
+  while (low < high) {
+    let mid = (low + high) >>> 1;
+    // 小于value的位置一定不是解
+    if (array[mid] < value) {
+      low = mid + 1;
+    } else {
+      high = mid;
+    }
+  }
+  // 如果low处对应的值不等于目标值value，返回-1
+  if (array[low] === value) {
+    return low;
+  }
+  return -1;
+}
+
+
+/**
+ * This method is like _.sortedIndex except that it returns the highest index at which value should be inserted into
+ * array in order to maintain its sort order.
+ * @param array
+ * @param value
+ * @return {number}
+ */
+function sortedLastIndex(array, value) {
+  let low = 0, high = array.length;
+  while (low < high) {
+    let mid = (low + high) >>> 1;
+    // 寻找最大的插入位置，即寻找到值等于value的位置后仍需向右边移动
+    // 与sortedIndex的不同之处就在于此处判断条件多了等于
+    if (array[mid] <= value) {
+      low = mid + 1;
+    } else {
+      high = mid;
+    }
+  }
+  return low;
+}
+
+
+/**
+ * This method is like _.sortedLastIndex except that it accepts iteratee which is invoked for value and each element
+ * of array to compute their sort ranking. The iteratee is invoked with one argument: (value).
+ * @param array
+ * @param value
+ * @param iteratee
+ * @return {number}
+ */
+function sortedLastIndexBy(array, value, iteratee) {
+  iteratee = transform(iteratee);
+  const arrayCopy = array.map(val => iteratee(val));
+  const valueCopy = iteratee(value);
+  return sortedLastIndex(arrayCopy, valueCopy);
+}
+
+
+/**
+ * This method is like _.lastIndexOf except that it performs a binary search on a sorted array.
+ * @param array
+ * @param value
+ * @return {number}
+ */
+function sortedLastIndexOf(array, value) {
+  let index = sortedLastIndex(array, value);
+  if (array[index - 1] === value) {
+    return index - 1;
+  }
+  return -1;
+}
 ```
