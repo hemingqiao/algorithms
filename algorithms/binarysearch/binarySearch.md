@@ -133,6 +133,8 @@ function sortedIndexBy(array, value, iteratee) {
  * @return {number}
  */
 function sortedIndexOf(array, value) {
+  // 与sortedIndex的不同之处在于此处查找上界为len - 1，保证了退出循环时得到的值一定是合法索引
+  // 而sortedIndex的查找上界是len，所以对于某个大于数组中所有的值的value，退出循环时会得到len，此时已经越界，应该返回-1
   let low = 0, high = array.length - 1;
   while (low < high) {
     let mid = (low + high) >>> 1;
