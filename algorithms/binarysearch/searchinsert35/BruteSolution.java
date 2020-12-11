@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.searchinsert35;
+package blogandquestion.algorithms.binarysearch.searchinsert35;
 
 /**
  * @author Heming

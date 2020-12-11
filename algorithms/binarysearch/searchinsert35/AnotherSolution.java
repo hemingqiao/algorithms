@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.searchinsert35;
+package blogandquestion.algorithms.binarysearch.searchinsert35;
 
 /**
  * @author Heming
@@ -48,6 +48,6 @@ class ThirdSolution {
                 left = mid + 1;
             }
         }
-        return right;
+        return right; // 把left返回也可行
     }
 }
