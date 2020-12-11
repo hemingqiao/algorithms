@@ -17,3 +17,51 @@ right变为mid，注意这里，right不是变为 mid - 1，这正是因为右�
 ，而左右指针的移动，left -> mid + 1，而right -> mid - 1，因为此时右侧是闭区间，可以取到 mid - 1处的元素。
 
 具体操作还是要视题目的具体内容而定。
+
+2、二分搜索中值mid的写法
+
+1、int mid = (left + right) / 2; 是初级写法，是有 bug 的，因为当 left 和 right 很大的时候，left + right 会发生整型溢出，变成负数；
+
+2、int mid = left + (right - left) / 2; 是正确的写法，说明你考虑到了整型溢出的风险；
+
+3、int mid = (low + high) >>> 1; 首先肯定是正确的写法，其实也是一个装 ❌ 的写法，理由上面已经叙述过了。
+
+作者：liweiwei1419
+链接：https://leetcode-cn.com/problems/guess-number-higher-or-lower/solution/shi-fen-hao-yong-de-er-fen-cha-zhao-fa-mo-ban-pyth/
+
+
+```js
+// 在有序数组中寻找最小的插入位置
+function sortedIndex(array, value) {
+    let low = 0, high = array.length; // 插入位置可能是数组的末尾，因此将high初始化为length
+    while (low < high) {
+        let mid = (low + high) >>> 1;
+        // 小于value的位置一定不是寻找的解
+        if (array[mid] < value) {
+            // 新的搜索区间为[mid + 1, high]
+            low = mid + 1;
+        } else {
+            // array[mid]大于等于value时还需要继续向左进行查找
+            // 因为数组中可能存在重复元素，而要求是寻找可能的最小的插入位置
+            // 新的搜索区间为[low, high]
+            high = mid;
+        }
+    }
+    return high; // 退出循环时low == high，返回high和low均可
+}
+
+// 在有序数组中查找值
+function sortedIndexOf(array, value) {
+    let low = 0, high = array.length - 1;
+    while (low < high) {
+        let mid = (low + high) >>> 1;
+        // 小于value的位置一定不是解
+        if (array[mid] < value) {
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    return low;
+}
+```
