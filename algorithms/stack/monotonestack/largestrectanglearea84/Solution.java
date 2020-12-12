@@ -4,7 +4,7 @@ package blogandquestion.algorithms.stack.monotonestack.largestrectanglearea84;
  * @author Heming
  * created by IntelliJ IDEA
  * founded at 2020/11/23 20:56:13
- * description:
+ * description: 暴力解法，从当前位置开始找到所有高度大于等于当前位置的矩形，求解面积
  */
 public class Solution {
     public int largestRectangleArea(int[] heights) {
