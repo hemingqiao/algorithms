@@ -24,3 +24,19 @@ public class Solution {
         return dp[size - 1][0];
     }
 }
+
+
+class AnotherSolution {
+    public int maxProfit(int[] prices) {
+        int size = prices.length;
+        if (size == 0) return 0;
+        int[] hold = new int[size]; // hold数组表示第i天保留手中的股票此时的最大利润，hold数组还可以理解为第i天手头上剩余的钱
+        int[] sold = new int[size]; // sold数组表示第i天卖掉股票此时的最大利润
+        hold[0] = -prices[0]; // 第0天保留股票意味着花费-prices[0]的钱买入股票，因为是第一天，之前都没有持有股票，而sold[0]
+        for (int i = 1; i < size; i++) {
+            sold[i] = Math.max(sold[i - 1], hold[i - 1] + prices[i]);
+            hold[i] = Math.max(hold[i - 1], sold[i - 1] - prices[i]);
+        }
+        return sold[size - 1];
+    }
+}
