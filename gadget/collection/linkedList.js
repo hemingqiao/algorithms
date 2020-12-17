@@ -28,7 +28,7 @@ class LinkedList {
 
   /**
    * 获取集合的大小
-   * @return {*}
+   * @return {number}
    */
   size() {
     return this._size;
@@ -96,6 +96,10 @@ class LinkedList {
   }
 
 
+  /**
+   * 向链表集合中添加元素
+   * @param item
+   */
   add(item) {
     this.addLast(item);
   }
@@ -104,7 +108,7 @@ class LinkedList {
   /**
    * 在指定索引处添加元素
    * @param item
-   * @param index
+   * @param {number} index
    */
   addAt(item, index) {
     if (index < 0 || index > this._size) {
@@ -188,7 +192,7 @@ class LinkedList {
 
   /**
    * 删除给定索引处的节点
-   * @param index
+   * @param {number} index
    * @return {*}
    */
   removeAt(index) {
@@ -240,7 +244,7 @@ class LinkedList {
 
   /**
    * 获取指定索引处的值
-   * @param index
+   * @param {number} index
    * @return {*}
    */
   getAt(index) {
@@ -297,7 +301,7 @@ class LinkedList {
   /**
    * 更改指定索引处的值
    * @param item
-   * @param index
+   * @param {number} index
    * @return {*}
    */
   setAt(item, index) {
@@ -313,10 +317,10 @@ class LinkedList {
 
   /**
    * 获取指定索引处的链表节点
-   * @param index
+   * @param {number} index
    */
   getNode(index) {
-    // 双向链表，可以选择从头部开始查找还是从尾部开始查找
+    // 双向链表，可以根据索引与链表大小的关系选择从头部开始查找还是从尾部开始查找
     let mid = this._size >>> 1;
     if (index <= mid) { // 表明处于集合的前半部分，从头部开始查找
       let temp = this._first;
@@ -334,6 +338,10 @@ class LinkedList {
   }
 
 
+  /**
+   * 重写toString方法（待解决，重写的这个方法在测试中没有生效）
+   * @return {string}
+   */
   toString() {
     let prefix = "[ ";
     for (let x = this._first; x !== null; x = x.next) {
@@ -344,6 +352,9 @@ class LinkedList {
 }
 
 
+/**
+ * 链表节点类
+ */
 class Node {
   prev; // 指向前一个节点的指针
   item; // 节点处存储的值
