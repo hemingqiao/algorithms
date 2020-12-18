@@ -339,14 +339,16 @@ class LinkedList {
 
 
   /**
-   * 重写toString方法（待解决，重写的这个方法在测试中没有生效）
+   * 重写toString方法（打印到控制台不会调用toString，只有进行字符串拼接时才会调用toString）
    * @return {string}
    */
   toString() {
     let prefix = "[ ";
-    for (let x = this._first; x !== null; x = x.next) {
-      prefix += x.item + " ";
+    let x;
+    for (x = this._first; x.next !== null; x = x.next) {
+      prefix += x.item + ", ";
     }
+    prefix += x.item + " ";
     return prefix + "]";
   }
 }
@@ -380,3 +382,6 @@ console.log(l);
 l.addAt(2048, 1);
 console.log(l);
 console.log(l.getAt(0));
+console.log(l.toString());
+let str = l + ""; // 此时会调用l的toString方法
+console.log(str);
