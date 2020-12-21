@@ -65,6 +65,8 @@ public class Solution {
                         }
                         d -= Math.pow(2, j);
                     }
+                    // cnt等于1或者大于4都是非法的
+                    // 当cnt位于[2,4]时，如果后面没有cnt - 1个字节时，同样是非法的（即需要满足i + cnt <= len）
                     if (cnt == 1 || cnt > 4 || cnt + i > len) {
                         return false;
                     }
@@ -112,6 +114,8 @@ class AnotherSolution {
                         d -= temp;
                         temp /= 2;
                     }
+                    // cnt等于1或者大于4都是非法的
+                    // 当cnt位于[2,4]时，如果后面没有cnt - 1个字节时，同样是非法的（即需要满足i + cnt <= len）
                     if (cnt == 1 || cnt > 4 || cnt + i > len) {
                         return false;
                     }
