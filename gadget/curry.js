@@ -92,3 +92,53 @@ function curryNormal(fn, args) {
     }
   }
 }
+
+
+
+/*! *****************************************************************************
+@author Heming
+founded at 2020-12-22 19:32:22
+created by WebStorm
+description: 可传入占位符的柯里化（貌似实现的不太对）
+***************************************************************************** */
+
+let _ = {};
+
+function curry(fn, allArgs = []) {
+  let length = fn.length;
+
+  return function (...args) {
+    let _args = allArgs.slice();
+    // args中存在占位符
+    if (args.includes(_)) {
+      _args = _args.concat(args);
+    } else {
+      // args中不存在占位符，可以向前补位
+      _args.forEach((val, idx) => {
+        if (Object.is(val, _) && args.length !== 0) {
+          _args.splice(idx, 1, args.shift());
+        }
+      });
+      if (args.length !== 0) {
+        _args = _args.concat(args);
+      }
+    }
+
+    // 如果尚未汇集完参数，或者仍存在占位符，需要继续汇集参数
+    if (_args.length < length || _args.includes(_)) {
+      return curry(fn, _args);
+    } else {
+      return fn(..._args);
+    }
+  }
+}
+
+let curriedFoo = curry(foo);
+curriedFoo(_, 1024)(_, 64)(32, 2048);
+
+function foo(a, b, c) {
+  console.log(a, b, c);
+}
+
+// log
+// 32 1024 2048
