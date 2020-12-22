@@ -32,7 +32,7 @@ public class Solution {
     // 仔细观察可以发现，所求的目标值就是第一个索引不等于值的位置：如对于这个数组[0, 1, 2, 4]而言，所求的就是索引3
     // 所以进行二分查找时，如果mid处索引等于值，mid这个值可以排除掉，此时left赋值mid + 1
     // 因为所求索引可能是数组的最后一个位置后的位置（即索引等于length处），区间选左闭右开，则循环不变量为right（right不能取到）
-    // 因此，当mid处索引不等于索引处的值时，right赋值为mid，此时right仍然是取不到的，保持循环不变量（或者理解为排除不掉mid，所以right赋值为right）
+    // 因此，当mid处索引不等于索引处的值时，right赋值为mid，此时right仍然是取不到的，保持循环不变量（或者理解为排除不掉mid，所以right赋值为mid）
     public int missingNumber(int[] nums) {
         int left = 0, right = nums.length;
         while (left < right) {
