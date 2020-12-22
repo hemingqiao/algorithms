@@ -198,3 +198,52 @@ console.log("----------------split line----------------");
 console.dir(new originBound("male", 23));
 console.dir(new fBound("male", 23));
 console.dir(new fBoundNormal("male", 23));
+
+
+// 带有占位符的bind
+
+let _ = {};
+
+function bind(fn, thisArg, ...args) {
+  if (typeof fn !== "function") {
+    throw new TypeError("what is trying to be bound must be a function");
+  }
+
+  const bound = function (...vars) {
+    args.forEach((val, idx) => {
+      if (Object.is(val, _)) {
+        args.splice(idx, 1, vars.shift());
+      }
+    });
+
+    return fn.apply(this instanceof bound
+      ? this
+      : thisArg, args.concat(vars));
+  };
+
+  // 完善原型链
+  if (fn.prototype) {
+    bound.prototype = Object.create(fn.prototype);
+    Object.defineProperty(bound.prototype, "constructor", {
+      value: bound,
+    }); // 可选操作
+  }
+  return bound;
+}
+
+function foo(a, b, c) {
+  console.log(a, b, c);
+}
+
+let bound = bind(foo, null, _, 64);
+bound(32, 1024);
+
+function bar(name, age, sex) {
+  this.name = name;
+  this.age = age;
+  console.log(name, age, sex);
+}
+
+let boundBar = bind(bar, {x: 32});
+let bb = new boundBar("qihui", 24, "male");
+console.dir(bb);
