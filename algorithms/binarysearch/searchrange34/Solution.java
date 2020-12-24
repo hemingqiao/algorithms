@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.searchrange34;
+package blogandquestion.algorithms.binarysearch.searchrange34;
 
 import java.util.Arrays;
 
@@ -31,7 +31,8 @@ public class Solution {
         // 左闭右闭区间
         int left = 0, right = nums.length - 1;
         while (left <= right) {
-            int mid = (left + right) / 2;
+            //int mid = (left + right) / 2; // 当left和right过大时会有溢出的可能
+            int mid = left + (right - left) / 2; // 或者写为 int mid = (left + right) >>> 1;
             if (nums[mid] == target) {
                 // 初始化结果数组
                 int[] res = new int[]{mid, mid};
