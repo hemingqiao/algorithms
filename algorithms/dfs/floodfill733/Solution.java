@@ -35,6 +35,7 @@ import java.util.Arrays;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/flood-fill
  *
+ * 注：本题与 https://leetcode-cn.com/problems/color-fill-lcci/ 相同
  */
 public class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
