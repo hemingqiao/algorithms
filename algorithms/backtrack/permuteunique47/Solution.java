@@ -55,8 +55,8 @@ public class Solution {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            // 不能再同一层中使用重复的元素，再不同层使用重复元素时，nums[i] == nums[i - 1]，但是此时used[i - 1] == true
-            // 而如果再同一层使用了重复元素时，used[i - 1]此时为false
+            // 不能在同一层中使用重复的元素，而在不同层使用重复元素时，nums[i] == nums[i - 1]，但是此时used[i - 1] == true
+            // 而如果在同一层使用了重复元素时，used[i - 1]此时为false
             if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
             if (!used[i]) {
                 path.add(nums[i]);

@@ -36,6 +36,10 @@ public class MySolution {
             }
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(new MySolution().permute(new int[]{1, 2, 3}));
+    }
 }
 
 class AlgorithmEssential {
