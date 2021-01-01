@@ -8,6 +8,8 @@ import java.util.Map;
  * created by IntelliJ IDEA
  * founded at 2021/01/01 15:07:37
  * description:
+ *
+ * @see java.util.LinkedHashMap
  */
 public class LRUCache1 {
     static class Node {
