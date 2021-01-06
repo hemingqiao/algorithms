@@ -58,4 +58,64 @@ class DOMMethod {
       return ret;
     }
   }
+
+  /**
+   * 深克隆一个DOM节点
+   * @param node
+   * @return {Node}
+   */
+  cloneNode(node) {
+    let ret;
+    if (node.nodeType === document.TEXT_NODE) {
+      ret = document.createTextNode(node.tagName);
+      return ret;
+    } else if (node.nodeType === document.ELEMENT_NODE) {
+      ret = document.createElement(node.tagName);
+      const attrNames = node.getAttributeNames();
+      for (let attr of attrNames) {
+        ret.setAttribute(attr, node.getAttribute(attr));
+      }
+      for (let child of node.childNodes) {
+        ret.appendChild(this.cloneNode(child));
+      }
+      return ret;
+    }
+  }
+
+  createElement(nodeName, attr = {}, ...children) {
+    let ret = document.createElement(nodeName);
+    let keys = Object.keys(attr);
+    for (let key of keys) {
+      ret.setAttribute(key, attr[key]);
+    }
+    for (let child of children) {
+      ret.appendChild(child);
+    }
+    return ret;
+  }
+
+  normalize(node) {
+    let children = [].slice.call(node.childNodes);
+    let i = 0;
+    while (i < children.length) {
+      if (children[i].nodeType === document.ELEMENT_NODE) {
+        this.normalize(children[i++]);
+      } else {
+        let temp = '';
+        while (i < children.length && children[i].nodeType === document.TEXT_NODE) {
+          temp += children[i].nodeValue;
+          node.removeChild(children[i++])
+        }
+        // if (i < children.length) {
+        //   node.insertBefore(document.createTextNode(temp), children[i]);
+        // } else {
+        //   node.appendChild(document.createTextNode(temp));
+        // }
+
+        // insertBefore的第二个参数为null时，insertBefore的行为和appendChild一致
+        node.insertBefore(document.createTextNode(temp), i < children.length ? children[i] : null);
+      }
+    }
+    return node;
+  }
 }
