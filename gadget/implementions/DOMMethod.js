@@ -61,6 +61,7 @@ class DOMMethod {
 
   /**
    * 深克隆一个DOM节点
+   * @see Node.cloneNode
    * @param node
    * @return {Node}
    */
@@ -82,6 +83,7 @@ class DOMMethod {
     }
   }
 
+
   createElement(nodeName, attr = {}, ...children) {
     let ret = document.createElement(nodeName);
     let keys = Object.keys(attr);
@@ -94,6 +96,12 @@ class DOMMethod {
     return ret;
   }
 
+
+  /**
+   * @see Node.normalize
+   * @param node
+   * @return {*}
+   */
   normalize(node) {
     let children = [].slice.call(node.childNodes);
     let i = 0;
@@ -117,5 +125,47 @@ class DOMMethod {
       }
     }
     return node;
+  }
+
+  /**
+   * 参见：https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent
+   * @see Node.textContent
+   * @param node
+   * @return {string}
+   */
+  textContent(node) {
+    let ret = '';
+    if (node.nodeType === document.TEXT_NODE) {
+      ret = node.nodeValue;
+    } else if (node.nodeType === document.ELEMENT_NODE) {
+      for (let e of node.childNodes) {
+        ret += this.textContent(e);
+      }
+    }
+    return ret;
+  }
+
+
+  /**
+   * 参见：https://developer.mozilla.org/zh-CN/docs/Web/API/Element/outerHTML
+   * @see Element.outerHTML
+   * @param node
+   * @return {string}
+   */
+  outerHTML(node) {
+    let ret = '';
+    if (node.nodeType === document.TEXT_NODE) {
+      ret = node.nodeValue;
+    } else if (node.nodeType === document.ELEMENT_NODE) {
+      ret += `<${node.tagName.toLowerCase()}`;
+      let attrNames = node.getAttributeNames();
+      if (attrNames.length) {
+        ret += ` ${Array.from(attrNames).map(name => `${name}="${node.getAttribute(name)}"`).join(" ")}`;
+      }
+      ret += ">";
+      ret += Array.from(node.childNodes).map(this.outerHTML.bind(this)).join(" ");
+      ret += `</${node.tagName.toLowerCase()}>`;
+    }
+    return ret;
   }
 }
