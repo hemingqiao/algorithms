@@ -60,6 +60,14 @@ public class Solution {
  * 参考：https://leetcode-cn.com/problems/rotate-array/solution/xuan-zhuan-shu-zu-by-leetcode/
  */
 class AnotherSolution {
+    /*
+    思路是先把前 n-k 个数字翻转一下，再把后k个数字翻转一下，最后再把整个数组翻转一下：
+
+    1 2 3 4 5 6 7
+    4 3 2 1 5 6 7
+    4 3 2 1 7 6 5
+    5 6 7 1 2 3 4
+     */
     public void rotate(int[] nums, int k) {
         k %= nums.length;
         reverse(nums, 0, nums.length - 1);
