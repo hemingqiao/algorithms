@@ -35,6 +35,7 @@ import java.util.HashMap;
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
         if (s.length() == 0) return 0;
+        // map记录每个字符最后出现的位置
         HashMap<Character, Integer> map = new HashMap<>();
         int maxLen = 0; // 用于记录最大不重复字串的长度
         int left = 0; // 滑动窗口左指针
