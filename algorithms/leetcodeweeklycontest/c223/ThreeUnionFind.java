@@ -83,8 +83,17 @@ public class ThreeUnionFind {
         return ans;
     }
 
+    public static void main(String[] args) {
+        ThreeUnionFind tuf = new ThreeUnionFind();
+        int[] source = new int[]{1, 2, 3, 4};
+        int[] target = new int[]{2, 1, 4, 5};
+        int[][] allowedSwaps = new int[][]{{0, 1}, {2, 3}};
+    }
+
     private static class UnionFind {
         private int[] parent;
+        // 用一个数组rank[]记录每个根节点对应的树的深度（如果不是根节点，其rank相当于以它作为根节点的子树的深度）。一开始，把所有元素的
+        // rank（秩）设为1。合并时比较两个根节点，把rank较小者往较大者上合并
         private int[] rank;
         private int count;
 
@@ -111,10 +120,12 @@ public class ThreeUnionFind {
             int fx = find(x);
             int fy = find(y);
 
+            // 如果fx == fy，表示这两个子树已经联通，
             if (fx == fy) {
                 return;
             }
 
+            // 应该把简单的树往复杂的树上合并（将秩小的树合并到秩大的树上）
             if (rank[fx] > rank[fy]) {
                 parent[fy] = fx;
             } else {
@@ -122,9 +133,10 @@ public class ThreeUnionFind {
             }
 
             if (rank[fx] == rank[fy]) {
+                // 如果深度相同，则新的根节点的深度加1
                 rank[fy]++;
             }
-            count--;
+            count--; // 每union一次，子树数目减1
         }
 
         public int count() {
