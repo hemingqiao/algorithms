@@ -18,8 +18,12 @@ description: 三种不同的快速排序算法实现。
 function quickSortVer1(arr, low = 0, high = arr.length - 1) {
   if (low >= high) return; // 当序列长度小于等于1时，结束递归
 
+  /*
   let pivotIndex = Math.floor(Math.random() * (high - low + 1)) + low; // 随机选取一个元素作为基准
   swap(arr, low, pivotIndex);
+  let pivot = arr[low];
+  */
+  swap(arr, low, Math.random() * (high - low + 1) + low | 0);
   let pivot = arr[low];
 
   let j = low;
@@ -46,9 +50,14 @@ function quickSortVer1(arr, low = 0, high = arr.length - 1) {
 function quickSortVer2(arr, low = 0, high = arr.length - 1) {
   if (low >= high) return; // 当序列长度小于等于1时，结束递归
 
+  /*
   let pivotIndex = Math.floor(Math.random() * (high - low + 1)) + low; // 随机选取一个元素作为基准
   swap(arr, low, pivotIndex);
   let pivot = arr[low];
+  */
+  swap(arr, low, Math.random() * (high - low + 1) + low | 0);
+  let pivot = arr[low];
+
   let left = low, right = high;
   while (left < right) {
     while (left < right && arr[right] >= pivot) {
@@ -76,8 +85,12 @@ function quickSortVer2(arr, low = 0, high = arr.length - 1) {
 function quickSortVer3(arr, low = 0, high = arr.length - 1) {
   if (low >= high) return; // 当序列长度小于等于1时，结束递归
 
+  /*
   let pivotIndex = Math.floor(Math.random() * (high - low + 1)) + low; // 随机选取一个元素作为基准
   swap(arr, low, pivotIndex);
+  let pivot = arr[low];
+  */
+  swap(arr, low, Math.random() * (high - low + 1) + low | 0);
   let pivot = arr[low];
 
   let lt = low; // lt指针为小于基准元素的值放置位置的索引
