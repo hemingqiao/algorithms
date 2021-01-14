@@ -9,6 +9,7 @@ import java.util.*;
  * description:
  */
 public class Solution {
+    // 代码写的太丑了
     public String[] findWords(String[] words) {
         char[] r1 = new char[]{'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'};
         char[] r2 = new char[]{'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'};
