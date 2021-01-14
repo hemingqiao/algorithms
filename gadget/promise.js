@@ -113,38 +113,74 @@ Promise.myAllSettled = function (iterables) {
 
 /*
 Promise.any尚未正式加入ECMAScript标准，这里只是一个很简单的模拟实现。
+update, 2021.01.14: Promise.any已经处于stage 4，将在ES2021中正式发布
 Promise.any的作用恰好和Promise.all相反，在Promise.all中，如果有一个Promise实例reject了，整个方法返回的Promise实例会reject。只有所有
 的Promise实例都是fulfilled状态，all方法返回的Promise实例才是fulfilled状态。
 any方法恰好相反，只要有一个Promise实例fulfilled，any方法返回的Promise实例就是以前面的实例的值fulfilled。只有全部的实例都reject，any
 会返回一个reject的Promise实例。
  */
 
+// /**
+//  * Promise.any同样接受一个iterable对象作为参数。
+//  *
+//  * @param iterables
+//  * @returns {Promise<unknown>}
+//  */
+// Promise.myAny = function (iterables) {
+//   let itrArray = Array.from(iterables),
+//     count = 0,
+//     result = [],
+//     len = itrArray.length;
+//
+//   return new Promise((resolve, reject) => {
+//     if (len === 0) {
+//       return resolve(result);
+//     } else {
+//       for (let [i, v] of itrArray.entries()) {
+//         Promise.resolve(v).then(
+//           res => {
+//             return resolve(res);
+//           },
+//           err => {
+//             result[i] = err;
+//             count++;
+//             if (count === len) {
+//               return reject(result);
+//             }
+//           }
+//         );
+//       }
+//     }
+//   });
+// }
+
+
 /**
  * Promise.any同样接受一个iterable对象作为参数。
  *
- * @param iterables
- * @returns {Promise<unknown>}
+ * @param values
+ * @return {Promise<unknown>}
  */
-Promise.myAny = function (iterables) {
-  let itrArray = Array.from(iterables),
+Promise.myAny = function (values) {
+  let itrArray = Array.from(values),
     count = 0,
     result = [],
     len = itrArray.length;
 
   return new Promise((resolve, reject) => {
     if (len === 0) {
-      return resolve(result);
+      return reject(new AggregateError(result, "All promises were rejected"));
     } else {
-      for (let [i, v] of itrArray.entries()) {
-        Promise.resolve(v).then(
+      for (let [index, value] of itrArray.entries()) {
+        Promise.resolve(value).then(
           res => {
             return resolve(res);
           },
           err => {
-            result[i] = err;
+            result[index] = err;
             count++;
             if (count === len) {
-              return reject(result);
+              return reject(new AggregateError(result, "All promises were rejected"));
             }
           }
         );
