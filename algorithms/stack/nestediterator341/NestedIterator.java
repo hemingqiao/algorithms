@@ -1,6 +1,6 @@
 package blogandquestion.algorithms.stack.nestediterator341;
 
-import collections.Stack;
+import mycollections.Stack;
 
 import java.util.ArrayList;
 import java.util.Iterator;

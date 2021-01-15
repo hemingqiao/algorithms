@@ -60,7 +60,8 @@ public class Solution {
                 if (!stack.isEmpty()) {
                     stack.pop();
                 }
-            } else if (!s.isEmpty() && !s.equals(".")) { // 如果当前元素长度为0或者等于"."，不压栈
+                // 如果当前元素长度为0或者等于"."，不压栈（即s是空字符串或者s为 . 时不压栈）
+            } else if (!s.isEmpty() && !s.equals(".")) {
                 stack.push(s);
             }
         }

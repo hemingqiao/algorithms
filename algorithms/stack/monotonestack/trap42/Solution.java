@@ -1,6 +1,6 @@
 package blogandquestion.algorithms.stack.monotonestack.trap42;
 
-import collections.Stack;
+import mycollections.Stack;
 
 /**
  * @author Heming
