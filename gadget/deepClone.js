@@ -127,3 +127,41 @@ console.log(deepClone(A));
 //   A: [Circular *1],
 //   [Symbol(f)]: [Function: [f]]
 // }
+
+function cloneDeep(obj, map = new Map()) {
+  if (map.has(obj)) {
+    return map.get(obj);
+  }
+  if (obj === null) {
+    return null;
+  }
+  if (typeof obj === "object") {
+    const ret = Array.isArray(obj) ? [] : {};
+    map.set(obj, ret);
+    Reflect.ownKeys(obj).forEach(key => {
+      ret[key] = cloneDeep(obj[key], map);
+    });
+    return ret;
+  } else {
+    return obj;
+  }
+}
+
+console.log(cloneDeep(A));
+
+// log
+// <ref *1> {
+// a: {
+//   name: 'qihui',
+//     age: 24,
+//     hobbies: [ 'basketball', 'lol', 'oil', [Object] ]
+// },
+// b: null,
+// c: undefined,
+// d: 'hello',
+// e: 'hello',
+// g: {},
+// A: [Circular *1],
+// [Symbol(f)]: [Function: [f]]
+// }
+
