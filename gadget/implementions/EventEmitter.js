@@ -21,8 +21,9 @@ class EventEmitter {
     const callbacks = this.events[eventName];
     if (callbacks) {
       callbacks.forEach(cb => cb(...args));
+      return true;
     }
-    return this;
+    return false;
   }
 
   once(eventName, cb) {
