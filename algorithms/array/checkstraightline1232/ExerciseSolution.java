@@ -33,6 +33,7 @@ public class ExerciseSolution {
 
     // 利用斜率相等，进行叉乘
     // 同时也不需要对横坐标相等进行特判了
+    // 但是需要注意的是，如果坐标比较大，整型会有溢出的风险，可以将乘积转为long类型
     public boolean checkStraightLine1(int[][] coordinates) {
         int n = coordinates.length;
         for (int i = 1; i < n - 1; i++) {
