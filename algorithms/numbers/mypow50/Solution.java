@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.mypow50;
+package blogandquestion.algorithms.numbers.mypow50;
 
 /**
  * @author Heming
@@ -38,5 +38,43 @@ public class Solution {
         if (n == 0) return 1.0;
         double y = quickMul(x, n / 2);
         return n % 2 == 0 ? y * y : y * y * x;
+    }
+}
+
+class AnotherSolution {
+    // 会溢出
+    public double myPow(double x, int n) {
+        if (n == 0) return 1; // base case（递归出口）
+        if (n < 0) return myPow(1/x, -n);
+        // 利用二分法
+        if ((n & 1) == 1) return x * myPow(x, n - 1); // 如果n为奇数，单独抽出一个x使得n - 1为偶数
+        double temp = myPow(x, n >> 1); // n为偶数，对半分，递归计算下去
+        return temp * temp;
+    }
+
+    public static void main(String[] args) {
+        AnotherSolution as = new AnotherSolution();
+        double res = as.myPow(1.0, -2147483648);
+        System.out.println(res);
+    }
+}
+
+class AnotherSolutionOpt {
+    public double myPow(double x, int n) {
+        return myPowAuxiliary(x, n);
+    }
+
+    // 定义一个辅助方法，如果n为-2147483648，将其转为正数时就不至于溢出
+    public double myPowAuxiliary(double x, long n) {
+        if (n == 0) return 1; // base case（递归出口）
+        if (n < 0) return myPowAuxiliary(1/x, -n);
+        // 利用二分法
+        if ((n & 1) == 1) return x * myPowAuxiliary(x, n - 1); // 如果n为奇数，单独抽出一个x使得n - 1为偶数
+        double temp = myPowAuxiliary(x, n >> 1); // n为偶数，对半分，递归计算下去
+        return temp * temp;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new AnotherSolutionOpt().myPow(1.0, -2147483648));
     }
 }
