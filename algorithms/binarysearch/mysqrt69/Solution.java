@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.mysqrt69;
+package blogandquestion.algorithms.binarysearch.mysqrt69;
 
 /**
  * @author Heming
@@ -98,7 +98,7 @@ class AnotherSolution {
      * @return
      */
     public int mySqrtOpt(int x) {
-        double x0 = x / 2.0;
+        double x0 = x;
         while (Math.abs(x0 * x0 - x) > 1e-5) {
             x0 = (x0 + x / x0) / 2;
         }
@@ -108,7 +108,7 @@ class AnotherSolution {
 
     public static void main(String[] args) {
         AnotherSolution s = new AnotherSolution();
-        int res = s.mySqrtOpt(1);
+        int res = s.mySqrtOpt(16);
         System.out.println(res);
     }
 }
