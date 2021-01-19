@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.doublepointer.removeNthFromEnd19;
+package blogandquestion.algorithms.doublepointer.removenthfromend19;
 
 /**
  * @author Heming
