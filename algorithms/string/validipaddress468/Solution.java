@@ -59,11 +59,11 @@ package blogandquestion.algorithms.string.validipaddress468;
  */
 public class Solution {
     public String validIPAddress(String IP) {
-        String[] ipv4Arr = IP.split("\\.", 0);
+        String[] ipv4Arr = IP.split("\\.", -1);
         if (ipv4Arr.length == 4) {
             return isIPV4(ipv4Arr);
         }
-        String[] ipv6Arr = IP.split("\\:", 0);
+        String[] ipv6Arr = IP.split("\\:", -1);
         if (ipv6Arr.length == 8) {
             return isIPV6(ipv6Arr);
         }
