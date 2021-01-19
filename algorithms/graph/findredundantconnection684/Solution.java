@@ -38,7 +38,7 @@ import blogandquestion.algorithms.graph.UnionFindSet;
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/redundant-connection
- * 
+ *
  */
 public class Solution {
     public int[] findRedundantConnection(int[][] edges) {

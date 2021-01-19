@@ -53,7 +53,9 @@ import java.util.List;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/min-cost-to-connect-all-points
  *
+ * 最小生成树？
  * 参考：https://leetcode-cn.com/problems/min-cost-to-connect-all-points/solution/lian-jie-suo-you-dian-de-zui-xiao-fei-yo-kcx7/
+ * 参考：https://leetcode-cn.com/problems/min-cost-to-connect-all-points/solution/c-kruskalprimsuan-fa-jie-da-by-yizhe-shi/
  */
 public class Solution {
     public int minCostConnectPoints(int[][] points) {
@@ -69,12 +71,12 @@ public class Solution {
         Collections.sort(edges, new Comparator<Edge>() {
             @Override
             public int compare(Edge o1, Edge o2) {
-                return o1.lenth - o2.lenth;
+                return o1.length - o2.length;
             }
         });
         int ret = 0, num = 1;
         for (Edge edge : edges) {
-            int len = edge.lenth, x = edge.x, y = edge.y;
+            int len = edge.length, x = edge.x, y = edge.y;
             if (!ufs.connected(x, y)) {
                 ufs.union(x, y);
                 ret += len;
@@ -105,6 +107,7 @@ public class Solution {
                 return x;
             }
             return parent[x] = find(parent[x]);
+//            return parent[x] = find(x) == x ? x : find(parent[x]);
         }
 
         public void union(int x, int y) {
@@ -136,14 +139,22 @@ public class Solution {
     }
 
     static class Edge {
-        public int lenth;
+        public int length;
         public int x;
         public int y;
 
-        public Edge(int lenth, int x, int y) {
-            this.lenth = lenth;
+        public Edge(int length, int x, int y) {
+            this.length = length;
             this.x = x;
             this.y = y;
         }
+    }
+
+    // for test
+    public static void main(String[] args) {
+        int[][] points = new int[][]{{0, 0}, {2, 2}, {3, 10}, {5, 2}, {7, 0}};
+        Solution s = new Solution();
+        int res = s.minCostConnectPoints(points);
+        System.out.println(res);
     }
 }

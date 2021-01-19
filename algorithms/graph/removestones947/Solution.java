@@ -51,6 +51,7 @@ import blogandquestion.algorithms.graph.UnionFindSet;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/most-stones-removed-with-same-row-or-column
  *
+ * 参考：https://leetcode-cn.com/problems/most-stones-removed-with-same-row-or-column/solution/jian-dan-jie-fa-chao-100-by-mantoufan-k3ne/
  */
 public class Solution {
     public int reomveStones(int[][] stones) {
@@ -64,5 +65,12 @@ public class Solution {
             }
         }
         return n - ufs.count();
+    }
+
+    public static void main(String[] args) {
+        int[][] test = new int[][]{{0,0},{0,1},{1,0},{1,2},{2,1},{2,2}};
+        Solution s = new Solution();
+        int res = s.reomveStones(test);
+        System.out.println(res);
     }
 }
