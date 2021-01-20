@@ -196,6 +196,7 @@ function quickSort(arr) {
 // total: 15000000, time elapsed: 2773ms
 
 
+/*
 // 7 random quick sort
 // 随机选取序列中的一个元素作为基准
 function randomQuickSortAuxiliary(arr, low, high) {
@@ -227,6 +228,25 @@ function randomQuickSortAuxiliary(arr, low, high) {
 function randomQuickSort(arr) {
   randomQuickSortAuxiliary(arr, 0, arr.length - 1);
 }
+*/
+
+// new version
+function quickSort1(arr, low = 0, high = arr.length - 1) {
+  if (low >= high) return;
+  swap(arr, low, Math.random() * (high - low + 1) + low | 0);
+  let pivot = arr[low];
+
+  let i = low;
+  for (let j = low + 1; j <= high; j++) {
+    if (arr[j] <= pivot) {
+      swap(arr, ++i, j);
+    }
+  }
+  swap(arr, low, i);
+
+  quickSort1(arr, low, i - 1);
+  quickSort1(arr, i + 1, high);
+}
 
 // total: 150000, time elapsed: 35ms
 // total: 1500000, time elapsed: 257ms
@@ -256,7 +276,7 @@ let a = generateArr(100000000, 15000000);
 console.log(`origin: `);
 console.log(a);
 console.time("time elapsed: ");
-mergeSort(a);
+quickSort1(a);
 console.timeEnd("time elapsed: ");
 console.log(`sorted: `);
 console.log(a);
