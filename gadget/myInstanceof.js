@@ -9,7 +9,8 @@
  * @return {boolean}
  */
 function myInstanceof(A, B) {
-  if (!B || typeof B !== "object") {
+  // B如果为undefined、null或者原始类型，抛出以下错误
+  if (!B || Object(B) !== B) {
     throw new TypeError("Right-hand side of 'instanceof' is not an object");
   }
   if (typeof B !== "function") {
@@ -18,7 +19,7 @@ function myInstanceof(A, B) {
 
   let rightPrototype = B.prototype,
       leftProto = Object.getPrototypeOf(A);
-  
+
   while (leftProto != null) {
     if (!rightPrototype) {
       throw new TypeError("Function has non-object prototype in instanceof check");
