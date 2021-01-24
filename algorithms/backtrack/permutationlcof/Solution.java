@@ -101,7 +101,7 @@ class SetSolution {
 class ThirdSolution {
     public String[] permutation(String s) {
         char[] chars = s.toCharArray();
-        Arrays.sort(chars);
+        Arrays.sort(chars); // 去重需要排序
         List<String> res = new ArrayList<>();
         int n = chars.length;
         boolean[] used = new boolean[n];
