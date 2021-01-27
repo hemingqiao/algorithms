@@ -65,6 +65,8 @@ public class LRUCache2 {
         firstNode.prev = node;
     }
 
+    // 普通的内部类对象隐式的保存了一个指向创建它的外部类对象的引用，而静态类对象则没有这个引用
+    // 不能从静态内部类的对象访问外部类的非静态成员
     static class Node {
         Node prev;
         Node next;
