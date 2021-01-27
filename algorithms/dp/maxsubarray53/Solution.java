@@ -35,7 +35,7 @@ public class Solution {
         }
 
         int length = nums.length;
-        int[] dp = new int[length];
+        int[] dp = new int[length]; // dp[i]代表以i结尾的最大子序和
         int maxSum = nums[0];
         dp[0] = nums[0];
         for (int i = 1; i < length; i++) {

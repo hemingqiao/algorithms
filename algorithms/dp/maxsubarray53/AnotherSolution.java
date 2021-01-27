@@ -30,4 +30,10 @@ public class AnotherSolution {
 
         return ans;
     }
+
+    public static void main(String[] args) {
+        int[] test = {-2, -3, -4};
+        int res = new Solution().maxSubArray(test);
+        System.out.println(res);
+    }
 }
