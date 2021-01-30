@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.dp.maxprofittwo122;
+package blogandquestion.algorithms.dp.maxprofit122;
 
 /**
  * @author Heming
