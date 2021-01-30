@@ -1,5 +1,7 @@
 package blogandquestion.algorithms.dp.lis.lengthoflis300;
 
+
+
 /**
  * @author Heming
  * created by IntelliJ IDEA
@@ -22,6 +24,26 @@ public class ExerciseSolution {
                 }
             }
             max = Math.max(max, dp[i]);
+        }
+        return max;
+    }
+
+    // 不是很理解
+    // 参考：https://leetcode-cn.com/problems/longest-increasing-subsequence/comments/10526
+    public int lengthOfLIS1(int[] nums) {
+        int n = nums.length;
+        int max = 0;
+        int[] dp = new int[n];
+        for (int i = 0; i < n; i++) {
+            // 二分查找，找到dp数组中第一个大于等于nums[i]的位置，类似于c++中的lower_bound函数
+            int left = 0, right = max;
+            while (left < right) {
+                int mid = (left + right) >>> 1;
+                if (dp[mid] >= nums[i]) right = mid;
+                else left = mid + 1;
+            }
+            dp[left] = nums[i];
+            if (left == max) max++;
         }
         return max;
     }
