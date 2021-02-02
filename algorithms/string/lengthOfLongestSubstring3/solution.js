@@ -10,7 +10,7 @@ from：https://leetcode-cn.com/problems/longest-substring-without-repeating-char
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstring = function (s) {
   const map = new Map();
   let left = 0;
   let maxLen = 0;
