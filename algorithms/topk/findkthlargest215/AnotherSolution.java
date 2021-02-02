@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.array.topk.findkthlargest215;
+package blogandquestion.algorithms.topk.findkthlargest215;
 
 /**
  * @author Heming
@@ -50,7 +50,7 @@ public class AnotherSolution {
 }
 
 /**
- * 在选取基准元素时改变了策略，在序列中随机选取一个元素作为基准，时间比上面快乐10ms，从击败25到99.6
+ * 在选取基准元素时改变了策略，在序列中随机选取一个元素作为基准，时间比上面快了10ms，从击败25到99.6
  */
 class AnotherSolutionOpt {
     public int findKthLargest(int[] nums, int k) {
