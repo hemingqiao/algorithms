@@ -44,4 +44,21 @@ public class ExerciseSolution {
         slow.next = slow.next.next;
         return dummy.next;
     }
+
+    // 另外一种思路
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode fast = head, slow = dummy;
+        int p = 0;
+        while (fast != null && p++ < n) {
+            fast = fast.next;
+        }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return dummy.next;
+    }
 }
