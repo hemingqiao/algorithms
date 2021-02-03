@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.greedy.coinchange322;
+package blogandquestion.algorithms.dp.coinchange322;
 
 
 import java.util.Arrays;
@@ -40,8 +40,8 @@ import java.util.Arrays;
  * 提示：
  *
  * 1 <= coins.length <= 12
- * 1 <= coins[i] <= 231 - 1
- * 0 <= amount <= 104
+ * 1 <= coins[i] <= 2^31 - 1
+ * 0 <= amount <= 10^4
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/coin-change
