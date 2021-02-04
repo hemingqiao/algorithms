@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.array.topk.topkfrequent347;
+package blogandquestion.algorithms.topk.topkfrequent347;
 
 import java.util.Comparator;
 import java.util.HashMap;
