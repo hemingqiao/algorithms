@@ -12,6 +12,7 @@ import java.util.List;
  * 参考：算法珠玑，algorithm-essentials-java.pdf
  */
 public class ThirdSolution {
+    // 这个方法很妙啊
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
