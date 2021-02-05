@@ -22,7 +22,7 @@ public class AnotherSolution {
         int right = dfs(root.right);
         // 当前节点为n,对于当前节点来说，最大值可以为n+left,n+right,n,n+left+right
         // 上面四项中的一个，但是返回值是不能返回第四个的，那种路径是不成立的，但是需要比较这条路径的值和最大值
-        // 因为存在这条路径的值是最大值的可能，下面代码中的p2既是执行此操作
+        // 因为存在这条路径的值是最大值的可能，下面代码中的p2即是执行此操作
         int p = Math.max(root.val, Math.max(root.val + left, root.val + right));
         max = Math.max(max, p);
         int p2 = Math.max(p, root.val + left + right);

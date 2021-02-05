@@ -48,7 +48,7 @@ public class Solution {
     }
 
     // dfs返回一个节点的一侧的最大值，如果左子树的最大路径值大于右子树的最大路径值
-    // dfs返回左子树最大路径之和root的值之和
+    // dfs返回左子树最大路径之和与root的值之和
     // 简而言之，dfs函数返回的是root节点以下所包含路径的最大值
     private int dfs(TreeNode root) {
         if (root == null) return 0;
