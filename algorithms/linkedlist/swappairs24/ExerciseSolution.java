@@ -35,4 +35,22 @@ public class ExerciseSolution {
         }
         return dummy.next;
     }
+
+    // 非递归解法2
+    public ListNode swapPairs2(ListNode head) {
+        if (head == null) return null;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = head;
+        ListNode h = dummy; // 定义一个“头结点”
+        while (pre != null && pre.next != null) {
+            ListNode next = pre.next;
+            pre.next = pre.next.next;
+            next.next = pre;
+            h.next = next;
+            h = pre; // 更新头结点
+            pre = pre.next;
+        }
+        return dummy.next;
+    }
 }
