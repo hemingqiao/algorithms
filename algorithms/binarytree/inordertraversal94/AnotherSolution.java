@@ -1,9 +1,9 @@
 package blogandquestion.algorithms.binarytree.inordertraversal94;
 
-import collections.Stack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author Heming
