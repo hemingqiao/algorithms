@@ -78,4 +78,49 @@ public class ExerciseSolution {
         }
         return list;
     }
+
+
+    // 三刷
+    public List<List<Integer>> fourSum2(int[] nums, int target) {
+        List<List<Integer>> list = new ArrayList<>();
+        // 排序方便去重
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int i = 0; i < n - 3; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue; // 去重
+            // 剪枝
+            if (nums[i] + nums[n - 3] + nums[n - 2] + nums[n - 1] < target) continue;
+            if (nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target) continue;
+            for (int j = i + 1; j < n - 2; j++) {
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+                // 剪枝
+                if (nums[i] + nums[j] + nums[n - 2] + nums[n - 1] < target) continue;
+                if (nums[i] + nums[j] + nums[j + 1] + nums[j + 2] > target) continue;
+                int fixed = nums[i] + nums[j];
+                int left = j + 1, right = n - 1;
+                // 因为是求四个数，所以left不能等于right，如果left == right，等于变成了三个数之和，其中一个数重复了两次
+                // 所以这里判断条件是小于，而不是类似于二分查找的等于
+                while (left < right) {
+                    int t = fixed + nums[left] + nums[right];
+                    if (t < target) {
+                        left++;
+                    } else if (t > target) {
+                        right--;
+                    } else {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(nums[i]);
+                        temp.add(nums[j]);
+                        temp.add(nums[left]);
+                        temp.add(nums[right]);
+                        list.add(temp);
+                        while (left < right && nums[right] == nums[right - 1]) right--;
+                        while (left < right && nums[left] == nums[left + 1]) left++;
+                        right--;
+                        left++;
+                    }
+                }
+            }
+        }
+        return list;
+    }
 }
