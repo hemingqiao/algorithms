@@ -1,5 +1,7 @@
 package blogandquestion.algorithms.leetcodeweeklycontest.c227;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -78,5 +80,19 @@ public class Two {
             if (--second > 0) queue.offer(second);
         }
         return res;
+    }
+
+    public int maximumScore1(int a, int b, int c) {
+        int[] A = new int[]{a, b, c};
+        int ret = 0;
+        while (true) {
+            // 先消耗数量最大的两堆
+            Arrays.sort(A);
+            if (A[1] == 0) break;
+            A[2]--;
+            A[1]--;
+            ret++;
+        }
+        return ret;
     }
 }
