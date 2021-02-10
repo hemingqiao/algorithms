@@ -19,7 +19,7 @@ import blogandquestion.algorithms.doublepointer.ListNode;
  * 链接：https://leetcode-cn.com/problems/linked-list-cycle-ii
  *
  * 解题思路：
- * https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/shuang-zhi-zhen-ji-qiao#yi-kuai-man-zhi-zhen-de-chang-jian-suan-fa
+ * https://leetcode-cn.com/problems/linked-list-cycle-ii/solution/huan-xing-lian-biao-ii-by-leetcode-solution/
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
@@ -32,6 +32,8 @@ public class Solution {
             if (fast == slow) {
                 slow = head;
                 while (fast != slow) {
+                    // 检测到有环之后，slow指针指向开头
+                    // 之后fast和slow每次各走一步，再次相遇时就是环的入口
                     fast = fast.next;
                     slow = slow.next;
                 }

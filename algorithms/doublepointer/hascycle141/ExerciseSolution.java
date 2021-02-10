@@ -10,6 +10,7 @@ import java.util.Set;
  * created by IntelliJ IDEA
  * founded at 2021/02/10 09:29:10
  * description:
+ * 参考：https://leetcode-cn.com/problems/linked-list-cycle/solution/xiang-jie-wei-shi-yao-yong-yi-bu-liang-b-i6xo/
  */
 public class ExerciseSolution {
     // 用哈希表存储所有已经访问过的节点，每次遍历到一个节点时，判断这个节点是否存在于哈希表中
