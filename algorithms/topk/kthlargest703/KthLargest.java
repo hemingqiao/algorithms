@@ -1,8 +1,6 @@
 package blogandquestion.algorithms.topk.kthlargest703;
 
-import java.util.ArrayDeque;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * @author Heming
