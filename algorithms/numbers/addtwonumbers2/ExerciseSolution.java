@@ -5,6 +5,8 @@ package blogandquestion.algorithms.numbers.addtwonumbers2;
  * created by IntelliJ IDEA
  * founded at 2021/01/09 16:13:55
  * description:
+ * 这题和后面一道面试题一样。
+ * @see https://leetcode-cn.com/problems/sum-lists-lcci/
  */
 public class ExerciseSolution {
     /*
@@ -12,6 +14,8 @@ public class ExerciseSolution {
     输出：7 -> 0 -> 8
     原因：342 + 465 = 807
      */
+    /*
+    // 这写的就是一坨shit
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int carry = 0;
         ListNode dummy = new ListNode(-1);
@@ -61,5 +65,27 @@ public class ExerciseSolution {
             l = l.next;
         }
         return cnt;
+    }
+    */
+
+    // 新写的
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode p1 = l1, p2 = l2;
+        int carry = 0;
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (p1 != null || p2 != null) {
+            int a = p1 == null ? 0 : p1.val;
+            int b = p2 == null ? 0 : p2.val;
+            cur.next = new ListNode((a + b + carry) % 10);
+            carry = (a + b + carry) / 10;
+            cur = cur.next;
+            p1 = p1 == null ? p1 : p1.next;
+            p2 = p2 == null ? p2 : p2.next;
+        }
+        if (carry != 0) {
+            cur.next = new ListNode(carry);
+        }
+        return dummy.next;
     }
 }
