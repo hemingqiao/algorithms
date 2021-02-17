@@ -260,3 +260,47 @@ Promise.prototype.myFinally = function (callback) {
 Promise.prototype.myCatch = function (onrejected) {
   return this.then(null, onrejected);
 }
+
+
+/**
+ * Promise.retry，成功后 resolve 结果，失败后重试，尝试超过一定次数才真正的 reject
+ *
+ * @param cb
+ * @param times
+ * @return {Promise<unknown>}
+ */
+Promise.retry = function(cb, times = 5) {
+  return new Promise(async (resolve, reject) => {
+    let ret;
+    while (times--) {
+      try {
+        ret = await cb();
+        console.log(times);
+        return resolve(ret);
+      } catch(err) {
+        if (times == 0) {
+          return reject(err);
+        }
+      }
+    }
+  });
+}
+
+function randomPromise() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const n = Math.random();
+      if (n > 0.9) {
+        resolve(n);
+      } else {
+        reject(n);
+      }
+    }, 10);
+  });
+}
+
+Promise.retry(randomPromise, 100)
+  .then(res => console.log(`result: ${res}`))
+  .catch(err => console.log(`error: ${err}`));
+
+// 参考：https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/387
