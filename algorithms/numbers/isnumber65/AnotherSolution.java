@@ -37,7 +37,7 @@ public class AnotherSolution {
 先设定numSeen，dotSeen和eSeen三种boolean变量，分别代表是否出现数字、点和E
 然后遍历目标字符串
 1.判断是否属于数字的0~9区间
-2.遇到点的时候，判断前面是否有点或者E，都需要return false
+2.遇到点的时候，判断前面是否有点或者E，如果点的前面出现过点或者E都需要return false
 3.遇到E的时候，判断前面数字是否合理，是否有E，并把numSeen置为false，防止E后无数字
 4.遇到-+的时候，判断是否是第一个，如果不是第一个判断是否在E后面，都不满足则return false
 5.其他情况都为false
