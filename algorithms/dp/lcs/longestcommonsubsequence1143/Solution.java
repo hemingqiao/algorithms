@@ -41,7 +41,7 @@ package blogandquestion.algorithms.dp.lcs.longestcommonsubsequence1143;
  * 链接：https://leetcode-cn.com/problems/longest-common-subsequence
  *
  * 参考：https://leetcode-cn.com/problems/longest-common-subsequence/solution/dong-tai-gui-hua-tu-wen-jie-xi-by-yijiaoqian/
- * https://leetcode-cn.com/problems/longest-common-subsequence/solution/a-fei-xue-suan-fa-zhi-by-a-fei-8/
+ * 参考：https://leetcode-cn.com/problems/longest-common-subsequence/solution/a-fei-xue-suan-fa-zhi-by-a-fei-8/
  */
 public class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
