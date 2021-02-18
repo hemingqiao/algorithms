@@ -24,3 +24,25 @@ const intersection1 = function (nums1, nums2) {
     }
     return ret;
 }
+
+const intersection2 = function (nums1, nums2) {
+    nums1.sort((a, b) => a - b);
+    nums2.sort((a, b) => a - b);
+    let ret = [];
+    let i = 0, j = 0, n1 = nums1.length, n2 = nums2.length;
+    let idx = 0;
+    while (i < n1 && j < n2) {
+        if (nums1[i] < nums1[j]) {
+            i++;
+        } else if (nums1[i] > nums1[j]) {
+            j++;
+        } else {
+            if (idx == 0 || nums1[i] != ret[idx - 1]) {
+                ret[idx++] = nums1[i];
+            }
+            i++;
+            j++;
+        }
+    }
+    return ret;
+}
