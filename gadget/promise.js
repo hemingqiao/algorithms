@@ -304,3 +304,31 @@ Promise.retry(randomPromise, 100)
   .catch(err => console.log(`error: ${err}`));
 
 // 参考：https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/387
+
+
+/*
+// another retry
+Promise.retry = function (cb, times = 5) {
+
+  return new Promise((resolve, reject) => {
+    let cnt = 0;
+    executeFn(cb);
+
+    function executeFn(fn) {
+      Promise.resolve(fn())
+        .then(res => {
+          console.log(cnt);
+          resolve(res);
+        })
+        .catch(err => {
+          ++cnt;
+          if (cnt > times) {
+            reject(err);
+          } else {
+            executeFn(fn);
+          }
+        });
+    }
+  });
+}
+*/
