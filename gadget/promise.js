@@ -9,9 +9,9 @@
  */
 Promise.myAll = function (iterables) {
   let itrArray = Array.from(iterables),
-    count = 0,
-    result = [],
-    len = itrArray.length;
+      count = 0,
+      result = [],
+      len = itrArray.length;
 
   return new Promise((resolve, reject) => {
     // 如果长度为零，会同步的返回一个resolved的promise实例
@@ -47,7 +47,7 @@ Promise.myAll = function (iterables) {
  */
 Promise.myRace = function (iterables) {
   let itrArray = Array.from(iterables),
-    len = itrArray.length;
+      len = itrArray.length;
 
   return new Promise((resolve, reject) => {
     if (len === 0) {
@@ -80,9 +80,9 @@ Promise.myAllSettled = function (iterables) {
     : {status: "rejected", reason: val};
 
   let itrArray = Array.from(iterables),
-    count = 0,
-    result = [],
-    len = itrArray.length;
+      count = 0,
+      result = [],
+      len = itrArray.length;
 
   return new Promise(resolve => {
     if (len === 0) {
@@ -163,9 +163,9 @@ any方法恰好相反，只要有一个Promise实例fulfilled，any方法返回�
  */
 Promise.myAny = function (values) {
   let itrArray = Array.from(values),
-    count = 0,
-    result = [],
-    len = itrArray.length;
+      count = 0,
+      result = [],
+      len = itrArray.length;
 
   return new Promise((resolve, reject) => {
     if (len === 0) {
