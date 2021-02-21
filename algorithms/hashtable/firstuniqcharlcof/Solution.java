@@ -1,5 +1,9 @@
 package blogandquestion.algorithms.hashtable.firstuniqcharlcof;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * @author Heming
  * created by IntelliJ IDEA
@@ -54,5 +58,40 @@ public class Solution {
             }
         }
         return ret;
+    }
+
+
+    /* HashTable Solutions */
+
+    public char firstUniqChar2(String s) {
+        HashMap<Character, Boolean> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (char c : chars) {
+            map.put(c, !map.containsKey(c));
+        }
+        for (char c : chars) {
+            if (map.get(c)) return c;
+        }
+        return ' ';
+    }
+
+
+    /**
+     * 参考：https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/solution/mian-shi-ti-50-di-yi-ge-zhi-chu-xian-yi-ci-de-zi-3/
+     * 参考：https://blog.csdn.net/justloveyou_/article/details/71713781
+     * @see LinkedHashMap
+     * @param s 源字符串
+     * @return
+     */
+    public char firstUniqChar3(String s) {
+        // LinkedHashMap保证了map中元素的顺序就是它们最初放置到map中的顺序
+        // 即map中字符的顺序和源字符串中字符出现顺序一致
+        LinkedHashMap<Character, Boolean> map = new LinkedHashMap<>();
+        char[] chars = s.toCharArray();
+        for (char c : chars) map.put(c, !map.containsKey(c));
+        for (Map.Entry<Character, Boolean> entry : map.entrySet()) {
+            if (entry.getValue()) return entry.getKey();
+        }
+        return ' ';
     }
 }
