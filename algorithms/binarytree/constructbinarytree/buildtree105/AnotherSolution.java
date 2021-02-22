@@ -19,8 +19,8 @@ public class AnotherSolution {
         return buildTreeAux(preorder, 0, preorder.length, inorder, 0, inorder.length, map);
     }
 
-    private TreeNode buildTreeAux(
-            int[] preorder, int p_start, int p_end, int[] inorder, int i_start, int i_end, HashMap<Integer, Integer> map) {
+    private TreeNode buildTreeAux(int[] preorder, int p_start, int p_end,
+                                  int[] inorder, int i_start, int i_end, HashMap<Integer, Integer> map) {
         if (p_start == p_end) return null; // 如果preorder数组为空，直接返回null
         int root_val = preorder[p_start];
         TreeNode root = new TreeNode(root_val);
