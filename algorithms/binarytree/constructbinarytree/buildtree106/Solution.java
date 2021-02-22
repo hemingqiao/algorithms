@@ -40,6 +40,7 @@ public class Solution {
 
     private TreeNode buildTreeAux(
             int[] inorder, int i_start, int i_end, int[] postorder, int p_start, int p_end, HashMap<Integer, Integer> map) {
+        // 这里写成 if (p_start == p_end) return null; 也是对的
         if (i_start == i_end) return null;
         int root_val = postorder[p_end - 1]; // 因为是左闭右开区间，所以数组最后一个值的索引是end - 1
         TreeNode root = new TreeNode(root_val);
