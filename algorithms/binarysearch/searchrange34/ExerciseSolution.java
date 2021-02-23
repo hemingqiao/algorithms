@@ -21,6 +21,8 @@ public class ExerciseSolution {
                 left = mid + 1;
             }
         }
+        // 当数组中不存在目标值时，搜索得到的位置可能是数组的长度（n）或者该位置对应的值最接近target，而不是等于target
+        // 需要先判断得到的位置是否为n，否则访问n会抛出数组越界异常
         if (left == n || nums[left] != target) return new int[]{-1, -1};
         int p = left + 1;
         while (p < n && nums[p] == target) {
