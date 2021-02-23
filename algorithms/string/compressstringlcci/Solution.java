@@ -1,5 +1,7 @@
 package blogandquestion.algorithms.string.compressstringlcci;
 
+
+
 /**
  * @author Heming
  * created by IntelliJ IDEA
