@@ -75,8 +75,8 @@ class AnotherSolution {
     }
 
     private void dfs(TreeNode root, String s) {
-        if (root == null) return; // 如果是空数，直接返回
-        s += String.valueOf(root.val); // 将当前节点加入路径s中
+        if (root == null) return; // 如果是空树（空节点），直接返回
+        s += String.valueOf(root.val); // 当前节点不为空，将当前节点加入到路径s中
         // 如果是叶子节点，路径已经完整
         if (root.left == null && root.right == null) {
             res.add(s);
