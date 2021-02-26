@@ -19,8 +19,8 @@ public class ExerciseSolution {
         for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
             if (map.containsKey(c)) {
-                // 取start和最后一次出现位置加1两者的最大值是为了防止重复字符最后一次出现位置已经不在窗口中的情况
-                // 如abba，当i = 3时，start = 2，而a前一次出现的位置是0，加上1是1，已经在窗口之外了
+                // 取left和最后一次出现位置加1两者的最大值是为了防止重复字符最后一次出现位置已经不在窗口中的情况
+                // 如abba，当i = 3时，left = 2，而a前一次出现的位置是0，加上1是1，已经在窗口之外了
                 left = Math.max(left, map.get(c) + 1);
             }
             map.put(c, i);
