@@ -25,7 +25,7 @@ import java.util.*;
  *
  * 提示：
  *
- * 1 <= s.length <= 104
+ * 1 <= s.length <= 10^4
  * s 由小写英文字母组成
  *
  * 来源：力扣（LeetCode）
