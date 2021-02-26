@@ -113,3 +113,52 @@ console.log(jsonStringify({
 
 console.log(jsonStringify([1, 2, 3, 4, 5]));
 console.log(jsonStringify({"a": 1}));
+
+
+
+// another version
+function jsonStringify1(obj) {
+  if (obj === undefined || typeof obj === "function") return undefined;
+  if (obj === null) return "null";
+  if (typeof obj === "boolean" || typeof obj === "number") return String(obj);
+  if (typeof obj === "string") return '"' + obj + '"';
+
+  if (Array.isArray(obj)) {
+    return '[' + obj.reduce((init, val) => {
+      // 数组内部的undefined和function会被处理为null
+      if (val === undefined || typeof val === "function") val = null;
+      init.push(jsonStringify1(val));
+      return init;
+    }, []).join(",") + ']';
+  }
+  if (typeof obj === "object") {
+    return '{' + Object.keys(obj).reduce((acc, key) => {
+      // 对象内部属性值如果为undefined或者为function，则会跳过这个属性
+      if (obj[key] === undefined || typeof obj[key] === "function") return acc;
+      acc.push(jsonStringify1(key) + ':' + jsonStringify1(obj[key]));
+      return acc;
+    }, []).join(",") + '}';
+  }
+  return '{}'; // default case
+}
+
+let a = {
+  b: null,
+  c: [32, 64, 1024, "pc", {d: "m1x"}, undefined, function (){}],
+  e: {
+    f: null,
+    g: undefined,
+    h: function () {
+      console.log("foo");
+    }
+  },
+  i: {j: null, k: undefined, l: function (){}},
+  j: true,
+  k: false
+};
+
+console.log(JSON.stringify(a));
+console.log(jsonStringify1(a));
+
+// @see D:\20_webstorm\atools\jsonStringify1.js
+
