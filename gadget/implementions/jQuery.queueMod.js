@@ -17,21 +17,21 @@ class JqueryQueue {
     // 如果容量大于0，表示仍可派发任务并执行
     if (this.#capacity > 0) {
       this.#capacity--;
-      callback(this.next.bind(this));
+      callback(this.#next.bind(this));
     } else {
       // 否则，将任务推入内部的任务队列中，等待执行
       this.#tasks.push(callback);
     }
   }
 
-  next() {
+  #next() {
     this.#capacity++;
     this.#flush();
   }
 
   #flush() {
     if (this.#capacity > 0 && this.#tasks.length > 0) {
-      this.#tasks.shift()(this.next.bind(this));
+      this.#tasks.shift()(this.#next.bind(this));
     }
   }
 }
