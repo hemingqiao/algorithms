@@ -22,7 +22,7 @@ import java.util.Arrays;
  * 链接：https://leetcode-cn.com/problems/counting-bits
  *
  * 奇数x的二进制数中的1比x-1的二进制数中的1多一个，偶数加上一个1成为和偶数相邻的奇数，
- * 偶数y的二进制数中1的个数和y / 2的二级制数中1的个数相同，因为y / 2 右移一位得到y，右移一位低位补0
+ * 偶数y的二进制数中1的个数和y / 2的二进制数中1的个数相同，因为y / 2 右移一位得到y，右移一位低位补0
  * 0的二进制数中1的个数为0
  * 参考：https://leetcode-cn.com/problems/counting-bits/solution/hen-qing-xi-de-si-lu-by-duadua/
  */
