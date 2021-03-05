@@ -108,3 +108,46 @@ class Main3 {
         System.out.println(false);
     }
 }
+
+
+class Main4 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] source = br.readLine().split(" ");
+        int n = source.length;
+//        Map<Integer, Integer> map = new HashMap<>();
+//        for (int i = 0; i < n; i++) {
+//            int key = Integer.valueOf(source[i]);
+//            if (map.containsKey(key)) {
+//                map.put(key, map.get(key) + 1);
+//            } else {
+//                map.put(key, 1);
+//            }
+//        }
+//        int res = 0;
+//        for (int key : map.keySet()) {
+//            if (map.containsKey(key + 1)) {
+//                res = Math.max(res, map.get(key) + map.get(key + 1));
+//            }
+//        }
+//        System.out.println(res);
+        int[] nums = new int[n];
+        int res = 0;
+        for (int i = 0; i < n; i++) nums[i] = Integer.parseInt(source[i]);
+        for (int i = 0; i < n; i++) {
+            int min = nums[i];
+            int max = nums[i];
+            int right = i;
+            while (right < n && Math.abs(nums[right] - min) <= 1 && Math.abs(nums[right] - max) <= 1) {
+                max = Math.max(max, nums[right]);
+                min = Math.min(min, nums[right]);
+                right++;
+            }
+            if (max - min == 1) {
+                res = Math.max(res, right - i);
+//                i = right - 1;
+            }
+        }
+        System.out.println(res);
+    }
+}
