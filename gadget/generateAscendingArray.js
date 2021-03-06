@@ -101,9 +101,9 @@ console.log(+add(0)(1)(2));
 
 // update
 const add = (...args) => {
-	const fn = (...vars) => add(...args, ...vars);
-	fn.valueOf = () => args.reduce((prev, curr) => prev + curr);
-	return fn;
+  const fn = (...vars) => add(...args, ...vars);
+  fn.valueOf = () => args.reduce((prev, curr) => prev + curr);
+  return fn;
 }
 
 console.log(+add(1, 2)(3, 4)(5));
