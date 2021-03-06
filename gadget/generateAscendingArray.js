@@ -98,3 +98,17 @@ console.log(+add(0)(1)(2));
 // [Function: fn] { valueOf: [Function] }
 // 0
 // 3
+
+// update
+const add = (...args) => {
+	const fn = (...vars) => add(...args, ...vars);
+	fn.valueOf = () => args.reduce((prev, curr) => prev + curr);
+	return fn;
+}
+
+console.log(+add(1, 2)(3, 4)(5));
+console.log(+add(1, 2, 3)(4));
+
+// log
+// 15
+// 10
