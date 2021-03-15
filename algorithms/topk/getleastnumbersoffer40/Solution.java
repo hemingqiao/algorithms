@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.array.topk.getleastnumbersoffer40;
+package blogandquestion.algorithms.topk.getleastnumbersoffer40;
 
 
 import java.util.Arrays;
