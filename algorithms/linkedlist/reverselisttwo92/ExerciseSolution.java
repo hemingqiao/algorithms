@@ -1,5 +1,7 @@
 package blogandquestion.algorithms.linkedlist.reverselisttwo92;
 
+
+
 /**
  * @author Heming
  * created by IntelliJ IDEA
@@ -77,5 +79,25 @@ public class ExerciseSolution {
         test.next.next.next.next = new ListNode(5);
         ListNode res = es.reverseBetween(test, 2, 4);
         System.out.println(res);
+    }
+
+    // 三刷
+    // 2021/03/18
+    public ListNode reverseBetween2(ListNode head, int left, int right) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode h = dummy;
+        int i = 1;
+        while (i++ < left && h != null) {
+            h = h.next;
+        }
+        ListNode p = h.next;
+        while (p != null && p.next != null && left++ < right) {
+            ListNode next = p.next;
+            p.next = p.next.next;
+            next.next = h.next; // 头插法，将该结点插入到头结点后
+            h.next = next;
+        }
+        return dummy.next;
     }
 }
