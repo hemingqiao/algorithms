@@ -7,7 +7,6 @@ package blogandquestion.algorithms.numbers.rotatearray.findmin153;
  * description: 一个通用的解决这四道旋转升序数组的思路
  */
 public class GeneralSolution {
-    /*
     // 这个解法对于搜索长度为1或者数组长度为1时的情况，放在了while外面进行处理（left < right），也可以放在循环里面进行处理
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) return -1;
@@ -26,10 +25,9 @@ public class GeneralSolution {
         }
         return nums[left];
     }
-    */
 
     // 这个解法对于搜索长度为1或者数组长度为1时的情况，放在了while里面进行处理（left <= right），也可以放在循环里面进行处理
-    public int findMin(int[] nums) {
+    public int findMin1(int[] nums) {
         if (nums == null || nums.length == 0) return -1;
         int left = 0, right = nums.length - 1;
         while (left <= right) {
