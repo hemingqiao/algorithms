@@ -11,7 +11,7 @@ public class GeneralSolution {
         int left = 0, right = nums.length - 1;
         while (left < right) {
             int mid = (left + right) / 2;
-            // 此时[mid, right]区间是递增的，最小值一定在mid及mid左边，mid不能排除掉
+            // 此时[mid, right]区间是递增的，最小值一定在mid及mid左边，mid不能排除掉（因为 mid 可能就是最小值）
             if (nums[mid] < nums[right]) {
                 right = mid;
             } else if (nums[mid] > nums[right]) {
@@ -24,7 +24,7 @@ public class GeneralSolution {
                 right--;
             }
         }
-        // 当查找范围的长度为一时或者数组长度为1时，返回
+        // 当查找范围的长度为 1 时或者数组长度为 1 时，返回
         return nums[left];
     }
 }
