@@ -1,10 +1,10 @@
 package blogandquestion.algorithms.stack.nestediterator341;
 
-import mycollections.Stack;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author Heming
