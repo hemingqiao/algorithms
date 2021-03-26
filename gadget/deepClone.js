@@ -165,3 +165,27 @@ console.log(cloneDeep(A));
 // [Symbol(f)]: [Function: [f]]
 // }
 
+
+// update 2021/03/26
+/**
+ * 深拷贝一个对象（考虑循环引用）
+ * @param obj
+ * @param map
+ * @return {*[]|any}
+ */
+function deepCopy(obj, map = new Map()) {
+  if (map.has(obj)) return map.get(obj);
+  if (obj && typeof obj === "object") {
+    let ret = Array.isArray(obj) ? [] : {};
+    map.set(obj, ret);
+    // Object.keys(obj).forEach(key => {
+    //   ret[key] = deepCopy(obj[key], map);
+    // });
+    Reflect.ownKeys(obj).forEach(key => { // 考虑 Symbol 类型的键
+      ret[key] = deepCopy(obj[key], map);
+    });
+    return ret;
+  } else {
+    return obj;
+  }
+}
