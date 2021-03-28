@@ -48,8 +48,8 @@ import java.util.Deque;
  *
  * 提示：
  *
- * 1 <= nums.length <= 105
- * -104 <= nums[i] <= 104
+ * 1 <= nums.length <= 10^5
+ * -104 <= nums[i] <= 10^4
  * 1 <= k <= nums.length
  *
  * 来源：力扣（LeetCode）
@@ -69,7 +69,7 @@ public class AnotherSolution {
             }
             queue.addLast(i);
             // 窗口右侧索引为R，左侧索引为L，窗口长度为k，则L = R - 1 - k
-            // 如果queue. peek() < i - k，代表队列首的元素不在窗口内了，需要从队列中弹出
+            // 如果queue.peek() < i - k，代表队列首的元素不在窗口内了，需要从队列中弹出
             if (queue.peek() <= i - k) {
                 queue.poll();
             }
