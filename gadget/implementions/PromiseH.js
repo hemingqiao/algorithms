@@ -110,9 +110,13 @@ class PromiseH {
       throw new TypeError("Detecting cycle");
     }
 
+    /*
+    // 加上这段代码就不能通过测试了，是因为这里只是简单的调用了x.then，实际上应该是把then读出来，像下面一样，then.call(x, ...)
+    // 因为x的值可能还是一个promise，还需要递归判断一下
     if (x instanceof PromiseH) {
       return x.then(resolve, reject);
     }
+    */
 
     if (x && typeof x === "object" || typeof x === "function") {
       let usedFlag = false;
