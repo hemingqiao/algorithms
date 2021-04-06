@@ -21,4 +21,13 @@ public class ExerciseSolution {
         }
         return left + 1;
     }
+
+    public int removeDuplicates1(int[] nums) {
+        int i = 0, n = nums.length;
+        if (n == 0) return 0;
+        for (int j = 0; j < n; j++) {
+            if (nums[j] != nums[i]) nums[++i] = nums[j];
+        }
+        return i + 1;
+    }
 }
