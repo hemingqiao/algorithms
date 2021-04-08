@@ -186,7 +186,7 @@ function throttle(callback, delay) {
 
     let now = +new Date();
     let remaining = delay - (now - previous);
-    if (now <= 0) {
+    if (remaining <= 0) {
       if (timeout) {
         clearTimeout(timeout);
         timeout = null;
