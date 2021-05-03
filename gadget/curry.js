@@ -67,6 +67,28 @@ const curry = (fn, ...args) =>
     ? fn(...args)
     : curry.bind(this, fn, ...args);
 
+ 
+/*
+补充
+*/
+function curry(fn, ...args) {
+	return function(...vars) {
+		let args_ = args.concat(vars);
+		if (fn.length <= args_.length) {
+			return fn.apply(this, args_);
+		} else {
+			return curry.call(this, fn, ...args_);
+		}
+	};
+}
+
+// 上面代码的箭头函数版本
+const curry = (fn, ...args) => (...vars) => 
+	fn.length <= args.concat(vars).length 
+		? fn.apply(this, args.concat(vars)) 
+		: curry.call(this, fn, ...args.concat(vars));
+
+
 
 /**
  * 普通版本的柯里化，es5语法
