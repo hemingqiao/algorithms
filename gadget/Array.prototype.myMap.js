@@ -31,6 +31,36 @@ console.log(resultArr);
 // ]
 
 
+/*
+朴素循环实现map
+ */
+Array.prototype.myMap = function (callbackFn, thisArg) {
+  let ret = [];
+  for (let [i, v] of this.entries()) {
+    ret.push(callbackFn.call(thisArg, v, i, this));
+  }
+  return ret;
+}
+
+
+/* 简单实现reduce */
+
+Array.prototype.myReduce = function (callbackFn, initValue) {
+  let n = this.length;
+  if (n === 0 && arguments.length === 1) {
+    throw new TypeError("reduce with empty array with no initial value");
+  }
+  if (n === 0 && arguments.length === 2) return initValue;
+  let res = this[0], startIndex = 1;
+  if (arguments.length === 2) {
+    res = initValue;
+    startIndex = 0;
+  }
+  for (let i = startIndex; i < this.length; i++) {
+    res = callbackFn.call(this, res, this[i], i, this);
+  }
+  return res;
+}
 
 
 
