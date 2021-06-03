@@ -126,3 +126,53 @@ function sum(...args) {
   console.log(res);
   console.timeEnd("start");
 })();
+
+
+// solution3 Promise版本
+function promiseAdd(a, b) {
+  return new Promise((resolve, reject) => {
+    asyncAdd(a, b, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+}
+
+
+function sum(...nums) {
+  return new Promise((resolve, reject) => {
+
+    function run() {
+      if (nums.filter(i => i !== null).length > 1) {
+        // 能进入这里，表明数组中一定存在两个及两个以上的非空元素（数字），所以不需要担心findIndex返回-1
+        let a, b;
+        a = nums.splice(nums.findIndex(i => i !== null), 1)[0];
+        b = nums.splice(nums.findIndex(i => i !== null), 1)[0];
+        nums.push(null); // 占位
+        promiseAdd(a, b).then(res => {
+          for (let i = 0; i < nums.length; i++) {
+            if (nums[i] === null) {
+              nums[i] = res;
+              break; // 要及时break掉，否则会替换掉所有的null
+            }
+          }
+          // 在then的回调中执行完 a + b 后，判断数组中是否存在两个及两个以上的数字，如果有，立即执行run，否则，等待其他加法完成
+          if (nums.filter(i => i !== null).length > 1) {
+            run();
+          } else if (nums.length === 1 && nums[0] !== null) {
+            resolve(nums[0]);
+          }
+        }, err => {
+          reject(err);
+        });
+        // 对数组中的 a，b执行完加法后，继续执行run
+        run();
+      } else if (nums.length === 1 && nums[0] !== null) { // 每次调用run，能进入上面的if，要判断是否只剩下一个非空的元素，不能进入if也需要判断是否只剩下一个非空元素
+        resolve(nums[0]);
+      }
+    }
+  });
+}
