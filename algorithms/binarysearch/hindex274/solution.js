@@ -2,7 +2,7 @@
  * @param {number[]} citations
  * @return {number}
  */
-var hIndex = function (citations) {
+const hIndex = function (citations) {
     // 将其发表的所有SCI论文按被引次数从高到低排序；
     // 从前往后查找排序后的列表，只要当前的引用量大于当前的索引值，则H指数加1，最后得到的结果即为最终的H指数。
     // from: wikipedia
