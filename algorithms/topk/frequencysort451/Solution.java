@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.string.frequencysort451;
+package blogandquestion.algorithms.topk.frequencysort451;
 
 import java.util.*;
 
@@ -55,6 +55,7 @@ public class Solution {
         for (char c : chars) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
+        // 使用小顶堆
         PriorityQueue<Map.Entry<Character, Integer>> priorityQueue = new PriorityQueue<>(new Comparator<Map.Entry<Character, Integer>>() {
             @Override
             public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
