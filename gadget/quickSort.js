@@ -8,6 +8,28 @@ description: 三种不同的快速排序算法实现。
 版本 3：三指针法：把等于切分元素的所有元素挤到了数组的中间，在有很多元素和切分元素相等的情况下，递归区间大大减少。
 ***************************************************************************** */
 
+/**
+ * 快速排序
+ *
+ * @param {number[]} arr
+ * @param {number} l
+ * @param {number} r
+ * @return void
+ */
+function quickSort(arr, l = 0, r = arr.length - 1) {
+    if (l >= r) return;
+    // 基准元素的选取可以随机，也可以取最左侧或者最右侧的元素
+    // let x = arr[(Math.random() * (r - l + 1) | 0) + l], i = l - 1, j = r + 1;
+    let x = arr[l], i = l - 1, j = r + 1;
+    while (i < j) {
+        while (arr[++i] < x);
+        while (arr[--j] > x);
+        if (i < j) swap(arr, i, j);
+    }
+    quickSort(arr, l, j);
+    quickSort(arr, j + 1, r);
+}
+
 
 /**
  * 快排基本方法
