@@ -10,8 +10,11 @@ const twoSum = function(nums, target) {
   let n = nums.length;
   for (let i = 0, j = n - 1; i < n; i++) {
     let v = nums[i].val;
-    while (j >= i && v + nums[j].val > target) j--;
-    if (v + nums[j].val == target) return [nums[i].idx, nums[j].idx];
+    // while (j >= i && v + nums[j].val > target) j--;
+    while (j > i && v + nums[j].val > target) j--;
+    if (j > i && v + nums[j].val == target) return [nums[i].idx, nums[j].idx];
   }
   return [-1, -1];
 };
+
+console.log(twoSum([3], 6));
