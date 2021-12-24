@@ -45,7 +45,7 @@ public class ExerciseSolution {
 
     public void dfs(List<List<Integer>> list, TreeNode root, int depth) {
         if (root == null) return;
-        // 第一次递归进来时，depth == list.size()，此时直接向list中加入一个数组
+        // 第一次递归进来时，depth == list.cnt()，此时直接向list中加入一个数组
         if (depth == list.size()) {
             List<Integer> t = new ArrayList<>();
             t.add(root.val);

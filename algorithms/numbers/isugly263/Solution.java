@@ -37,6 +37,7 @@ public class Solution {
     public boolean isUgly(int num) {
         // 需要对0进行特判，因为0模上任何非零数都为0
         if (num == 0) return false;
+        // 先除以2，然后是3和5
         while (num % 2 == 0) num /= 2;
         while (num % 3 == 0) num /= 3;
         while (num % 5 == 0) num /= 5;

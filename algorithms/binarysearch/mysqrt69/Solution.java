@@ -50,8 +50,9 @@ public class Solution {
 
     /**
      * 推荐使用这个方法
-     * <p>
+     *
      * 参考：https://leetcode-cn.com/problems/sqrtx/solution/x-de-ping-fang-gen-by-leetcode-solution/
+     *
      * @param x
      * @return
      */
@@ -61,7 +62,7 @@ public class Solution {
         int left = 0, right = x, answer = -1;
         while (left <= right) {
             int mid = (left + right) / 2;
-            if ((long)mid * mid <= x) {
+            if ((long) mid * mid <= x) {
                 // 由于是寻找使得k^2 <= x的最大k值，一旦满足mid * mid小于等于x，就更新answer的值
                 answer = mid;
                 left = mid + 1;
@@ -87,13 +88,14 @@ class AnotherSolution {
         }
         double res = Math.ceil(x0);
         if (res - x0 < 0.001) {
-            return (int)(res);
+            return (int) (res);
         }
-        return (int)res - 1;
+        return (int) res - 1;
     }
 
     /**
      * 使用牛顿迭代法
+     *
      * @param x
      * @return
      */
@@ -103,7 +105,7 @@ class AnotherSolution {
             x0 = (x0 + x / x0) / 2;
         }
         // double类型转为int时会进行截断
-        return (int)x0;
+        return (int) x0;
     }
 
     public static void main(String[] args) {

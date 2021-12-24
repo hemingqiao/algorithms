@@ -8,6 +8,8 @@ import java.util.List;
  * created by IntelliJ IDEA
  * founded at 2020/10/20 08:29:25
  * description: 太他妈难理解了。容我再想想。
+ * 艹，理解了。append 2020/01/24
+ * 参考：https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/mian-shi-ti-38-zi-fu-chuan-de-pai-lie-hui-su-fa-by/
  */
 public class AnotherSolution {
     public List<List<Integer>> permute(int[] nums) {

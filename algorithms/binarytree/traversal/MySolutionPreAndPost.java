@@ -32,7 +32,7 @@ public class MySolutionPreAndPost {
     }
 
     /**
-     * 将结果插入头部
+     * 将结果插入头部，后序遍历
      * 参考：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/die-dai-jie-fa-shi-jian-fu-za-du-onkong-jian-fu-za/384697
      * @param root
      * @return
@@ -55,7 +55,7 @@ public class MySolutionPreAndPost {
 
     /**
      * 先序遍历
-     * @param root
+     * @param root 根节点
      * @return
      */
     public List<Integer> preorderTraversal2(TreeNode root) {

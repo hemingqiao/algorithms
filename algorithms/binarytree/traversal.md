@@ -64,8 +64,8 @@ left -> right -> root
             	Node top = stack.pop();
             	result.add(top);
             	List<Node> children = top.getChildren();
-            	if (children != null && children.size() > 0) {
-            		for (int i = children.size() - 1; i >= 0; i--) {
+            	if (children != null && children.cnt() > 0) {
+            		for (int i = children.cnt() - 1; i >= 0; i--) {
             			stack.push(children.get(i));
             		}
             	}

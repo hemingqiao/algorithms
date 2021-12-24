@@ -76,7 +76,7 @@ class AnotherSolution {
 }
 
 /**
- * 对上面的改进，再迭代过程中就找出结果
+ * 对上面的改进，在迭代过程中就找出结果
  */
 class ThirdSolution {
     public int kthSmallest(TreeNode root, int k) {

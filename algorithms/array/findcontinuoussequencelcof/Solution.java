@@ -50,13 +50,13 @@ public class Solution {
                 list.add(temp);
             }
         }
-        int n = list.size();
+        int n = list.cnt();
         int[][] ret = new int[n][];
         for (int i = 0; i < n; i++) {
             List<Integer> l = list.get(i);
-            int size = l.size();
-            int[] t = new int[size];
-            for (int k = 0; k < size; k++) t[k] = l.get(k);
+            int cnt = l.cnt();
+            int[] t = new int[cnt];
+            for (int k = 0; k < cnt; k++) t[k] = l.get(k);
             ret[i] = t;
         }
         return ret;
@@ -80,7 +80,7 @@ public class Solution {
                 list.add(temp);
             }
         }
-        /*int n = list.size();
+        /*int n = list.cnt();
         int[][] ret = new int[n][];
         for (int i = 0; i < n; i++) {
             ret[i] = list.get(i);

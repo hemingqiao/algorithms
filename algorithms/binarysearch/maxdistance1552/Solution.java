@@ -39,6 +39,7 @@ import java.util.Arrays;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/magnetic-force-between-two-balls
  *
+ * 参考：https://leetcode-cn.com/problems/magnetic-force-between-two-balls/solution/er-fen-sou-su-45ms-by-geguanting/
  */
 public class Solution {
     public int maxDistance(int[] p, int m) {

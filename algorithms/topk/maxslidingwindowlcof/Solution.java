@@ -86,7 +86,7 @@ public class Solution {
         int[] ret = new int[n - k + 1];
         int left = 0;
         for (int i = 0; i < n; i++) {
-            // 维护一个单调递增的双向队列
+            // 维护一个单调递增的双端队列
             // 如果队列非空，且当前位置元素的值大于队列尾部元素对应的值，不断弹出队列尾部的值
             while (!queue.isEmpty() && nums[i] > nums[queue.peekLast()]) {
                 queue.pollLast();

@@ -1,6 +1,7 @@
 package blogandquestion.algorithms.dfs.maxareaofisland695;
 
-import collections.Stack;
+
+import java.util.Stack;
 
 /**
  * @author Heming

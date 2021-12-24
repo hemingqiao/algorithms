@@ -20,7 +20,7 @@ public class ExerciseSolution {
 
     public TreeNode help(Map<Integer, Integer> map, int[] inorder, int i_start, int i_end,
                          int[] postorder, int p_start, int p_end) {
-        // 左闭右开区间，如果左边界和有边界相等，表明已经没有元素了
+        // 左闭右开区间，如果左边界和右边界相等，表明已经没有元素了
         if (p_start == p_end) return null;
         int rootVal = postorder[p_end - 1];
         TreeNode root = new TreeNode(rootVal);

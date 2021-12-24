@@ -5,11 +5,12 @@ package blogandquestion.algorithms.graph.swiminwater778;
  * created by IntelliJ IDEA
  * founded at 2021/01/30 10:08:04
  * description:
+ * 参考：https://leetcode-cn.com/problems/swim-in-rising-water/solution/shui-wei-shang-sheng-de-yong-chi-zhong-y-862o/
  */
 public class AnotherSolution {
     public int swimInWater(int[][] grid) {
         int n = grid.length;
-        int left = 0, right = n * n - 1;
+        int left = 0, right = n * n;
         while (left < right) {
             int mid = (left + right) >>> 1;
             boolean[][] visited = new boolean[n][n];

@@ -80,7 +80,7 @@ public class Solution {
 
 int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
     int rest = 0, run = 0, start = 0;
-    for (int i = 0; i < gas.size(); ++i){
+    for (int i = 0; i < gas.cnt(); ++i){
         run += (gas[i] - cost[i]);
         rest += (gas[i] - cost[i]);
         if (run < 0){

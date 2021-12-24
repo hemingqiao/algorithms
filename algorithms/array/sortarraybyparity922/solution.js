@@ -13,6 +13,7 @@ var sortArrayByParityII = function(A) {
     while (j < len && (A[j] & 1) === ((i & 1) === 1 ? 0 : 1)) {
       j++;
     }
+    // 进行交换
     let temp = A[i];
     A[i] = A[j];
     A[j] = temp;
@@ -21,5 +22,5 @@ var sortArrayByParityII = function(A) {
 };
 
 let A = [4,2,5,7];
-let res = sortArrayByParityII(A)
+let res = sortArrayByParityII(A);
 console.log(res);

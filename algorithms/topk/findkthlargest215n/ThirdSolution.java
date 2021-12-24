@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.array.topk.findkthlargest215n;
+package blogandquestion.algorithms.topk.findkthlargest215n;
 
 /**
  * @author Heming

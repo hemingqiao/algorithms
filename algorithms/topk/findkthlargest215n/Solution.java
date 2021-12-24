@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.array.topk.findkthlargest215n;
+package blogandquestion.algorithms.topk.findkthlargest215n;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

@@ -20,6 +20,7 @@ public class ExerciseSolution {
             list.add(intervals[i]);
             i++;
         }
+        // 合并存在重叠的区间
         while (i < n && intervals[i][0] <= second) {
             first = Math.min(first, intervals[i][0]);
             second = Math.max(second, intervals[i][1]);

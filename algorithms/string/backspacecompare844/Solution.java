@@ -1,6 +1,7 @@
 package blogandquestion.algorithms.string.backspacecompare844;
 
-import collections.Stack;
+
+import java.util.Stack;
 
 /**
  * @author Heming

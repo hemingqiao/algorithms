@@ -34,8 +34,10 @@ public class Solution {
     public TreeNode sortedListToBST(ListNode head) {
         if (head == null) return null;
         if (head.next == null) return new TreeNode(head.val);
+        // 使用快慢指针找到链表的中间节点
         ListNode fast = head;
         ListNode slow = head;
+        // pre用来记录中间节点的前一个节点
         ListNode pre = null;
         while (fast != null && fast.next != null) {
             pre = slow;

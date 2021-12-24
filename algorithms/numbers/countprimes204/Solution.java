@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.countprimes204;
+package blogandquestion.algorithms.numbers.countprimes204;
 
 
 /**

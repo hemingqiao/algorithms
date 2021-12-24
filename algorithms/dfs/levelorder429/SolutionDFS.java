@@ -18,7 +18,7 @@ public class SolutionDFS {
     }
 
     // dfs通过记录深度的变量depth和res.size的关系，来判断遍历到了哪一层
-    // 如果depth恰好等于res.size，说明遍历到了这一层的第一个元素，向res中加入一个新数组，如果depth小于res.size，是在遍历
+    // 如果depth恰好等于res.cnt，说明遍历到了这一层的第一个元素，向res中加入一个新数组，如果depth小于res.cnt，是在遍历
     // 这一层的其他元素，将其加入depth对应的数组中
     private void dfs(Node root, int depth) {
         if (root == null) return;

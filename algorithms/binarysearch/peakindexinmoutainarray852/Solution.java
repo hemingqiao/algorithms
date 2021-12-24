@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.peakindexinmoutainarray852;
+package blogandquestion.algorithms.binarysearch.peakindexinmoutainarray852;
 
 /**
  * @author Heming

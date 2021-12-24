@@ -36,6 +36,7 @@ package blogandquestion.algorithms.dp.climbstairs70;
  * 有 f(x) = f(x - 1) + f(x - 2)
  * 上式便是状态转移方程。
  * 而进行初始化的边界条件则是：f(0) = 1, f(1) = 1;
+ * 下面的解法是递归解法（事实上是斐波那契数列的尾递归解法）。
  * see: https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/
  */
 public class Solution {

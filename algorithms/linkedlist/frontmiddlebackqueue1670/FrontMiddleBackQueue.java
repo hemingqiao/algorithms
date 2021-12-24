@@ -16,7 +16,7 @@ public class FrontMiddleBackQueue {
 //    }
 //
 //    public void pushFront(int val) {
-//        if (c.size() == 0) {
+//        if (c.cnt() == 0) {
 //            c.add(val);
 //        } else {
 //            c.add(0, val);
@@ -24,10 +24,10 @@ public class FrontMiddleBackQueue {
 //    }
 //
 //    public void pushMiddle(int val) {
-//        if (c.size() == 0) {
+//        if (c.cnt() == 0) {
 //            c.add(val);
 //        } else {
-//            int idx = c.size() >> 1;
+//            int idx = c.cnt() >> 1;
 //            c.add(idx, val);
 //        }
 //    }
@@ -37,18 +37,18 @@ public class FrontMiddleBackQueue {
 //    }
 //
 //    public int popFront() {
-//        if (c.size() == 0) {
+//        if (c.cnt() == 0) {
 //            return -1;
 //        }
 //        return c.removeFirst();
 //    }
 //
 //    public int popMiddle() {
-//        if (c.size() == 0) {
+//        if (c.cnt() == 0) {
 //            return -1;
 //        }
-//        int mid = c.size() >> 1;
-//        if ((c.size() & 1) == 0) {
+//        int mid = c.cnt() >> 1;
+//        if ((c.cnt() & 1) == 0) {
 //            // c.size为偶数
 //            return c.remove(mid - 1);
 //        } else {
@@ -57,7 +57,7 @@ public class FrontMiddleBackQueue {
 //    }
 //
 //    public int popBack() {
-//        if (c.size() == 0) {
+//        if (c.cnt() == 0) {
 //            return -1;
 //        }
 //        return c.removeLast();

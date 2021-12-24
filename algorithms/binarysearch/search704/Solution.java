@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.search704;
+package blogandquestion.algorithms.binarysearch.search704;
 
 /**
  * @author Heming
@@ -30,6 +30,7 @@ package blogandquestion.algorithms.numbers.binarysearch.search704;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/binary-search
  *
+ * 参考：https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-de-xun-huan-bu-bian-liang-zhi-yao-/
  */
 public class Solution {
     public int search(int[] nums, int target) {

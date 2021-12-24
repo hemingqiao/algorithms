@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.numbers.binarysearch.isperfectsquare367;
+package blogandquestion.algorithms.binarysearch.isperfectsquare367;
 
 /**
  * @author Heming

@@ -10,7 +10,7 @@ package blogandquestion.algorithms.binary.hammingdistance461;
  * 给出两个整数 x 和 y，计算它们之间的汉明距离。
  *
  * 注意：
- * 0 ≤ x, y < 231.
+ * 0 ≤ x, y < 2^31.
  *
  * 示例:
  *

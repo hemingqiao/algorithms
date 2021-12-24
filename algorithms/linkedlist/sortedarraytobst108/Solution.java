@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.linkedlist.sortedarraytobst108;
+ package blogandquestion.algorithms.linkedlist.sortedarraytobst108;
 
 /**
  * @author Heming
@@ -37,7 +37,8 @@ public class Solution {
     // dfs返回以数组的中间元素为根节点的二叉树
     private TreeNode dfs(int[] nums, int low, int high) {
         if (low > high) return null;
-        int mid = (low + high) / 2;
+//        int mid = (low + high) / 2;
+        int mid = low + (high - low) / 2;
         TreeNode tree = new TreeNode(nums[mid]); // 以升序数组的中间元素为根节点构建二叉树
         tree.left = dfs(nums, low, mid - 1); // 递归的构建二叉树的左子树和右子树
         tree.right = dfs(nums, mid + 1, high);

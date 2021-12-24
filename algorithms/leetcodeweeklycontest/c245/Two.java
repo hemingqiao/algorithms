@@ -126,3 +126,33 @@ class AnotherSolution {
         return i == a;
     }
 }
+
+class AnotherSolution1 {
+    public boolean[] a = new boolean[100010];
+
+    public int maximumRemovals(String s, String p, int[] removable) {
+        char[] ss = s.toCharArray(), pp = p.toCharArray();
+        int l = 0, r = removable.length; // 根据题意，k最大可以取到rr.length
+        while (l < r) {
+            int mid = (l + r + 1) >>> 1;
+            if (check(ss, pp, removable, mid)) l = mid;
+            else r = mid - 1;
+        }
+        return l;
+    }
+
+    public boolean check(char[] s, char[] p, int[] rm, int k) {
+        for (int i = 0; i < a.length; i++) a[i] = false; // 重置a数组
+        for (int j = 0; j < k; j++) a[rm[j]] = true;
+        int l = 0, r = 0;
+        while (l < s.length && r < p.length) {
+            if (a[l]) {
+                l++;
+                continue;
+            }
+            if (s[l] == p[r]) r++;
+            l++;
+        }
+        return r == p.length;
+    }
+}

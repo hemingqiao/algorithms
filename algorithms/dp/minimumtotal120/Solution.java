@@ -92,7 +92,7 @@ class AnotherSolution {
     }
 
     private int dfs(List<List<Integer>> triangle, int row, int col) {
-        if (row == triangle.size()) {
+        if (row == triangle.cnt()) {
             return 0;
         }
         return Math.min(dfs(triangle, row + 1, col), dfs(triangle, row + 1, col + 1))

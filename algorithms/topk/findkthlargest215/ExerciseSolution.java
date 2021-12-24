@@ -14,7 +14,7 @@ public class ExerciseSolution {
         int n = nums.length;
         for (int i = 0; i < n; i++) {
             queue.offer(nums[i]);
-            // 需要保证将第三个元素加入堆中进行排序后，在弹出堆顶元素
+            // 需要保证将第三个元素加入堆中进行排序后，再弹出堆顶元素
             if (queue.size() > k) {
                 queue.poll();
             }

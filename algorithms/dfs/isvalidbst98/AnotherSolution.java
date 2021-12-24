@@ -6,7 +6,7 @@ package blogandquestion.algorithms.dfs.isvalidbst98;
  * founded at 2020/10/25 09:17:12
  * description: 根据二叉搜索树的性质，中序遍历的结果一定是有序的。如果中序遍历时，当前节点的值不大于前一个节点的值，
  * 表明不是一个有效的二叉搜索树。
- * 接替思路
+ * 解题思路
  * see: https://mp.weixin.qq.com/s/B9zmMQDCSWanjHCCwUSAuA
  */
 public class AnotherSolution {

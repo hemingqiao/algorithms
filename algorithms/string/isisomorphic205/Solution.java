@@ -79,6 +79,7 @@ class AnotherSolution {
         return true;
     }
 
+    // 对上面再优化
     public boolean isIsomorphicOpt1(String s, String t) {
         if (s.length() != t.length()) return false;
         // 对应每一位的字符具有相同个数，就代表这两个字符串是同构的

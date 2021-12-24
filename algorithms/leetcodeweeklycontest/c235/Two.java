@@ -66,7 +66,7 @@ public class Two {
         int[] ret = new int[k];
         for (Map.Entry<Integer, Set<Integer>> entry : map.entrySet()) {
             Set<Integer> value = entry.getValue();
-            ret[value.size() - 1]++; // 活跃时间为value.size()的用户数加1，需要注意的是，下标是从1开始的，需要减1
+            ret[value.size() - 1]++; // 活跃时间为value.cnt()的用户数加1，需要注意的是，下标是从1开始的，需要减1
         }
         return ret;
     }

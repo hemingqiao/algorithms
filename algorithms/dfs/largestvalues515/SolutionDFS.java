@@ -23,7 +23,7 @@ public class SolutionDFS {
         if (root == null) return;
         if (level == res.size()) { // level等于res的size时，代表首次进入这一层
             res.add(root.val);
-        } else if (level < res.size()) { // 遍历到了同一层（深度）的节点，非首次进入这一层时，level会小于res.size()
+        } else if (level < res.size()) { // 遍历到了同一层（深度）的节点，非首次进入这一层时，level会小于res.cnt()
             res.set(level, Math.max(res.get(level), root.val));
         }
         level++; // 进入下一层

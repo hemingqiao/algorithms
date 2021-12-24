@@ -7,6 +7,7 @@ import java.util.Arrays;
  * created by IntelliJ IDEA
  * founded at 2021/03/03 08:33:47
  * description:
+ * 二刷
  */
 public class ExerciseSolution {
     public int[] countBits(int num) {

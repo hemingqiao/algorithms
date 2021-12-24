@@ -57,6 +57,10 @@ public class Solution {
         for (int i = 0; i < nums.length; i++) {
             // 不能在同一层中使用重复的元素，而在不同层使用重复元素时，nums[i] == nums[i - 1]，但是此时used[i - 1] == true
             // 而如果在同一层使用了重复元素时，used[i - 1]此时为false
+
+            // 以 1 2 2 为例，第一次取1，used[0]为true，第二次取2(1)，used[1]为true，第三次取2(2)，used[2]为true，进行回溯
+            // 2(2)被移除，used[2]还原为false，2(1)被移除，used[1]还原为false
+            // 取2(2)，此时used[i - 1]为false，且nums[i] == nums[i - 1]，这种情况之前已经处理过，不应该再次处理，需要跳过
             if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
             if (!used[i]) {
                 path.add(nums[i]);

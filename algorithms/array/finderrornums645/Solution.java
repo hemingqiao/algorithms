@@ -26,8 +26,8 @@ package blogandquestion.algorithms.array.finderrornums645;
  *
  * 提示：
  *
- * 2 <= nums.length <= 104
- * 1 <= nums[i] <= 104
+ * 2 <= nums.length <= 10^4
+ * 1 <= nums[i] <= 10^4
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/set-mismatch

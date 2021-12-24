@@ -8,6 +8,7 @@ import java.util.Set;
  * created by IntelliJ IDEA
  * founded at 2021/02/01 11:17:07
  * description:
+ * 参考：https://leetcode-cn.com/problems/fair-candy-swap/solution/gong-ping-de-tang-guo-jiao-huan-by-leetc-tlam/
  */
 public class AnotherSolution {
     public int[] fairCandySwap(int[] A, int[] B) {

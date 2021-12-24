@@ -67,6 +67,8 @@ class Solution {
 
 参考：https://blog.csdn.net/zheng0518/article/details/8882394
 
+
+
 ## n & 1 == 1的作用
 
 简而言之，n & 1 == 1 表明n为奇数，否则n为偶数。

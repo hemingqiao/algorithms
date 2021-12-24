@@ -14,7 +14,7 @@ import java.util.Deque;
 public class AnotherSolution {
     // 直接暴力求解
     // 这次提交AC了，不过估计着一段时间之后，就会通过不了了😂
-    public int[] dailyTemperature(int[] T) {
+    public int[] dailyTemperatures(int[] T) {
         int n = T.length;
         int[] ret = new int[n];
         for (int i = 0; i < n; i++) {
@@ -35,7 +35,7 @@ public class AnotherSolution {
     数的距离也可以算出来了
      */
 
-    public int[] dailyTemperature1(int[] T) {
+    public int[] dailyTemperatures1(int[] T) {
         int n = T.length;
         int[] ret = new int[n];
         Deque<Integer> stack = new ArrayDeque<>();

@@ -47,7 +47,7 @@ import java.util.Deque;
  *
  * 提示：
  *
- * 1 <= tokens.length <= 104
+ * 1 <= tokens.length <= 10^4
  * tokens[i] 要么是一个算符（"+"、"-"、"*" 或 "/"），要么是一个在范围 [-200, 200] 内的整数
  *  
  *

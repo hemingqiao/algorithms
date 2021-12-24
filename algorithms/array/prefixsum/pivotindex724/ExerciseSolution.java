@@ -22,7 +22,7 @@ public class ExerciseSolution {
         return -1;
     }
 
-    // 2、朴素解法
+    // 2、朴素解法，比前缀和要快一些
     public int pivotIndex1(int[] nums) {
         int sum = 0, leftSum = 0;
         int n = nums.length;

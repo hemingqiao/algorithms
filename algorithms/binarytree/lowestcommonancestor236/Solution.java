@@ -45,9 +45,10 @@ public class Solution {
         Queue<TreeNode> queue = new LinkedList<>();
         // 根节点的父节点设为null
         parent.put(root, null);
+        // 将根节点加入队列
         queue.add(root);
         // 当p或者q不在哈希表中时，继续循环
-        // 直到两个节点都加入到了哈希表中
+        // 直到两个节点都加入到了哈希表中，退出循环
         while (!parent.containsKey(p) || !parent.containsKey(q)) {
             TreeNode node = queue.poll();
             if (node.left != null) {

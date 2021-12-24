@@ -21,6 +21,7 @@ package blogandquestion.algorithms.dp.maxprofit309;
  * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown
  *
  * 参考：https://leetcode-cn.com/circle/article/qiAgHn/
+ * 参考：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/bao-li-mei-ju-dong-tai-gui-hua-chai-fen-si-xiang-b/
  */
 public class Solution {
     public int maxProfit(int[] prices) {

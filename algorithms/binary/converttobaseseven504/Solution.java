@@ -35,7 +35,7 @@ public class Solution {
             num /= 7;
         }
         /*String r = res.reverse().toString();
-        if (flag) return "-" + r;
+        if (clicked) return "-" + r;
         return r;*/
         // 尽量避免使用+进行字符串拼接
         if (flag) {

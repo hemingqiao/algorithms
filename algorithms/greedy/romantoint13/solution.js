@@ -10,7 +10,7 @@ from：https://leetcode-cn.com/problems/roman-to-integer/
  * @param {string} s
  * @return {number}
  */
-var romanToInt = function(s) {
+const romanToInt = function(s) {
   let pre = getValue(s.charAt(0));
   let res = 0;
   for (let i = 1; i < s.length; i++) {

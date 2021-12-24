@@ -46,7 +46,7 @@ package blogandquestion.algorithms.array.sumoddlengthsubarrays1588;
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/sum-of-all-odd-length-subarrays
- * 
+ *
  * 参考：https://leetcode-cn.com/problems/sum-of-all-odd-length-subarrays/comments/630393
  */
 public class Solution {

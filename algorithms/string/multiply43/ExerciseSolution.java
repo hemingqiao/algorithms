@@ -5,7 +5,7 @@ package blogandquestion.algorithms.string.multiply43;
  * created by IntelliJ IDEA
  * founded at 2021/01/25 20:33:42
  * description:
- * 还需要多谢几遍，多思考
+ * 还需要多写几遍，多思考
  */
 public class ExerciseSolution {
     public String multiply(String num1, String num2) {
@@ -28,5 +28,12 @@ public class ExerciseSolution {
         }
         // 处理边界情况，num1或num2可能为0
         return ret.length() == 0 ? "0" : ret.toString();
+    }
+
+    public static void main(String[] args) {
+        String s1 = "123456789987456123647894555248226416";
+        String s2 = "13749742931685897371297134619585472126146491275217492743129475479497642179617";
+        ExerciseSolution es = new ExerciseSolution();
+        System.out.println(es.multiply(s1, s2));
     }
 }

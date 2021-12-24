@@ -7,7 +7,9 @@ import java.util.*;
  * created by IntelliJ IDEA
  * founded at 2021/07/03 12:10:55
  * description:
- * 参考：https://www.acwing.com/activity/content/problem/content/906/1/
+ *
+ * @see https://www.acwing.com/activity/content/problem/content/906/1/
+ * @see https://www.acwing.com/solution/content/15884/
  */
 public class ExerciseSolution {
     int n;

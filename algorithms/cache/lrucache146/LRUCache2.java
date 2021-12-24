@@ -9,6 +9,8 @@ import java.util.Map;
  * founded at 2021/01/27 11:54:52
  * description:
  * 二刷，还是不熟悉，需要多写几次
+ * jdk中有类似的原生实现
+ * @see java.util.LinkedHashMap
  */
 public class LRUCache2 {
     Map<Integer, Node> map = new HashMap<>();

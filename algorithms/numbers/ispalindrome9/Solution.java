@@ -1,4 +1,4 @@
-package blogandquestion.algorithms.ispalindrome9;
+package blogandquestion.algorithms.numbers.ispalindrome9;
 
 /**
  * @author Heming
@@ -44,5 +44,15 @@ public class Solution {
             x /= 10;
         }
         return x == rs || x == rs / 10; // x可能是奇数位也可能是偶数位
+    }
+
+    // 转为字符串的解法
+    public boolean isPalindrome1(int x) {
+        String s = String.valueOf(x);
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left++) != s.charAt(right--)) return false;
+        }
+        return true;
     }
 }

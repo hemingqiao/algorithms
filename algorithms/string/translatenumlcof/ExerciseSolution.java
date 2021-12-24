@@ -15,7 +15,7 @@ public class ExerciseSolution {
         dp[0] = 1; // 当没有数字时翻译方案为1
         dp[1] = 1; // 只有一个数字时翻译方案也为1
         for (int i = 1; i < n; i++) {
-            dp[i + 1] = dp[i];
+            dp[i + 1] = dp[i]; // i + 1 处的状态首先可以从 i 处的状态转移而来
             // 当前一个字符以1开头或者以2开头且当前字符小于等于5时，i + 1处的状态还可以从i - 1处转移而来
             if (str.charAt(i - 1) == '1' || str.charAt(i - 1) == '2' && str.charAt(i) < '6') {
                 dp[i + 1] += dp[i - 1];

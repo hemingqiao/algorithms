@@ -27,4 +27,22 @@ public class ExerciseSolution {
         }
         return list;
     }
+
+    // 三刷
+    // 2020/02/28
+    public List<Integer> postorderTraversal1(TreeNode root) {
+        if (root == null) return new ArrayList<>();
+        List<Integer> list = new LinkedList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                list.add(0, root.val);
+                root = root.right;
+            }
+            root = stack.pop();
+            root = root.left;
+        }
+        return list;
+    }
 }

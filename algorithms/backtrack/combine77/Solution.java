@@ -76,8 +76,8 @@ class AnotherSolution {
             return;
         }
         // 如果for循环选择的起始位置之后的元素个数 已经不足 需要的元素个数了，那么就没有必要继续搜索下去了
-        // 已经选择的元素个数：path.size()
-        // 还需要的元素个数：k - path.size()，因此在集合n中至少要从n - (k - path.size()) + 1开始遍历才有意义
+        // 已经选择的元素个数：path.cnt()
+        // 还需要的元素个数：k - path.cnt()，因此在集合n中至少要从n - (k - path.cnt()) + 1开始遍历才有意义
         // 为什么要加1，因为遍历起始索引startIndex是从1开始的，而不是从0开始的，此时元素的值就等于索引的值
         for (int i = startIndex; i <= n - (k - path.size()) + 1; i++) {
             path.add(i);

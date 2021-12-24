@@ -8,21 +8,21 @@
 <script>
     /*
     const reverse = function (num) {
-        let flag = false;
+        let clicked = false;
         if (num < 0) {
             num = -num;
-            flag = true;
+            clicked = true;
         }
 
         num = +(num.toString().split("").reverse().join(""));
 
         let boundary = -(1 << 31);
-        if (flag && num > boundary) {
+        if (clicked && num > boundary) {
             return 0;
         } else if (num > (boundary - 1)) {
             return 0;
         }
-        if (flag) {
+        if (clicked) {
             return -num;
         }
         return num;

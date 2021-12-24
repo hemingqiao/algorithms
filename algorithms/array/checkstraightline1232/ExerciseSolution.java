@@ -31,6 +31,7 @@ public class ExerciseSolution {
         System.out.println(res);
     }
 
+    // 参考：https://leetcode-cn.com/problems/check-if-it-is-a-straight-line/solution/san-dian-xiang-chai-zhi-bi-li-chao-99-by-co4x/
     // 利用斜率相等，进行叉乘
     // 同时也不需要对横坐标相等进行特判了
     // 但是需要注意的是，如果坐标比较大，整型会有溢出的风险，可以将乘积转为long类型

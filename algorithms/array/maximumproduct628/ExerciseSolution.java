@@ -7,7 +7,7 @@ package blogandquestion.algorithms.array.maximumproduct628;
  * description: 和414题类似，求数组中最大的几个数。
  */
 public class ExerciseSolution {
-    // 需要注意的地方：数组种存在负数
+    // 需要注意的地方：数组中存在负数
     public int maximumProduct(int[] nums) {
         int last1 = Integer.MAX_VALUE, last2 = Integer.MAX_VALUE;
         int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE, third = Integer.MIN_VALUE;

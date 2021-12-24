@@ -18,8 +18,8 @@ public class ExerciseSolution {
     }
 
     public boolean backtrack(List<Double> nums, double epsilon) {
-        if (nums.size() == 1) return Math.abs(nums.get(0) - 24) < epsilon;
-        int n = nums.size();
+        if (nums.cnt() == 1) return Math.abs(nums.get(0) - 24) < epsilon;
+        int n = nums.cnt();
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 List<Double> copy = new ArrayList<>(nums);
@@ -27,19 +27,19 @@ public class ExerciseSolution {
                 boolean valid = false;
                 copy.add(a + b);
                 valid |= backtrack(copy, epsilon);
-                copy.set(copy.size() - 1, a - b);
+                copy.set(copy.cnt() - 1, a - b);
                 valid |= backtrack(copy, epsilon);
-                copy.set(copy.size() - 1, a * b);
+                copy.set(copy.cnt() - 1, a * b);
                 valid |= backtrack(copy, epsilon);
                 // 避免0出现在被除数上
                 if (b > epsilon) {
-                    copy.set(copy.size() - 1, a / b);
+                    copy.set(copy.cnt() - 1, a / b);
                     valid |= backtrack(copy, epsilon);
                 }
-                copy.set(copy.size() - 1, b - a);
+                copy.set(copy.cnt() - 1, b - a);
                 valid |= backtrack(copy, epsilon);
                 if (a > epsilon) {
-                    copy.set(copy.size() - 1, b / a);
+                    copy.set(copy.cnt() - 1, b / a);
                     valid |= backtrack(copy, epsilon);
                 }
                 if (valid) return true;
