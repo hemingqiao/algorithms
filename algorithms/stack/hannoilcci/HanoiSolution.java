@@ -33,7 +33,7 @@ import java.util.List;
  *
  * 参考：https://leetcode-cn.com/problems/hanota-lcci/solution/zhi-qian-yi-zhi-tiao-guo-yi-nuo-ta-zhe-ci-zhong-yu/
  */
-public class Solution {
+public class HanoiSolution {
     /**
      * 将A的盘子借助于B全部移动到C上
      * @param A 原柱子

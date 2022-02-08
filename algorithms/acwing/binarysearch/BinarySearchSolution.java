@@ -6,7 +6,7 @@ package blogandquestion.algorithms.acwing.binarysearch;
  * founded at 2021/05/29 08:44:09
  * description:
  */
-public class Solution {
+public class BinarySearchSolution {
     public int upper_bound(int[] arr, int target) {
         int l = 0, r = arr.length;
         while (l < r) {
@@ -38,7 +38,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        BinarySearchSolution s = new BinarySearchSolution();
         int[] test = {1, 2, 2, 3, 4, 5, 5};
         int[] test1 = {1, 2, 2, 3, 3, 3, 4, 6};
         int res = s.upper_bound(test1, 7);
