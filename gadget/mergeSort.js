@@ -34,6 +34,7 @@ function isAscendingSorted(arr) {
     return true;
 }
 
+// for test
 const nums = generateRandomArr(10000000, 1e9);
 console.log(isAscendingSorted(nums));
 console.time("merge sort");
