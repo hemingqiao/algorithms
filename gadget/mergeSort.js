@@ -2,6 +2,12 @@ const INF = 10000010;
 
 const temp = Array(INF).fill(0);
 
+/**
+ * 归并排序
+ * @param {number[]} nums
+ * @param {number} l
+ * @param {number} r
+ */
 function mergeSort(nums, l = 0, r = nums.length - 1) {
     if (l >= r) return;
     let mid = l + r >> 1, i = l, j = mid + 1, k = 0;
