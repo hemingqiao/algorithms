@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const multiply = function (num1, num2) {
+        if (num1 === "0" || num2 === "0") {
+            return "0";
+        }
+
+        let res = Array(num1.length + num2.length).fill(0);
+        for (let i = num1.length - 1; i >= 0; i--) {
+            let n1 = num1.charAt(i);
+            for (let j = num2.length - 1; j >= 0; j--) {
+                let n2 = num2.charAt(j);
+                let sum = (+res[i + j + 1]) + n1 * n2;
+                res[i + j + 1] = sum % 10;
+                res[i + j] += Math.floor(sum / 10);
+            }
+        }
+
+        let result = [];
+        for (let i = 0; i < res.length; i++) {
+            if (i === 0 && res[i] === 0) continue;
+            result.push(res[i]);
+        }
+        return result.join("");
+    }
+
+    let result = multiply("2", "3")
+    console.log(result);
+    console.log(multiply("123", "456"));
+    console.log(multiply("123456789", "987654321"));
+
+
+    /*
+
+    function multiply(num1, num2) {
+        function resolve(num) {
+            let result = 0,
+                n = 0;
+            let arr = num.split("");
+            while (arr.length) {
+                result += 10 ** (n++) * arr.pop();
+            }
+
+            return result;
+        }
+
+        return resolve(num1) * resolve(num2);
+    }
+
+    let result = multiply("123", "456");
+    console.log(result);
+
+    */
+</script>
+</body>
+</html>
