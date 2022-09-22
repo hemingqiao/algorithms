@@ -37,12 +37,12 @@ public class ExerciseSolution {
             for (int j = 0; j < 9; j += 3) {
                 Arrays.fill(st, false);
                 for (int x = 0; x < 3; x++)
-                for (int y = 0; y < 3; y++)
-                    if (board[i + x][j + y] != '.') {
-                        int t = board[i + x][j + y] - '1';
-                        if (st[t]) return false;
-                        st[t] = true;
-                    }
+                    for (int y = 0; y < 3; y++)
+                        if (board[i + x][j + y] != '.') {
+                            int t = board[i + x][j + y] - '1';
+                            if (st[t]) return false;
+                            st[t] = true;
+                        }
             }
         }
         return true;

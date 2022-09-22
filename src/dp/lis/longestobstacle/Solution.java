@@ -62,26 +62,20 @@ package src.dp.lis.longestobstacle;
 public class Solution {
     public int[] longestObstacleCourseAtEachPosition(int[] obstacles) {
         int n = obstacles.length;
-        int[] q = new int[n], ret = new int[n];
-        q[0] = obstacles[0];
-        ret[0] = 1;
-        int p = 0;
-        for (int i = 1; i < n; i++) {
-            int x = obstacles[i];
-            if (x >= q[p]) {
-                q[++p] = x;
-                ret[i] = p + 1;
-            } else {
-                int l = 0, r = p;
-                while (l < r) {
-                    int mid = l + r >> 1;
-                    if (q[mid] > x) r = mid;
-                    else l = mid + 1;
-                }
-                q[l] = x;
-                ret[i] = l + 1;
+        int[] ans = new int[n], q = new int[n + 1];
+
+        int len = 0;
+        for (int i = 0; i < n; i++) {
+            int x = obstacles[i], l = 0, r = len;
+            while (l < r) {
+                int mid = l + r + 1 >> 1;
+                if (q[mid] <= x) l = mid;
+                else r = mid - 1;
             }
+            len = Math.max(len, l + 1);
+            ans[i] = l + 1;
+            q[l + 1] = x;
         }
-        return ret;
+        return ans;
     }
 }
